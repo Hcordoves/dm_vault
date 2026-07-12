@@ -480,6 +480,177 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); font
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #666; }
 
+/* ── Party Manager ───────────────────────────────────────────────── */
+.party-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.75);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(2px);
+}
+.party-modal {
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 8px; width: 900px; max-width: 96vw;
+  max-height: 90vh; display: flex; flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.party-modal-header {
+  display: flex; align-items: center; padding: 16px 20px;
+  border-bottom: 1px solid var(--border2); flex-shrink: 0;
+}
+.party-modal-header h2 {
+  font-family: var(--font-head); font-size: 15px; letter-spacing: .08em;
+  color: var(--red); flex: 1; font-weight: 600;
+}
+.party-modal-header .pm-hint {
+  font-size: 12px; color: var(--text-dim); margin-right: 16px; font-style: italic;
+}
+.pm-save-btn {
+  padding: 6px 18px; border-radius: 4px;
+  background: var(--red); border: none; color: #fff;
+  font-family: var(--font-head); font-size: 12px; letter-spacing: .04em;
+  cursor: pointer; margin-right: 8px; transition: opacity .15s;
+}
+.pm-save-btn:hover { opacity: .85; }
+.pm-close-btn {
+  padding: 6px 12px; border-radius: 4px;
+  background: none; border: 1px solid var(--border2); color: var(--text-dim);
+  cursor: pointer; font-size: 16px; line-height: 1; transition: all .15s;
+}
+.pm-close-btn:hover { border-color: var(--red); color: var(--text); }
+
+.party-modal-body {
+  flex: 1; overflow-y: auto; padding: 16px 20px;
+}
+.char-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;
+}
+.char-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 6px; padding: 14px;
+}
+.char-card-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.char-card-num {
+  font-family: var(--font-head); font-size: 11px; color: var(--red);
+  letter-spacing: .06em; flex-shrink: 0;
+}
+.char-name-input {
+  flex: 1; background: var(--bg4); border: 1px solid var(--border2);
+  border-radius: 3px; color: var(--text-bright); padding: 5px 8px;
+  font-size: 14px; font-weight: 600; outline: none;
+}
+.char-name-input:focus { border-color: var(--red); }
+.char-class-input {
+  flex: 1; background: var(--bg4); border: 1px solid var(--border2);
+  border-radius: 3px; color: var(--text-dim); padding: 5px 8px;
+  font-size: 12px; outline: none;
+}
+.char-class-input:focus { border-color: var(--border2); }
+
+.char-fields {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px;
+}
+.char-field { display: flex; flex-direction: column; gap: 3px; }
+.char-field label { font-size: 10px; color: var(--text-dim); letter-spacing: .05em; text-transform: uppercase; }
+.char-field input, .char-field select {
+  background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 3px; color: var(--text); padding: 5px 6px;
+  font-size: 13px; text-align: center; outline: none; width: 100%;
+}
+.char-field input:focus, .char-field select:focus { border-color: var(--red); }
+.char-field select { cursor: pointer; }
+
+.char-flags {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  padding-top: 8px; border-top: 1px solid var(--border);
+}
+.char-flag {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12px; color: var(--text-dim); cursor: pointer; white-space: nowrap;
+}
+.char-flag input[type=checkbox] { accent-color: var(--red); cursor: pointer; }
+.char-bonus-dmg {
+  width: 48px; background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 3px; color: var(--text); padding: 3px 5px;
+  font-size: 12px; text-align: center; outline: none;
+}
+.char-bonus-dmg:focus { border-color: var(--red); }
+
+.add-char-btn {
+  width: 100%; padding: 12px; border-radius: 4px;
+  border: 1px dashed var(--border2); background: none;
+  color: var(--text-dim); cursor: pointer; font-size: 13px;
+  transition: all .15s;
+}
+.add-char-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* Encounter panel — party display */
+.enc-party-row {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  flex: 1;
+}
+.enc-party-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 4px; padding: 4px 8px; font-size: 12px;
+}
+.enc-chip-name { color: var(--text-bright); font-weight: 500; }
+.enc-chip-hp { color: var(--text-dim); font-size: 11px; }
+.enc-res-btn {
+  border: none; border-radius: 3px; font-size: 10px;
+  padding: 2px 6px; cursor: pointer; font-family: var(--font-head);
+  letter-spacing: .03em; transition: all .12s;
+}
+.enc-res-fresh    { background: rgba(90,158,106,.2);  color: #5a9e6a; }
+.enc-res-moderate { background: rgba(201,168,76,.2);  color: #c9a84c; }
+.enc-res-depleted { background: rgba(192,64,64,.2);   color: #c04040; }
+
+.enc-setup-link {
+  font-size: 11px; color: var(--text-dim); cursor: pointer;
+  text-decoration: underline; white-space: nowrap;
+}
+.enc-setup-link:hover { color: var(--red); }
+
+/* Encounter — combat stats bar */
+.enc-combat-bar {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 6px;
+  margin-bottom: 8px;
+}
+.enc-combat-cell {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 4px; padding: 8px 10px; text-align: center;
+}
+.enc-combat-cell .ecc-label { font-size: 10px; color: var(--text-dim); letter-spacing: .06em; margin-bottom: 3px; }
+.enc-combat-cell .ecc-val { font-size: 16px; color: var(--text-bright); font-weight: 500; }
+.enc-combat-cell .ecc-sub { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+.enc-action-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+  padding: 8px 10px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 4px; font-size: 12px; flex-wrap: wrap; gap: 8px;
+}
+.enc-action-ratio { color: var(--text-bright); font-weight: 500; }
+.enc-action-warn  { color: #c9a84c; }
+.enc-action-danger{ color: #c04040; }
+.enc-legendary-flag {
+  background: rgba(192,64,64,.15); border: 1px solid rgba(192,64,64,.3);
+  border-radius: 3px; padding: 2px 8px; color: #c04040; font-size: 11px;
+}
+.enc-conc-flag {
+  background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
+  border-radius: 3px; padding: 2px 8px; color: #c9a84c; font-size: 11px;
+}
+.enc-party-fallback {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.enc-party-fallback label {
+  font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px;
+}
+.enc-party-fallback input {
+  width: 52px; background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 3px; color: var(--text); padding: 3px 6px; font-size: 13px; text-align: center;
+}
+
 /* ── Player wiki tile ────────────────────────────────────────────── */
 .wt-player-tile {
   display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -673,6 +844,7 @@ tr:hover .enc-add-btn { opacity: 1; pointer-events: all; }
     </div>
 
     <button class="home-btn active" id="btn-home" onclick="goHome()">⌂ Home</button>
+    <button class="home-btn" id="btn-party" onclick="openPartyModal()">👥 Party</button>
     <div id="nav-section-label" style="padding:0 14px;font-size:13px;color:var(--text-dim);display:none;align-items:center;gap:8px;height:100%;"></div>
 
     <div class="nav-right">
@@ -780,14 +952,12 @@ tr:hover .enc-add-btn { opacity: 1; pointer-events: all; }
         <span style="font-size:11px;color:var(--text-dim)" id="enc-chevron">▲</span>
       </div>
       <div id="enc-panel">
-        <div class="enc-settings">
-          <label>Players
-            <input type="number" id="enc-players" value="4" min="1" max="10" oninput="recalcEncounter()">
-          </label>
-          <label>Avg Level
-            <input type="number" id="enc-level"   value="10" min="1" max="20" oninput="recalcEncounter()">
-          </label>
-          <span style="font-size:12px;color:var(--text-dim);margin-left:auto">Click <strong style="color:var(--red)">+</strong> on any monster row to add it</span>
+        <div class="enc-settings" id="enc-settings">
+          <!-- Populated by renderEncParty() — shows party chips or fallback inputs -->
+        </div>
+        <div id="enc-combat-stats" style="display:none">
+          <div class="enc-action-row" id="enc-action-row"></div>
+          <div class="enc-combat-bar" id="enc-combat-bar"></div>
         </div>
         <div class="enc-monster-list" id="enc-monster-list"></div>
         <div class="enc-xp-bar" id="enc-xp-bar">
@@ -807,6 +977,22 @@ tr:hover .enc-add-btn { opacity: 1; pointer-events: all; }
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Party Manager Modal -->
+<div id="party-modal" class="party-overlay" style="display:none">
+  <div class="party-modal">
+    <div class="party-modal-header">
+      <h2>⚔ PARTY MANAGER</h2>
+      <span class="pm-hint">Fill in the derived stats from each player's character sheet</span>
+      <button class="pm-save-btn" onclick="savePartyModal()">Save Party</button>
+      <button class="pm-close-btn" onclick="closePartyModal()">×</button>
+    </div>
+    <div class="party-modal-body">
+      <div class="char-grid" id="char-grid"></div>
+      <button class="add-char-btn" onclick="addCharSlot()">+ Add Character</button>
+    </div>
   </div>
 </div>
 
@@ -1794,10 +1980,14 @@ function ordinal(n) {
 }
 
 init();
+// Pre-populate encounter party section on load
+document.addEventListener("DOMContentLoaded", () => renderEncParty());
 
-// ── Encounter Builder ─────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════
+// ENCOUNTER BUILDER
+// ══════════════════════════════════════════════════════════════════
 
-// XP thresholds per character [Easy, Medium, Hard, Deadly] for levels 1–20
+// ── XP tables ─────────────────────────────────────────────────────
 const ENC_THRESHOLDS = [
   [25,50,75,100],[50,100,150,200],[75,150,225,400],[125,250,375,500],
   [250,500,750,1100],[300,600,900,1400],[350,750,1100,1700],[450,900,1400,2100],
@@ -1805,8 +1995,6 @@ const ENC_THRESHOLDS = [
   [1100,2200,3400,5100],[1250,2500,3800,5700],[1400,2800,4300,6400],[1600,3200,4800,7200],
   [2000,3900,5900,8800],[2100,4200,6300,9500],[2400,4900,7300,10900],[2800,5700,8500,12700],
 ];
-
-// XP by CR string
 const CR_XP = {
   "0":10,"1/8":25,"1/4":50,"1/2":100,
   "1":200,"2":450,"3":700,"4":1100,"5":1800,
@@ -1816,47 +2004,58 @@ const CR_XP = {
   "21":33000,"22":41000,"23":50000,"24":62000,"25":75000,
   "26":90000,"27":105000,"28":120000,"29":135000,"30":155000,
 };
+// DMG Monster Statistics by CR — HP midpoint, expected DPR, attacks/round
+const CR_STAT = {
+  "0":  {hp:4,   dpr:1,   atk:1}, "1/8":{hp:21,  dpr:2,   atk:1},
+  "1/4":{hp:42,  dpr:5,   atk:1}, "1/2":{hp:60,  dpr:7,   atk:1},
+  "1":  {hp:78,  dpr:11,  atk:1}, "2":  {hp:93,  dpr:17,  atk:1},
+  "3":  {hp:108, dpr:23,  atk:1}, "4":  {hp:123, dpr:29,  atk:1},
+  "5":  {hp:138, dpr:35,  atk:2}, "6":  {hp:153, dpr:41,  atk:2},
+  "7":  {hp:168, dpr:47,  atk:2}, "8":  {hp:183, dpr:53,  atk:2},
+  "9":  {hp:198, dpr:59,  atk:2}, "10": {hp:213, dpr:65,  atk:2},
+  "11": {hp:228, dpr:71,  atk:3}, "12": {hp:243, dpr:77,  atk:3},
+  "13": {hp:258, dpr:83,  atk:3}, "14": {hp:273, dpr:89,  atk:3},
+  "15": {hp:288, dpr:95,  atk:3}, "16": {hp:303, dpr:101, atk:3},
+  "17": {hp:318, dpr:107, atk:3}, "18": {hp:333, dpr:113, atk:3},
+  "19": {hp:348, dpr:119, atk:3}, "20": {hp:378, dpr:131, atk:3},
+  "21": {hp:423, dpr:149, atk:4}, "22": {hp:468, dpr:167, atk:4},
+  "23": {hp:513, dpr:185, atk:4}, "24": {hp:558, dpr:203, atk:4},
+  "25": {hp:603, dpr:221, atk:4}, "26": {hp:648, dpr:239, atk:4},
+  "27": {hp:693, dpr:257, atk:4}, "28": {hp:738, dpr:275, atk:4},
+  "29": {hp:783, dpr:293, atk:4}, "30": {hp:828, dpr:311, atk:5},
+};
+function crStat(cr) { return CR_STAT[String(cr)] || {hp:10,dpr:5,atk:1}; }
+function crToXP(cr) { return CR_XP[String(cr)] || 0; }
 
+// ── Encounter state ────────────────────────────────────────────────
 let encounterMonsters = []; // [{slug, name, cr, xp, count}]
 let encPanelOpen = false;
-
-function crToXP(cr) {
-  if (!cr) return 0;
-  return CR_XP[String(cr)] || 0;
-}
+let encResourceState = {}; // {charId: "fresh"|"moderate"|"depleted"}
+const RES_MULT = { fresh: 1.0, moderate: 0.7, depleted: 0.4 };
+const RES_LABEL = { fresh: "Fresh", moderate: "Moderate", depleted: "Depleted" };
 
 function encAddMonster(slug) {
   const m = allItems.find(i => i.slug === slug);
   if (!m) return;
   const existing = encounterMonsters.find(e => e.slug === slug);
-  if (existing) {
-    existing.count++;
-  } else {
-    encounterMonsters.push({ slug, name: m.name, cr: m.cr, xp: crToXP(m.cr), count: 1 });
-  }
+  if (existing) { existing.count++; }
+  else { encounterMonsters.push({ slug, name: m.name, cr: m.cr, xp: crToXP(m.cr), count: 1 }); }
+  document.getElementById("encounter-bar").classList.add("visible");
   renderEncounter();
-  const bar = document.getElementById("encounter-bar");
-  if (!encPanelOpen) bar.classList.add("visible");
-  else { bar.classList.add("visible"); }
 }
-
 function encChangeCount(slug, delta) {
   const e = encounterMonsters.find(x => x.slug === slug);
-  if (!e) return;
-  e.count = Math.max(1, e.count + delta);
-  renderEncounter();
+  if (e) { e.count = Math.max(1, e.count + delta); renderEncounter(); }
 }
-
 function encRemove(slug) {
   encounterMonsters = encounterMonsters.filter(x => x.slug !== slug);
   if (!encounterMonsters.length) {
     document.getElementById("encounter-bar").classList.remove("visible");
-    encPanelOpen = false;
     document.getElementById("enc-panel").classList.remove("open");
+    encPanelOpen = false;
   }
   renderEncounter();
 }
-
 function clearEncounter() {
   encounterMonsters = [];
   document.getElementById("encounter-bar").classList.remove("visible");
@@ -1864,30 +2063,63 @@ function clearEncounter() {
   encPanelOpen = false;
   renderEncounter();
 }
-
 function toggleEncPanel() {
   encPanelOpen = !encPanelOpen;
   document.getElementById("enc-panel").classList.toggle("open", encPanelOpen);
   document.getElementById("enc-chevron").textContent = encPanelOpen ? "▼" : "▲";
+  if (encPanelOpen) { renderEncParty(); renderEncounter(); }
 }
-
-function encMultiplier(total) {
-  if (total <= 1)  return 1;
-  if (total === 2) return 1.5;
-  if (total <= 6)  return 2;
-  if (total <= 10) return 2.5;
-  if (total <= 14) return 3;
-  return 4;
+function encMultiplier(n) {
+  if (n <= 1) return 1; if (n === 2) return 1.5;
+  if (n <= 6) return 2;  if (n <= 10) return 2.5;
+  if (n <= 14) return 3; return 4;
 }
-
+function cycleResource(charId) {
+  const cur = encResourceState[charId] || "fresh";
+  const next = cur === "fresh" ? "moderate" : cur === "moderate" ? "depleted" : "fresh";
+  encResourceState[charId] = next;
+  renderEncParty();
+  renderEncounter();
+}
 function recalcEncounter() { renderEncounter(); }
 
-function renderEncounter() {
-  const list    = document.getElementById("enc-monster-list");
-  const summary = document.getElementById("enc-summary");
-  const badge   = document.getElementById("enc-diff-badge");
+// ── Party display in encounter panel ─────────────────────────────
+function renderEncParty() {
+  const party = loadParty();
+  const el = document.getElementById("enc-settings");
+  if (!el) return;
+  if (!party.length) {
+    el.innerHTML = `
+      <div class="enc-party-fallback">
+        <label>Players <input type="number" id="enc-players" value="4" min="1" max="10" oninput="recalcEncounter()"></label>
+        <label>Avg Level <input type="number" id="enc-level" value="10" min="1" max="20" oninput="recalcEncounter()"></label>
+        <span class="enc-setup-link" onclick="openPartyModal()">Set up real party →</span>
+      </div>
+      <span style="font-size:11px;color:var(--text-dim);margin-left:auto">Click <strong style="color:var(--red)">+</strong> on a monster to add it</span>`;
+  } else {
+    const chips = party.map(c => {
+      const res = encResourceState[c.id] || "fresh";
+      const resCls = `enc-res-${res}`;
+      return `<div class="enc-party-chip">
+        <span class="enc-chip-name">${c.name}</span>
+        <span class="enc-chip-hp">${c.maxHP}hp</span>
+        <button class="enc-res-btn ${resCls}" onclick="cycleResource('${c.id}')">${RES_LABEL[res]}</button>
+      </div>`;
+    }).join("");
+    el.innerHTML = `
+      <div class="enc-party-row">${chips}
+        <span class="enc-setup-link" onclick="openPartyModal()" title="Edit party">✏ Edit party</span>
+      </div>`;
+  }
+}
 
-  // Render monster rows
+// ── Main encounter render ─────────────────────────────────────────
+function renderEncounter() {
+  const list  = document.getElementById("enc-monster-list");
+  const badge = document.getElementById("enc-diff-badge");
+  if (!list) return;
+
+  // Monster rows
   list.innerHTML = encounterMonsters.map(e => `
     <div class="enc-row">
       <div class="enc-row-name">${e.name}</div>
@@ -1899,13 +2131,27 @@ function renderEncounter() {
         <button onclick="encChangeCount('${e.slug}',1)">+</button>
       </div>
       <button class="enc-remove" onclick="encRemove('${e.slug}')" title="Remove">×</button>
-    </div>`).join("");
+    </div>`).join("") || `<div style="font-size:13px;color:var(--text-dim);padding:8px 0;font-style:italic">No monsters added yet.</div>`;
 
-  // Calculate XP
-  const totalCount = encounterMonsters.reduce((s,e) => s + e.count, 0);
-  const rawXP      = encounterMonsters.reduce((s,e) => s + e.xp * e.count, 0);
-  const mult       = encMultiplier(totalCount);
-  const adjXP      = Math.round(rawXP * mult);
+  // ── Monster totals ────────────────────────────────────────────
+  const totalCount  = encounterMonsters.reduce((s,e) => s + e.count, 0);
+  const rawXP       = encounterMonsters.reduce((s,e) => s + e.xp * e.count, 0);
+  const mult        = encMultiplier(totalCount);
+  const adjXP       = Math.round(rawXP * mult);
+  const monsterHP   = encounterMonsters.reduce((s,e) => {
+    const m = allItems.find(i => i.slug === e.slug);
+    return s + (m?.hit_points || crStat(e.cr).hp) * e.count;
+  }, 0);
+  const monsterDPR  = encounterMonsters.reduce((s,e) => s + crStat(e.cr).dpr * e.count, 0);
+  const monsterAtk  = encounterMonsters.reduce((s,e) => {
+    const m = allItems.find(i => i.slug === e.slug);
+    const legBonus = (m?.legendary_actions && m.legendary_actions.trim()) ? 1.5 : 0;
+    return s + (crStat(e.cr).atk + legBonus) * e.count;
+  }, 0);
+  const hasLegendary = encounterMonsters.some(e => {
+    const m = allItems.find(i => i.slug === e.slug);
+    return m?.legendary_actions && m.legendary_actions.trim();
+  });
 
   document.getElementById("enc-rawxp").textContent = rawXP.toLocaleString();
   document.getElementById("enc-mult").textContent  = "×" + mult;
@@ -1913,31 +2159,251 @@ function renderEncounter() {
   document.getElementById("enc-summary").textContent =
     totalCount + " monster" + (totalCount !== 1 ? "s" : "") + " · " + rawXP.toLocaleString() + " XP";
 
-  // Party thresholds
-  const players = Math.max(1, Math.min(10, parseInt(document.getElementById("enc-players")?.value) || 4));
-  const level   = Math.max(1, Math.min(20, parseInt(document.getElementById("enc-level")?.value)   || 10));
-  const tRow    = ENC_THRESHOLDS[level - 1];
-  const thresholds = tRow.map(t => t * players);
-  const [easy, medium, hard, deadly] = thresholds;
-
+  // ── XP threshold display ─────────────────────────────────────
+  const party  = loadParty();
+  const hasParty = party.length > 0;
+  let easy=0, medium=0, hard=0, deadly=0;
+  if (hasParty) {
+    // Sum each character's thresholds by their level
+    party.forEach(c => {
+      const lv = Math.max(1, Math.min(20, c.level || 1));
+      const t = ENC_THRESHOLDS[lv - 1];
+      easy += t[0]; medium += t[1]; hard += t[2]; deadly += t[3];
+    });
+  } else {
+    const players = Math.max(1, Math.min(10, parseInt(document.getElementById("enc-players")?.value) || 4));
+    const level   = Math.max(1, Math.min(20, parseInt(document.getElementById("enc-level")?.value)   || 10));
+    const t = ENC_THRESHOLDS[level - 1];
+    easy = t[0]*players; medium = t[1]*players; hard = t[2]*players; deadly = t[3]*players;
+  }
   document.getElementById("enc-easy").textContent   = easy.toLocaleString();
   document.getElementById("enc-medium").textContent = medium.toLocaleString();
   document.getElementById("enc-hard").textContent   = hard.toLocaleString();
   document.getElementById("enc-deadly").textContent = deadly.toLocaleString();
+  ["easy","medium","hard","deadly"].forEach(d =>
+    document.getElementById("enc-cell-"+d).classList.remove("active-diff"));
 
-  // Highlight active tier
-  ["easy","medium","hard","deadly"].forEach(d => {
-    document.getElementById("enc-cell-"+d).classList.remove("active-diff");
-  });
+  let diff = "—", diffClass = "diff-trivial";
+  if (totalCount) {
+    if      (adjXP >= deadly) { diff="DEADLY"; diffClass="diff-deadly"; document.getElementById("enc-cell-deadly").classList.add("active-diff"); }
+    else if (adjXP >= hard)   { diff="HARD";   diffClass="diff-hard";   document.getElementById("enc-cell-hard").classList.add("active-diff"); }
+    else if (adjXP >= medium) { diff="MEDIUM"; diffClass="diff-medium"; document.getElementById("enc-cell-medium").classList.add("active-diff"); }
+    else if (adjXP >= easy)   { diff="EASY";   diffClass="diff-easy";   document.getElementById("enc-cell-easy").classList.add("active-diff"); }
+    else                      { diff="TRIVIAL"; }
+  }
+  badge.textContent = diff; badge.className = "enc-difficulty " + diffClass;
 
-  let diff = "trivial", diffClass = "diff-trivial";
-  if (adjXP >= deadly)      { diff = "DEADLY"; diffClass = "diff-deadly"; document.getElementById("enc-cell-deadly").classList.add("active-diff"); }
-  else if (adjXP >= hard)   { diff = "HARD";   diffClass = "diff-hard";   document.getElementById("enc-cell-hard").classList.add("active-diff"); }
-  else if (adjXP >= medium) { diff = "MEDIUM"; diffClass = "diff-medium"; document.getElementById("enc-cell-medium").classList.add("active-diff"); }
-  else if (adjXP >= easy)   { diff = "EASY";   diffClass = "diff-easy";   document.getElementById("enc-cell-easy").classList.add("active-diff"); }
+  // ── Party-specific combat analysis ───────────────────────────
+  const combatStats = document.getElementById("enc-combat-stats");
+  if (!hasParty || !totalCount) { combatStats.style.display = "none"; return; }
+  combatStats.style.display = "block";
 
-  badge.textContent  = totalCount ? diff : "—";
-  badge.className    = "enc-difficulty " + diffClass;
+  const partyHP   = party.reduce((s,c) => s + c.maxHP * (RES_MULT[encResourceState[c.id]||"fresh"]), 0);
+  const partyDPR  = party.reduce((s,c) => {
+    const res = RES_MULT[encResourceState[c.id]||"fresh"];
+    const main = (c.attacksPerAction||1) * (c.avgDmgPerAttack||0);
+    const bonus = c.bonusActionAtk ? (c.bonusActionDmg||0) : 0;
+    return s + (main + bonus) * res;
+  }, 0);
+  const partyAtk  = party.reduce((s,c) =>
+    s + (c.attacksPerAction||1) + (c.bonusActionAtk ? 1 : 0) + (c.reactionAtk ? 0.5 : 0), 0);
+  const concentrators = party.filter(c => c.concentration).length;
+
+  const roundsPartyLives    = monsterDPR > 0 ? (partyHP / monsterDPR) : 99;
+  const roundsMonstersDie   = partyDPR  > 0 ? (monsterHP / partyDPR)  : 99;
+  const actionRatio         = partyAtk  > 0 ? (monsterAtk / partyAtk) : 1;
+
+  // Concentration pressure multiplier
+  const concPressure = (concentrators > 0 && actionRatio > 1.5) ? 1.2 : 1.0;
+  const survivalRatio = (roundsMonstersDie * concPressure) / Math.max(roundsPartyLives, 0.1);
+
+  // Party-derived difficulty (overrides XP badge if meaningful)
+  let partyDiff = diff, partyDiffClass = diffClass;
+  if (totalCount) {
+    if      (survivalRatio > 1.5) { partyDiff="DEADLY"; partyDiffClass="diff-deadly"; }
+    else if (survivalRatio > 1.1) { partyDiff="HARD";   partyDiffClass="diff-hard"; }
+    else if (survivalRatio > 0.8) { partyDiff="MEDIUM"; partyDiffClass="diff-medium"; }
+    else if (survivalRatio > 0.5) { partyDiff="EASY";   partyDiffClass="diff-easy"; }
+    else                          { partyDiff="TRIVIAL"; partyDiffClass="diff-trivial"; }
+    badge.textContent = partyDiff; badge.className = "enc-difficulty " + partyDiffClass;
+  }
+
+  // Action economy row
+  const ratioStr   = actionRatio.toFixed(1) + ":1";
+  const ratioCls   = actionRatio >= 2.5 ? "enc-action-danger" : actionRatio >= 1.5 ? "enc-action-warn" : "enc-action-ratio";
+  const legFlag    = hasLegendary ? `<span class="enc-legendary-flag">⚡ Legendary Actions present</span>` : "";
+  const concFlag   = (concentrators > 0 && actionRatio > 1.5)
+    ? `<span class="enc-conc-flag">⚠ ${concentrators} concentrator${concentrators>1?"s":""} under pressure</span>` : "";
+  const rndParty   = roundsPartyLives < 99 ? roundsPartyLives.toFixed(1) : "—";
+  const rndMon     = roundsMonstersDie < 99 ? roundsMonstersDie.toFixed(1) : "—";
+
+  document.getElementById("enc-action-row").innerHTML =
+    `<span style="color:var(--text-dim);font-size:11px;letter-spacing:.05em">ACTION ECONOMY</span>
+     <span>Monster atk/round: <span class="${ratioCls}">${monsterAtk.toFixed(1)}</span></span>
+     <span>Party atk/round: <span class="enc-action-ratio">${partyAtk.toFixed(1)}</span></span>
+     <span>Ratio: <span class="${ratioCls}">${ratioStr}</span></span>
+     ${legFlag}${concFlag}`;
+
+  document.getElementById("enc-combat-bar").innerHTML =
+    `<div class="enc-combat-cell">
+       <div class="ecc-label">PARTY HP POOL</div>
+       <div class="ecc-val">${Math.round(partyHP).toLocaleString()}</div>
+       <div class="ecc-sub">effective HP</div>
+     </div>
+     <div class="enc-combat-cell">
+       <div class="ecc-label">PARTY DPR</div>
+       <div class="ecc-val">${Math.round(partyDPR).toLocaleString()}</div>
+       <div class="ecc-sub">dmg/round</div>
+     </div>
+     <div class="enc-combat-cell">
+       <div class="ecc-label">MONSTER HP POOL</div>
+       <div class="ecc-val">${Math.round(monsterHP).toLocaleString()}</div>
+       <div class="ecc-sub">total HP</div>
+     </div>
+     <div class="enc-combat-cell">
+       <div class="ecc-label">MONSTER DPR</div>
+       <div class="ecc-val">${Math.round(monsterDPR).toLocaleString()}</div>
+       <div class="ecc-sub">dmg/round</div>
+     </div>`;
+
+  document.getElementById("enc-footer").innerHTML =
+    `<span>Multiplier: <span class="enc-adj">×${mult}</span>
+     &nbsp;·&nbsp; Raw XP: <span class="enc-adj">${rawXP.toLocaleString()}</span>
+     &nbsp;·&nbsp; Party clears in ~<span class="enc-adj">${rndMon}</span> rounds
+     &nbsp;·&nbsp; Party lasts ~<span class="enc-adj">${rndParty}</span> rounds</span>
+     <button class="enc-clear" onclick="clearEncounter()">Clear</button>`;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PARTY MANAGER
+// ══════════════════════════════════════════════════════════════════
+const PARTY_KEY = "dm_vault_party";
+
+function loadParty() {
+  try { return JSON.parse(localStorage.getItem(PARTY_KEY) || "[]"); }
+  catch { return []; }
+}
+function savePartyToStorage(data) {
+  localStorage.setItem(PARTY_KEY, JSON.stringify(data));
+}
+
+function openPartyModal() {
+  document.getElementById("party-modal").style.display = "flex";
+  renderPartyModal(loadParty());
+}
+function closePartyModal() {
+  document.getElementById("party-modal").style.display = "none";
+}
+
+function renderPartyModal(party) {
+  const grid = document.getElementById("char-grid");
+  if (!grid) return;
+  if (!party.length) {
+    // Seed 6 empty slots for a typical full party
+    party = Array.from({length:6}, (_,i) => emptyChar(i));
+  }
+  grid.innerHTML = party.map((c,i) => charCardHTML(c, i+1)).join("");
+}
+
+function emptyChar(i) {
+  return {
+    id: "char-" + Date.now() + "-" + i,
+    name: "", classDesc: "", level: 1,
+    maxHP: 0, ac: 10,
+    attacksPerAction: 1, avgDmgPerAttack: 0,
+    bonusActionAtk: false, bonusActionDmg: 0,
+    reactionAtk: false, concentration: false,
+    spellcaster: "none",
+  };
+}
+
+function charCardHTML(c, num) {
+  const id = c.id;
+  return `
+  <div class="char-card" id="card-${id}">
+    <div class="char-card-header">
+      <span class="char-card-num">PC ${num}</span>
+      <input class="char-name-input" placeholder="Character name…"
+        value="${c.name || ""}" data-field="name" data-id="${id}">
+      <input class="char-class-input" placeholder="Class / Subclass…"
+        value="${c.classDesc || ""}" data-field="classDesc" data-id="${id}">
+    </div>
+    <div class="char-fields">
+      <div class="char-field"><label>Level</label>
+        <input type="number" min="1" max="20" value="${c.level||1}" data-field="level" data-id="${id}"></div>
+      <div class="char-field"><label>Max HP</label>
+        <input type="number" min="1" value="${c.maxHP||0}" data-field="maxHP" data-id="${id}"></div>
+      <div class="char-field"><label>AC</label>
+        <input type="number" min="1" max="30" value="${c.ac||10}" data-field="ac" data-id="${id}"></div>
+      <div class="char-field"><label>Atk / Action</label>
+        <input type="number" min="1" max="8" value="${c.attacksPerAction||1}" data-field="attacksPerAction" data-id="${id}"></div>
+      <div class="char-field"><label>Avg Dmg / Atk</label>
+        <input type="number" min="0" value="${c.avgDmgPerAttack||0}" data-field="avgDmgPerAttack" data-id="${id}"></div>
+      <div class="char-field"><label>Bonus Atk Dmg</label>
+        <input type="number" min="0" value="${c.bonusActionDmg||0}" data-field="bonusActionDmg" data-id="${id}"
+          ${c.bonusActionAtk ? "" : "disabled style='opacity:.4'"}></div>
+      <div class="char-field"><label>Spellcaster</label>
+        <select data-field="spellcaster" data-id="${id}">
+          <option value="none"    ${c.spellcaster==="none"?"selected":""}>None</option>
+          <option value="third"   ${c.spellcaster==="third"?"selected":""}>1/3 (EK/AT)</option>
+          <option value="half"    ${c.spellcaster==="half"?"selected":""}>½ (Pala/Ranger)</option>
+          <option value="full"    ${c.spellcaster==="full"?"selected":""}>Full (Wiz/Clr…)</option>
+          <option value="warlock" ${c.spellcaster==="warlock"?"selected":""}>Pact (Warlock)</option>
+        </select></div>
+    </div>
+    <div class="char-flags">
+      <label class="char-flag">
+        <input type="checkbox" ${c.bonusActionAtk?"checked":""} data-field="bonusActionAtk" data-id="${id}"
+          onchange="toggleBonusDmg('${id}',this.checked)">
+        Bonus action attack
+      </label>
+      <label class="char-flag">
+        <input type="checkbox" ${c.reactionAtk?"checked":""} data-field="reactionAtk" data-id="${id}">
+        Reaction attack
+      </label>
+      <label class="char-flag">
+        <input type="checkbox" ${c.concentration?"checked":""} data-field="concentration" data-id="${id}">
+        Concentration spells
+      </label>
+    </div>
+  </div>`;
+}
+
+function toggleBonusDmg(id, checked) {
+  const dmgInput = document.querySelector(`input[data-field="bonusActionDmg"][data-id="${id}"]`);
+  if (dmgInput) { dmgInput.disabled = !checked; dmgInput.style.opacity = checked ? "1" : "0.4"; }
+}
+
+function addCharSlot() {
+  const party = readPartyFromForm();
+  party.push(emptyChar(party.length));
+  renderPartyModal(party);
+}
+
+function readPartyFromForm() {
+  const ids = [...new Set(
+    [...document.querySelectorAll("[data-id]")].map(el => el.dataset.id)
+  )];
+  return ids.map(id => {
+    const fields = [...document.querySelectorAll(`[data-id="${id}"]`)];
+    const c = { id };
+    fields.forEach(el => {
+      const f = el.dataset.field;
+      if (!f) return;
+      if (el.type === "checkbox") c[f] = el.checked;
+      else if (el.type === "number") c[f] = parseFloat(el.value) || 0;
+      else c[f] = el.value;
+    });
+    return c;
+  }).filter(c => c.name && c.name.trim());
+}
+
+function savePartyModal() {
+  const party = readPartyFromForm();
+  savePartyToStorage(party);
+  closePartyModal();
+  encResourceState = {}; // reset resource states on party save
+  if (encPanelOpen) { renderEncParty(); renderEncounter(); }
 }
 </script>
 </body>
