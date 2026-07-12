@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knights of Legend — DM Vault</title>
+<link rel="icon" type="image/png" href="favicon.png" onerror="this.remove()">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #121212;
+  --bg2:      #1a1a1a;
+  --bg3:      #242424;
+  --bg4:      #2e2e2e;
+  --border:   #333;
+  --border2:  #444;
+  --red:      #c53131;
+  --red-dark: #8b1a1a;
+  --red-glow: rgba(197,49,49,0.15);
+  --red-lite: #e05252;
+  --text:     #e0e0e0;
+  --text-dim: #888;
+  --text-bright: #fff;
+  --radius:   4px;
+  --font:     'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'Palatino Linotype', Georgia, serif;
+}
+
+html, body { height: 100%; overflow: hidden; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+
+/* ── App Shell ─────────────────────────────────────────────────── */
+#app { display: flex; flex-direction: column; height: 100vh; }
+
+/* ── Top Nav ───────────────────────────────────────────────────── */
+#topnav {
+  display: flex; align-items: center; gap: 0;
+  height: 50px; background: #0e0e0e;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 20px;
+  border-right: 1px solid var(--border);
+  height: 100%;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo .logo-icon { font-size: 22px; }
+.nav-logo .logo-text {
+  font-family: var(--font-serif);
+  font-size: 15px; font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: .3px;
+  line-height: 1.1;
+}
+.nav-logo .logo-sub { font-size: 10px; color: var(--text-dim); font-weight: 400; font-family: var(--font); }
+
+.nav-tabs { display: flex; height: 100%; }
+.nav-tab {
+  display: flex; align-items: center; gap: 7px;
+  padding: 0 14px;
+  font-size: 13px; color: var(--text-dim);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--text-bright); border-bottom-color: var(--red); }
+.nav-tab.map-tab { color: #6a9e6a; }
+.nav-tab.map-tab:hover { color: #8ec88e; }
+.nav-tab .ti { font-size: 15px; }
+
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; padding: 0 16px; flex-shrink: 0; }
+.system-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 12px; color: var(--text-dim); cursor: pointer;
+}
+.system-pill select {
+  background: none; border: none; color: var(--text);
+  font-size: 12px; cursor: pointer; outline: none;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #3c9e5c; flex-shrink: 0; }
+
+/* ── Body ──────────────────────────────────────────────────────── */
+#body { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Filter Sidebar ────────────────────────────────────────────── */
+#filter-sidebar {
+  width: 220px; flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 14px 0;
+}
+
+.filter-section { padding: 0 14px 14px; }
+.filter-section + .filter-section { border-top: 1px solid var(--border); padding-top: 14px; }
+.filter-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; display: block; }
+
+.filter-input {
+  width: 100%; background: var(--bg3);
+  border: 1px solid var(--border2); border-radius: var(--radius);
+  color: var(--text); padding: 7px 10px; font-size: 13px;
+  outline: none; transition: border-color .15s;
+}
+.filter-input:focus { border-color: var(--red); }
+.filter-input::placeholder { color: var(--text-dim); }
+
+.filter-select {
+  width: 100%; background: var(--bg3);
+  border: 1px solid var(--border2); border-radius: var(--radius);
+  color: var(--text); padding: 7px 10px; font-size: 13px;
+  outline: none; cursor: pointer; margin-bottom: 6px;
+}
+
+/* Type chips */
+.type-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.type-chip {
+  padding: 3px 9px; border-radius: 12px; font-size: 11px;
+  border: 1px solid var(--border2); background: var(--bg3);
+  color: var(--text-dim); cursor: pointer;
+  transition: all .12s;
+}
+.type-chip:hover { border-color: var(--red); color: var(--text); }
+.type-chip.active { background: var(--red-dark); border-color: var(--red); color: #fff; }
+
+/* CR range */
+.cr-range { display: flex; align-items: center; gap: 6px; }
+.cr-range select { flex: 1; }
+.cr-range span { color: var(--text-dim); font-size: 12px; }
+
+/* ── Main ──────────────────────────────────────────────────────── */
+#main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── Page Header ───────────────────────────────────────────────── */
+#page-header {
+  padding: 14px 20px 0;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#page-title {
+  font-family: var(--font-serif);
+  font-size: 24px; font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+
+#page-title span { color: var(--red); }
+
+/* Count bar */
+#count-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 10px;
+  font-size: 12px; color: var(--text-dim);
+}
+
+#result-count { font-weight: 600; color: var(--text); }
+
+/* ── Content ───────────────────────────────────────────────────── */
+#content-area { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Monster Table ─────────────────────────────────────────────── */
+#list-pane { flex: 1; overflow-y: auto; }
+
+.monster-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+
+.monster-table thead {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--bg3);
+}
+
+.monster-table th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .8px; text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.monster-table th:hover { color: var(--text); }
+.monster-table th.sorted { color: var(--red-lite); }
+
+.monster-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s;
+}
+.monster-table tbody tr:hover { background: var(--bg3); }
+.monster-table tbody tr.selected { background: var(--bg4); border-left: 3px solid var(--red); }
+
+.monster-table td { padding: 8px 12px; vertical-align: middle; }
+
+/* Portrait cell */
+.td-portrait { width: 46px; padding: 4px 8px !important; }
+.portrait-thumb {
+  width: 38px; height: 38px; border-radius: 3px;
+  object-fit: cover; display: block;
+  background: var(--bg4);
+}
+.portrait-placeholder {
+  width: 38px; height: 38px; border-radius: 3px;
+  background: var(--bg4); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.token-img {
+  border-radius: 50%;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+}
+
+/* CR cell */
+.td-cr { width: 60px; }
+.cr-badge {
+  display: inline-block; min-width: 32px; text-align: center;
+  padding: 3px 6px; border-radius: 3px;
+  font-size: 12px; font-weight: 700;
+  background: var(--red-dark); color: #ffaaaa;
+  border: 1px solid var(--red);
+}
+.cr-badge.low { background: #1a3a1a; color: #88cc88; border-color: #3a6a3a; }
+.cr-badge.cr-unknown { background: var(--bg4); color: var(--text-dim); border-color: var(--border2); }
+
+/* Name cell */
+.td-name { font-weight: 600; color: var(--text-bright); }
+.td-name .monster-name { font-size: 14px; }
+.td-name .monster-source { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+
+/* Type cell */
+.td-type { color: var(--text-dim); font-size: 12px; }
+
+/* Size cell */
+.td-size { color: var(--text-dim); font-size: 12px; white-space: nowrap; }
+
+/* Alignment cell */
+.td-align { color: var(--text-dim); font-size: 12px; max-width: 120px; }
+
+/* ── Spell table ────────────────────────────────────────────────── */
+.spell-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.spell-table thead { position: sticky; top: 0; z-index: 5; background: var(--bg3); }
+.spell-table th {
+  padding: 8px 12px; text-align: left;
+  font-size: 10px; font-weight: 700; letter-spacing: .8px;
+  text-transform: uppercase; color: var(--text-dim);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.spell-table tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background .1s; }
+.spell-table tbody tr:hover { background: var(--bg3); }
+.spell-table tbody tr.selected { background: var(--bg4); border-left: 3px solid var(--red); }
+.spell-table td { padding: 8px 12px; vertical-align: middle; }
+
+.level-pip {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  font-size: 13px; font-weight: 700;
+  background: #1e1e3a; color: #8888ff;
+  border: 1px solid #3a3a6a;
+}
+.level-pip.cantrip { background: #1a3a1a; color: #66cc88; border-color: #3a6a3a; }
+
+.school-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600;
+  background: var(--bg4); color: var(--text-dim);
+}
+
+/* ── Generic list (items, magic items, etc.) ───────────────────── */
+.generic-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.generic-table thead { position: sticky; top: 0; z-index: 5; background: var(--bg3); }
+.generic-table th {
+  padding: 8px 12px; text-align: left;
+  font-size: 10px; font-weight: 700; letter-spacing: .8px;
+  text-transform: uppercase; color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+}
+.generic-table tbody tr { border-bottom: 1px solid var(--border); cursor: pointer; transition: background .1s; }
+.generic-table tbody tr:hover { background: var(--bg3); }
+.generic-table tbody tr.selected { background: var(--bg4); border-left: 3px solid var(--red); }
+.generic-table td { padding: 8px 12px; vertical-align: middle; }
+
+.rarity-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 600;
+}
+.r-common    { background: #2a2a2a; color: #aaa; }
+.r-uncommon  { background: #1a3a1e; color: #4caf50; }
+.r-rare      { background: #1a2a3e; color: #4a8fe8; }
+.r-very-rare { background: #2a1a3e; color: #9c6bdc; }
+.r-legendary { background: #3a2a0e; color: #e8a832; }
+
+/* ── Stat Block Panel ──────────────────────────────────────────── */
+#detail-panel {
+  width: 400px; flex-shrink: 0;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+}
+#detail-panel.open { display: flex; }
+
+.panel-close-bar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: flex-end; padding: 6px 10px;
+}
+.panel-close-bar button {
+  background: none; border: none; color: var(--text-dim);
+  font-size: 18px; cursor: pointer; padding: 2px 6px;
+  border-radius: 3px;
+}
+.panel-close-bar button:hover { background: var(--bg4); color: var(--text); }
+
+/* Stat block styles */
+.sb { padding: 0 16px 24px; }
+
+.sb-portrait {
+  width: 100%; max-height: 300px; object-fit: cover;
+  display: block;
+}
+.sb-portrait-placeholder {
+  width: 100%; height: 120px; background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+
+.sb-name {
+  font-family: var(--font-serif);
+  font-size: 26px; font-weight: 700;
+  color: var(--red-lite);
+  margin-top: 14px; line-height: 1.1;
+}
+
+.sb-meta {
+  font-style: italic; font-size: 13px; color: var(--text-dim);
+  margin-top: 2px; margin-bottom: 10px;
+}
+
+/* Red divider — the D&D Beyond signature */
+.sb-divider {
+  border: none;
+  border-top: 1px solid var(--red);
+  margin: 10px 0;
+  opacity: .6;
+}
+.sb-divider.thick {
+  border-top-width: 3px;
+  opacity: 1;
+}
+
+/* Top stats block */
+.sb-top-stats { margin-bottom: 8px; }
+.sb-stat-line {
+  font-size: 13px; margin-bottom: 3px;
+}
+.sb-stat-line strong {
+  color: var(--red-lite); font-weight: 700;
+  margin-right: 4px;
+}
+
+/* Ability scores */
+.sb-abilities {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  text-align: center; gap: 2px;
+  margin: 10px 0;
+}
+.sb-ability { }
+.sb-ability .ab-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .5px;
+  color: var(--red-lite); text-transform: uppercase;
+  display: block;
+}
+.sb-ability .ab-score {
+  font-size: 16px; font-weight: 700; color: var(--text-bright);
+  display: block; line-height: 1.3;
+}
+.sb-ability .ab-mod {
+  font-size: 11px; color: var(--text-dim);
+  display: block;
+}
+
+/* Properties */
+.sb-props { margin-bottom: 4px; }
+.sb-prop { font-size: 12.5px; margin-bottom: 4px; }
+.sb-prop strong { color: var(--red-lite); }
+
+/* Action sections */
+.sb-section-title {
+  font-family: var(--font-serif);
+  font-size: 18px; color: var(--red-lite);
+  margin: 10px 0 6px;
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 3px;
+}
+
+.sb-action { margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
+.sb-action .action-name {
+  font-weight: 700; font-style: italic;
+  color: var(--text-bright);
+}
+
+/* Spell detail */
+.sb-spell-header {
+  background: var(--bg3); border-radius: var(--radius);
+  padding: 12px; margin: 14px 0 10px;
+}
+.sb-spell-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+.sb-spell-stat { font-size: 12px; }
+.sb-spell-stat .ss-key { color: var(--text-dim); font-size: 10px; text-transform: uppercase; letter-spacing: .5px; display: block; }
+.sb-spell-stat .ss-val { color: var(--text-bright); font-weight: 600; }
+
+.sb-desc { font-size: 13px; line-height: 1.65; color: var(--text); white-space: pre-wrap; }
+.sb-higher { margin-top: 10px; }
+.sb-higher strong { color: var(--red-lite); }
+
+/* ── Location / NPC image banner ───────────────────────────────── */
+.sb-banner {
+  width: 100%; max-height: 220px; object-fit: cover;
+  display: block; border-bottom: 1px solid var(--border);
+}
+.sb-banner-placeholder {
+  width: 100%; height: 80px; background: linear-gradient(135deg, var(--bg3), var(--bg4));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; border-bottom: 1px solid var(--border);
+}
+
+/* ── Location markdown body ────────────────────────────────────── */
+.location-body { font-size: 13px; line-height: 1.7; color: var(--text); }
+.location-body h1, .location-body h2 {
+  font-family: var(--font-serif); color: var(--red-lite);
+  margin: 16px 0 6px; padding-bottom: 3px;
+  border-bottom: 1px solid var(--border);
+}
+.location-body h1 { font-size: 18px; }
+.location-body h2 { font-size: 15px; }
+.location-body h3 { font-size: 13px; font-weight: 700; color: var(--text-bright); margin: 12px 0 4px; }
+.location-body p  { margin-bottom: 10px; }
+.location-body ul, .location-body ol { padding-left: 20px; margin-bottom: 10px; }
+.location-body li { margin-bottom: 4px; }
+.location-body strong { color: var(--text-bright); }
+.location-body a  { color: var(--red-lite); text-decoration: none; }
+.location-body a:hover { text-decoration: underline; }
+.location-body blockquote {
+  border-left: 3px solid var(--red-dark); padding-left: 12px;
+  color: var(--text-dim); margin: 10px 0; font-style: italic;
+}
+.location-body table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 10px; }
+.location-body th { background: var(--bg3); color: var(--text-dim); padding: 4px 8px; text-align: left; }
+.location-body td { padding: 4px 8px; border-bottom: 1px solid var(--border); }
+
+/* ── Empty / Loading ───────────────────────────────────────────── */
+.empty-state {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  height: 300px; color: var(--text-dim); text-align: center; gap: 10px;
+}
+.empty-state .big { font-size: 40px; }
+.loading-row td { text-align: center; padding: 40px; color: var(--text-dim); }
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #666; }
+
+/* ── Map tab link button ────────────────────────────────────────── */
+.open-map-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 4px;
+  background: rgba(60,120,60,0.15); border: 1px solid #3a6a3a;
+  color: #6abf6a; font-size: 12px; cursor: pointer;
+  text-decoration: none; transition: all .15s;
+}
+.open-map-btn:hover { background: rgba(60,120,60,0.3); color: #8edd8e; }
+
+/* ── War Table Home ────────────────────────────────────────────── */
+#home-page {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow-y: auto; background: var(--bg); padding: 32px 20px;
+}
+.vault-banner {
+  width: 100%; max-width: 680px; text-align: center;
+  border-top: 2px solid var(--red); border-bottom: 2px solid var(--red);
+  padding: 18px 40px; margin-bottom: 36px;
+}
+.vault-banner .vb-deco { color: var(--red); font-size: 13px; letter-spacing: 4px; }
+.vault-banner .vb-title {
+  font-family: var(--font-serif); font-size: 30px; font-weight: 700;
+  color: var(--text-bright); letter-spacing: 3px; margin: 6px 0 4px;
+}
+.vault-banner .vb-sub { font-size: 10px; color: var(--text-dim); letter-spacing: 4px; text-transform: uppercase; }
+
+.war-table-surface {
+  width: 100%; max-width: 680px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.wt-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 10px; margin-bottom: 10px;
+}
+.wt-tile {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px; padding: 20px 8px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 6px; cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.wt-tile:hover { border-color: var(--red); background: var(--bg4); }
+.wt-tile:hover .wt-name { color: var(--text-bright); }
+.wt-icon { font-size: 28px; line-height: 1; }
+.wt-icon img { width: 28px; height: 28px; filter: invert(1); display: block; }
+.wt-name { font-size: 11px; color: var(--text-dim); font-weight: 500; text-align: center; letter-spacing: .3px; }
+.wt-map-tile {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px; background: rgba(40,80,40,0.25);
+  border: 1px solid #3c6e3c; border-radius: 6px; cursor: pointer;
+  font-size: 14px; color: #6a9e6a;
+  transition: background .15s, color .15s;
+}
+.wt-map-tile:hover { background: rgba(40,80,40,0.45); color: #8ec88e; }
+
+.home-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0 14px; height: 100%; font-size: 13px;
+  color: var(--text-dim); cursor: pointer; border: none; background: none;
+  border-bottom: 3px solid transparent;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+}
+.home-btn:hover { color: var(--text-bright); }
+.home-btn.active { color: var(--text-bright); border-bottom-color: var(--red); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Top Nav -->
+  <div id="topnav">
+    <div class="nav-logo" onclick="goHome()" style="cursor:pointer">
+      <span class="logo-icon">⚔️</span>
+      <div>
+        <div class="logo-text">Knights of Legend</div>
+        <div class="logo-sub">DM Vault</div>
+      </div>
+    </div>
+
+    <button class="home-btn active" id="btn-home" onclick="goHome()">⌂ Home</button>
+    <div id="nav-section-label" style="padding:0 14px;font-size:13px;color:var(--text-dim);display:none;align-items:center;gap:8px;height:100%;"></div>
+
+    <div class="nav-right">
+      <div class="system-pill">
+        <span>⚔️</span>
+        <select id="system-select" onchange="setSystem(this.value)">
+          <option value="dnd5e">D&D 5e SRD</option>
+        </select>
+      </div>
+      <div class="status-dot" title="Live — vault watcher active"></div>
+    </div>
+  </div>
+
+  <!-- War Table Home -->
+  <div id="home-page">
+    <div class="vault-banner">
+      <div class="vb-deco">✦ ───────────────── ✦</div>
+      <div class="vb-title">The DM Vault</div>
+      <div class="vb-sub">Your Tabletop Reference</div>
+      <div class="vb-deco">✦ ───────────────── ✦</div>
+    </div>
+    <div class="war-table-surface">
+      <div class="wt-grid">
+        <div class="wt-tile" onclick="navigate('monsters')">
+          <div class="wt-icon"><img src="SVGs/dragon-mode-standard.svg" alt=""></div>
+          <div class="wt-name">Monsters</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('spells')">
+          <div class="wt-icon">✨</div><div class="wt-name">Spells</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('items')">
+          <div class="wt-icon">🗡️</div><div class="wt-name">Items</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('magic_items')">
+          <div class="wt-icon">💎</div><div class="wt-name">Magic Items</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('races')">
+          <div class="wt-icon">🧝</div><div class="wt-name">Races</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('classes')">
+          <div class="wt-icon">⚔️</div><div class="wt-name">Classes</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('backgrounds')">
+          <div class="wt-icon">📜</div><div class="wt-name">Backgrounds</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('feats')">
+          <div class="wt-icon">⭐</div><div class="wt-name">Feats</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('npcs')">
+          <div class="wt-icon">🧙</div><div class="wt-name">NPCs</div>
+        </div>
+        <div class="wt-tile" onclick="navigate('locations')">
+          <div class="wt-icon">🗺️</div><div class="wt-name">Locations</div>
+        </div>
+      </div>
+      <div class="wt-map-tile" onclick="goToMap()">🌍 &nbsp; World Map</div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div id="body" style="display:none;">
+
+    <!-- Filter Sidebar -->
+    <div id="filter-sidebar">
+      <div class="filter-section">
+        <span class="filter-label">Search</span>
+        <input class="filter-input" id="search-input" type="text" placeholder="Monster name…" oninput="onSearch()" />
+      </div>
+
+      <!-- Dynamic filter sections injected per section -->
+      <div id="filter-sections"></div>
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+      <div id="page-header">
+        <div id="page-title"><img src="SVGs/dragon-mode-standard.svg" style="width:1.2em;height:1.2em;vertical-align:-0.25em;filter:invert(1);"> <span>Monsters</span></div>
+        <div id="count-bar">
+          <span id="result-count">—</span> results
+        </div>
+      </div>
+
+      <div id="content-area">
+        <div id="list-pane">
+          <table class="monster-table" id="data-table">
+            <thead id="table-head"></thead>
+            <tbody id="table-body"><tr class="loading-row"><td colspan="6">Loading…</td></tr></tbody>
+          </table>
+        </div>
+
+        <div id="detail-panel">
+          <div class="panel-close-bar"><button onclick="closePanel()">✕</button></div>
+          <div id="panel-body"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+// ── Config ────────────────────────────────────────────────────────
+const OPEN5E_BASE = "https://api.open5e.com/v1";
+let section  = "monsters";
+let system   = "dnd5e";
+let allItems = [];
+let selected = null;
+let searchTimer = null;
+
+// ── Monster type icons ────────────────────────────────────────────
+const TYPE_ICONS = {
+  aberration: '👁️', beast: '🐺', celestial: '✨', construct: '⚙️',
+  dragon: '🐉', elemental: '🌊', fey: '🧚', fiend: '👹',
+  giant: '🗿', humanoid: '🧑', monstrosity: '🦕', ooze: '🫧',
+  plant: '🌿', undead: '💀', swarm: '🐜'
+};
+
+function typeIcon(type) {
+  if (!type) return '❓';
+  const key = type.toLowerCase().split(' ').find(w => TYPE_ICONS[w]) || type.toLowerCase();
+  return TYPE_ICONS[key] || '❓';
+}
+
+// ── Portrait URL helpers ──────────────────────────────────────────
+function portraitUrl(filename) {
+  if (!filename) return "";
+  if (filename.startsWith("/")) return filename;
+  return `/portraits/find/${encodeURIComponent(filename)}`;
+}
+
+// ── 5etools token CDN ─────────────────────────────────────────────
+const ETOOLS_CDN = "https://cdn.jsdelivr.net/gh/5etools-mirror-2/5etools-img@main/bestiary/tokens";
+
+function etoolsTokenUrl(name, source) {
+  return `${ETOOLS_CDN}/${encodeURIComponent(source || "MM")}/${encodeURIComponent(name)}.webp`;
+}
+
+// Called by img onerror — cycles through fallback URLs then shows type icon
+function nextMonsterSrc(img) {
+  if (img.dataset.done) return;   // already resolved, ignore stale events
+  try {
+    const fallbacks = JSON.parse(img.dataset.fallbacks || "[]");
+    if (fallbacks.length) {
+      img.dataset.fallbacks = JSON.stringify(fallbacks.slice(1));
+      img.src = fallbacks[0];
+    } else {
+      img.dataset.done = "1";
+      const icon = img.dataset.icon || "❓";
+      const cls  = img.dataset.cls  || "portrait-placeholder";
+      const sz   = img.dataset.sz   || "18px";
+      img.parentNode.innerHTML = `<div class="${cls}" style="font-size:${sz}">${icon}</div>`;
+    }
+  } catch(e) {}
+}
+
+// Build monster portrait <img> for the list thumbnail
+function monsterThumb(m) {
+  const icon    = typeIcon(m.type);
+  const etoSrc  = (m.source && m.source !== "SRD") ? m.source : "MM";
+  const localTok = `/api/find-token/${encodeURIComponent(m.name)}`;
+  const cdnTok1  = etoolsTokenUrl(m.name, etoSrc);
+  const cdnTok2  = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
+  const cdnTok3  = etoolsTokenUrl(m.name, "XMM");
+
+  if (m.portrait) {
+    const fallbacks = JSON.stringify([localTok, cdnTok1, cdnTok2, cdnTok3]);
+    return `<img class="portrait-thumb" src="${portraitUrl(m.portrait)}" loading="lazy"
+      data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="portrait-placeholder" data-sz="18px"
+      onerror="nextMonsterSrc(this)" alt="">`;
+  }
+
+  const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
+  return `<img class="portrait-thumb token-img" src="${localTok}" loading="lazy"
+    data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="portrait-placeholder" data-sz="18px"
+    onerror="nextMonsterSrc(this)" alt="">`;
+}
+
+// Build monster portrait for the detail panel
+function monsterBigPortrait(m) {
+  const icon    = typeIcon(m.type);
+  const etoSrc  = (m.source && m.source !== "SRD") ? m.source : "MM";
+  const localTok = `/api/find-token/${encodeURIComponent(m.name)}`;
+  const cdnTok1  = etoolsTokenUrl(m.name, etoSrc);
+  const cdnTok2  = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
+  const cdnTok3  = etoolsTokenUrl(m.name, "XMM");
+
+  if (m.portrait) {
+    const fallbacks = JSON.stringify([localTok, cdnTok1, cdnTok2, cdnTok3]);
+    return `<img class="sb-portrait" src="${portraitUrl(m.portrait)}"
+      data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="sb-portrait-placeholder" data-sz="56px"
+      onerror="nextMonsterSrc(this)" alt="">`;
+  }
+
+  const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
+  return `<div style="width:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;padding:28px 0">
+    <img src="${localTok}" style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--border2)"
+      data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="sb-portrait-placeholder" data-sz="56px"
+      onerror="nextMonsterSrc(this)" alt="${m.name}">
+  </div>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+async function init() {
+  // Check URL params for cross-linking from the map
+  const params = new URLSearchParams(window.location.search);
+  const sec  = params.get("section");
+  const slug = params.get("slug");
+  if (sec && SECTIONS[sec]) {
+    await navigate(sec);
+    if (slug) setTimeout(() => selectItem(slug), 150);
+  }
+  // else: War Table home page shows by default
+}
+
+async function loadSystems() {
+  // Source filter placeholder — open5e document filter coming soon
+}
+
+function setSystem(id) { system = id; navigate(section); }
+
+function goToMap() {
+  window.open('map.html', '_blank');
+}
+
+// ── Navigation ────────────────────────────────────────────────────
+// open5e: the path segment on api.open5e.com/v1/  (null = local static file)
+const SECTIONS = {
+  monsters:    { title: "Monsters",    icon: "<img src='SVGs/dragon-mode-standard.svg' style='width:1.1em;height:1.1em;vertical-align:-0.2em;filter:invert(1);'>", endpoint: "monsters",    open5e: "monsters"    },
+  spells:      { title: "Spells",      icon: "✨", endpoint: "spells",      open5e: "spells"      },
+  items:       { title: "Items",       icon: "🗡️", endpoint: "items",       open5e: "weapons"     },
+  magic_items: { title: "Magic Items", icon: "💎", endpoint: "magic_items", open5e: "magicitems"  },
+  races:       { title: "Races",       icon: "🧝", endpoint: "races",       open5e: "races"       },
+  classes:     { title: "Classes",     icon: "⚔️", endpoint: "classes",     open5e: "classes"     },
+  backgrounds: { title: "Backgrounds", icon: "📜", endpoint: "backgrounds", open5e: "backgrounds" },
+  feats:       { title: "Feats",       icon: "⭐", endpoint: "feats",       open5e: "feats"       },
+  npcs:        { title: "NPCs",        icon: "🧙", endpoint: "npcs",        open5e: null          },
+  locations:   { title: "Locations",   icon: "🗺️", endpoint: "locations",   open5e: null          },
+};
+
+function goHome() {
+  document.getElementById("home-page").style.display = "flex";
+  document.getElementById("body").style.display      = "none";
+  document.getElementById("btn-home").classList.add("active");
+  document.getElementById("nav-section-label").style.display = "none";
+}
+
+async function navigate(sec) {
+  document.getElementById("home-page").style.display = "none";
+  document.getElementById("body").style.display      = "flex";
+  document.getElementById("btn-home").classList.remove("active");
+
+  const cfg = SECTIONS[sec];
+  const label = document.getElementById("nav-section-label");
+  label.style.display = "flex";
+  label.innerHTML = `${cfg.icon} <span style="color:var(--text)">${cfg.title}</span>`;
+
+  section  = sec;
+  selected = null;
+  closePanel();
+
+  document.getElementById("page-title").innerHTML = `${cfg.icon} <span>${cfg.title}</span>`;
+  document.getElementById("search-input").value   = "";
+  document.getElementById("search-input").placeholder = `${cfg.title.toLowerCase()} name…`;
+
+  renderFilterSidebar(sec);
+
+  const tbody = document.getElementById("table-body");
+  tbody.innerHTML = `<tr class="loading-row"><td colspan="8">Loading…</td></tr>`;
+
+  try {
+    allItems = await fetchData(sec) || [];
+    renderTable(allItems);
+  } catch(err) {
+    tbody.innerHTML = `<tr><td colspan="8" style="padding:20px;color:#e05252">Error loading ${sec}: ${err.message}</td></tr>`;
+    console.error("navigate error:", err);
+  }
+}
+
+// ── open5e normalizers ────────────────────────────────────────────
+function actionsText(arr) {
+  if (!arr) return "";
+  if (typeof arr === "string") return arr;
+  return arr.map(a => `**${a.name}.** ${a.desc}`).join("\n\n");
+}
+function speedText(speed) {
+  if (!speed) return "";
+  if (typeof speed === "string") return speed;
+  return Object.entries(speed).filter(([,v]) => v)
+    .map(([k,v]) => k === "walk" ? `${v} ft.` : `${k} ${v} ft.`).join(", ");
+}
+function normalizeMonster(m) {
+  const savePairs = [
+    ["Str", m.strength_save],["Dex", m.dexterity_save],["Con", m.constitution_save],
+    ["Int", m.intelligence_save],["Wis", m.wisdom_save],["Cha", m.charisma_save]
+  ];
+  const saves = savePairs.filter(([,v]) => v != null).map(([k,v]) => `${k} +${v}`).join(", ");
+  const skills = typeof m.skills === "object" && m.skills
+    ? Object.entries(m.skills).map(([k,v]) => `${k[0].toUpperCase()+k.slice(1)} +${v}`).join(", ")
+    : (m.skills || "");
+  return {
+    ...m,
+    slug: m.slug, name: m.name, type: m.type,
+    cr: m.challenge_rating || m.cr,
+    size: m.size, alignment: m.alignment,
+    source: m.document__slug, portrait: m.img_main || null,
+    ac: m.armor_class ? `${m.armor_class}${m.armor_desc ? " ("+m.armor_desc+")" : ""}` : (m.ac || ""),
+    hp: m.hit_points ? `${m.hit_points}${m.hit_dice ? " ("+m.hit_dice+")" : ""}` : (m.hp || ""),
+    speed: speedText(m.speed),
+    str: m.strength || m.str, dex: m.dexterity || m.dex, con: m.constitution || m.con,
+    int: m.intelligence || m.int, wis: m.wisdom || m.wis, cha: m.charisma || m.cha,
+    saving_throws: saves || m.saving_throws || "",
+    skills, xp: m.cr_xp || m.xp || "",
+    traits: actionsText(m.special_abilities) || m.traits || "",
+    actions: actionsText(m.actions),
+    reactions: actionsText(m.reactions),
+    legendary_actions: actionsText(m.legendary_actions),
+  };
+}
+function normalizeSpell(s) {
+  const classes = s.dnd_class
+    ? s.dnd_class.split(",").map(c => c.trim()).filter(Boolean)
+    : (Array.isArray(s.classes) ? s.classes : []);
+  const level = s.level_int !== undefined ? s.level_int
+    : (s.level === "Cantrip" ? 0 : parseInt(s.level) || 0);
+  return { ...s, slug: s.slug, name: s.name, level, school: s.school,
+    casting_time: s.casting_time, classes,
+    ritual: s.ritual === "yes" || s.ritual === true,
+    concentration: s.concentration === "yes" || s.concentration === true,
+    source: s.document__slug };
+}
+function normalizeMagicItem(i) {
+  return { ...i, slug: i.slug, name: i.name, type: i.type, rarity: i.rarity,
+    requires_attunement: !!(i.requires_attunement && i.requires_attunement !== "No" && i.requires_attunement !== ""),
+    source: i.document__slug };
+}
+function normalizeItem(i) {
+  return { ...i, slug: i.slug, name: i.name, type: i.category || i.type || "Weapon", source: i.document__slug };
+}
+function normalizeRace(r) {
+  const speed = typeof r.speed === "object" ? (r.speed?.walk ? `${r.speed.walk} ft.` : "") : (r.speed || "");
+  return { ...r, slug: r.slug, name: r.name, size: r.size, speed,
+    ability_scores: r.asi_desc || r.ability_scores || "", source: r.document__slug };
+}
+function normalizeClass(c) {
+  return { ...c, slug: c.slug, name: c.name,
+    hit_die: c.hit_dice || c.hit_die || "",
+    saving_throws: c.prof_saving_throws || c.saving_throws || "",
+    armor_proficiencies: c.prof_armor || c.armor_proficiencies || "",
+    weapon_proficiencies: c.prof_weapons || c.weapon_proficiencies || "",
+    source: c.document__slug };
+}
+function normalizeBackground(b) {
+  return { ...b, slug: b.slug, name: b.name,
+    skill_proficiencies: b.skill_proficiencies || b.skills || "",
+    source: b.document__slug };
+}
+function normalizeFeat(f) {
+  return { ...f, slug: f.slug, name: f.name, category: f.category || "",
+    prerequisite: f.prerequisite || f.prerequisite_str || "", source: f.document__slug };
+}
+const NORMALIZERS = {
+  monsters: normalizeMonster, spells: normalizeSpell, items: normalizeItem,
+  magic_items: normalizeMagicItem, races: normalizeRace, classes: normalizeClass,
+  backgrounds: normalizeBackground, feats: normalizeFeat,
+};
+
+// ── visited state (localStorage) ─────────────────────────────────
+function getVisited() {
+  try { return new Set(JSON.parse(localStorage.getItem("dm_vault_visited") || "[]")); }
+  catch { return new Set(); }
+}
+function saveVisited(v) { localStorage.setItem("dm_vault_visited", JSON.stringify([...v])); }
+
+// ── Data fetching ─────────────────────────────────────────────────
+async function fetchAllPages(url) {
+  const results = [];
+  while (url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`open5e ${r.status}`);
+    const data = await r.json();
+    results.push(...(data.results || (Array.isArray(data) ? data : [])));
+    url = data.next || null;
+  }
+  return results;
+}
+
+async function fetchData(sec) {
+  const cfg = SECTIONS[sec];
+  if (!cfg) return [];
+  // Campaign content — local static files
+  if (!cfg.open5e) {
+    const r = await fetch(`data/${sec}.json`);
+    if (!r.ok) return [];
+    const items = await r.json();
+    if (sec === "locations") {
+      const visited = getVisited();
+      return items.map(loc => ({ ...loc, visited: visited.has(loc.slug) }));
+    }
+    return items;
+  }
+  // open5e content
+  const normalize = NORMALIZERS[sec] || (x => x);
+  const raw = await fetchAllPages(`${OPEN5E_BASE}/${cfg.open5e}/?limit=5000`);
+  return raw.map(normalize);
+}
+
+// ── Filter sidebar ────────────────────────────────────────────────
+function renderFilterSidebar(sec) {
+  const container = document.getElementById("filter-sections");
+
+  if (sec === "monsters") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Monster Type</span>
+        <div class="type-chips" id="type-chips">
+          ${["Aberration","Beast","Celestial","Construct","Dragon","Elemental","Fey",
+             "Fiend","Giant","Humanoid","Monstrosity","Ooze","Plant","Undead"].map(t =>
+            `<div class="type-chip" onclick="toggleType(this,'${t.toLowerCase()}')">${t}</div>`
+          ).join("")}
+        </div>
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">Challenge Rating</span>
+        <div class="cr-range">
+          <select class="filter-select" id="cr-min" onchange="onFilter()" style="margin:0">
+            <option value="">Min</option>
+            ${crOptions()}
+          </select>
+          <span>—</span>
+          <select class="filter-select" id="cr-max" onchange="onFilter()" style="margin:0">
+            <option value="">Max</option>
+            ${crOptions()}
+          </select>
+        </div>
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">Size</span>
+        <select class="filter-select" id="f-size" onchange="onFilter()">
+          <option value="">Any size</option>
+          ${["Tiny","Small","Medium","Large","Huge","Gargantuan"].map(s => `<option>${s}</option>`).join("")}
+        </select>
+      </div>`;
+  } else if (sec === "spells") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Level</span>
+        <select class="filter-select" id="f-level" onchange="onFilter()">
+          <option value="">Any level</option>
+          <option value="0">Cantrip (0)</option>
+          ${[1,2,3,4,5,6,7,8,9].map(l => `<option value="${l}">Level ${l}</option>`).join("")}
+        </select>
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">School</span>
+        <select class="filter-select" id="f-school" onchange="onFilter()">
+          <option value="">Any school</option>
+          ${["Abjuration","Conjuration","Divination","Enchantment","Evocation","Illusion","Necromancy","Transmutation"].map(s =>
+            `<option value="${s.toLowerCase()}">${s}</option>`).join("")}
+        </select>
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">Class</span>
+        <select class="filter-select" id="f-class" onchange="onFilter()">
+          <option value="">Any class</option>
+          ${["Bard","Cleric","Druid","Paladin","Ranger","Sorcerer","Warlock","Wizard"].map(c =>
+            `<option value="${c.toLowerCase()}">${c}</option>`).join("")}
+        </select>
+      </div>`;
+  } else if (sec === "magic_items") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Rarity</span>
+        ${["Common","Uncommon","Rare","Very Rare","Legendary"].map(r =>
+          `<div class="type-chip" onclick="toggleType(this,'${r.toLowerCase()}')">${r}</div>`
+        ).join(" ")}
+      </div>`;
+  } else if (sec === "races") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Size</span>
+        <select class="filter-select" id="f-size" onchange="onFilter()">
+          <option value="">Any size</option>
+          ${["Tiny","Small","Medium","Large"].map(s=>`<option>${s}</option>`).join("")}
+        </select>
+      </div>`;
+  } else if (sec === "feats") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Category</span>
+        <select class="filter-select" id="f-category" onchange="onFilter()">
+          <option value="">Any category</option>
+          ${["General","Fighting Style","Epic Boon","Background"].map(c=>
+            `<option value="${c.toLowerCase()}">${c}</option>`).join("")}
+        </select>
+      </div>`;
+  } else if (sec === "npcs") {
+    container.innerHTML = `
+      <div class="filter-section">
+        <span class="filter-label">Faction</span>
+        <input class="filter-input" id="f-faction" type="text" placeholder="faction…" oninput="onFilter()" />
+      </div>
+      <div class="filter-section">
+        <span class="filter-label">Status</span>
+        <select class="filter-select" id="f-status" onchange="onFilter()">
+          <option value="">Any status</option>
+          ${["Alive","Dead","Missing","Unknown"].map(s=>`<option value="${s.toLowerCase()}">${s}</option>`).join("")}
+        </select>
+      </div>`;
+  } else {
+    container.innerHTML = "";
+  }
+}
+
+function crOptions() {
+  return ["0","1/8","1/4","1/2","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","30"]
+    .map(v => `<option value="${v}">${v}</option>`).join("");
+}
+
+// Active type chip management
+let activeTypes = new Set();
+
+function toggleType(el, type) {
+  if (activeTypes.has(type)) { activeTypes.delete(type); el.classList.remove("active"); }
+  else { activeTypes.add(type); el.classList.add("active"); }
+  renderTable(filterItems());
+}
+
+// ── Filtering ─────────────────────────────────────────────────────
+function onSearch() { clearTimeout(searchTimer); searchTimer = setTimeout(() => renderTable(filterItems()), 200); }
+function onFilter() { renderTable(filterItems()); }
+
+function filterItems() {
+  const q = document.getElementById("search-input").value.toLowerCase();
+  let items = allItems;
+
+  if (q) items = items.filter(i => i.name.toLowerCase().includes(q));
+
+  if (section === "monsters") {
+    if (activeTypes.size) items = items.filter(i => activeTypes.has(i.type?.toLowerCase()));
+    const crMin = document.getElementById("cr-min")?.value;
+    const crMax = document.getElementById("cr-max")?.value;
+    const size  = document.getElementById("f-size")?.value;
+    if (crMin) items = items.filter(i => crCompare(i.cr, crMin) >= 0);
+    if (crMax) items = items.filter(i => crCompare(i.cr, crMax) <= 0);
+    if (size)  items = items.filter(i => i.size?.toLowerCase() === size.toLowerCase());
+  }
+
+  if (section === "spells") {
+    const level  = document.getElementById("f-level")?.value;
+    const school = document.getElementById("f-school")?.value;
+    const cls    = document.getElementById("f-class")?.value;
+    if (level  !== undefined && level !== "")  items = items.filter(i => String(i.level) === level);
+    if (school) items = items.filter(i => i.school?.toLowerCase().includes(school));
+    if (cls)    items = items.filter(i => (i.classes || []).map(c => c.toLowerCase()).includes(cls));
+  }
+
+  if (section === "magic_items" && activeTypes.size) {
+    items = items.filter(i => activeTypes.has(i.rarity?.toLowerCase()));
+  }
+
+  if (section === "feats") {
+    const cat = document.getElementById("f-category")?.value;
+    if (cat) items = items.filter(i => i.category?.toLowerCase().includes(cat));
+  }
+
+  if (section === "races") {
+    const size = document.getElementById("f-size")?.value;
+    if (size) items = items.filter(i => i.size?.toLowerCase() === size.toLowerCase());
+  }
+
+  if (section === "npcs") {
+    const faction = document.getElementById("f-faction")?.value.toLowerCase();
+    const status  = document.getElementById("f-status")?.value.toLowerCase();
+    if (faction) items = items.filter(i => i.faction?.toLowerCase().includes(faction));
+    if (status)  items = items.filter(i => i.status?.toLowerCase().includes(status));
+  }
+
+  return items;
+}
+
+// CR comparison helper (handles fractions)
+function crToNum(cr) {
+  if (!cr && cr !== 0) return -1;
+  const s = String(cr);
+  if (s === "1/8") return 0.125;
+  if (s === "1/4") return 0.25;
+  if (s === "1/2") return 0.5;
+  return parseFloat(s) || 0;
+}
+function crCompare(a, b) { return crToNum(a) - crToNum(b); }
+
+// ── Table rendering ───────────────────────────────────────────────
+function renderTable(items) {
+  document.getElementById("result-count").textContent = items.length.toLocaleString();
+  const thead = document.getElementById("table-head");
+  const tbody = document.getElementById("table-body");
+
+  if (!items.length) {
+    thead.innerHTML = "";
+    tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><div class="big">🔍</div><div>No results</div></div></td></tr>`;
+    return;
+  }
+
+  if (section === "monsters") {
+    thead.innerHTML = `<tr>
+      <th></th>
+      <th>CR</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Alignment</th>
+    </tr>`;
+    tbody.innerHTML = items.map(m => {
+      const crRaw   = m.cr;
+      const crText  = (crRaw !== undefined && crRaw !== "" && crRaw !== null && String(crRaw).toLowerCase() !== "null") ? crRaw : "—";
+      const crNum   = crToNum(m.cr);
+      const crClass = crText === "—" ? "cr-badge cr-unknown" : crNum <= 2 ? "cr-badge low" : "cr-badge";
+      const portrait = monsterThumb(m);
+      return `<tr data-slug="${m.slug}" onclick="selectItem('${m.slug}')">
+        <td class="td-portrait">${portrait}</td>
+        <td class="td-cr"><span class="${crClass}">${crText}</span></td>
+        <td class="td-name"><div class="monster-name">${m.name}</div></td>
+        <td class="td-type">${m.type || "—"}</td>
+        <td class="td-size">${m.size || "—"}</td>
+        <td class="td-align">${m.alignment || "—"}</td>
+      </tr>`;
+    }).join("");
+
+  } else if (section === "spells") {
+    thead.innerHTML = `<tr><th>Lvl</th><th>Name</th><th>School</th><th>Casting Time</th><th>Classes</th></tr>`;
+    tbody.innerHTML = items.map(s => {
+      const lvl = s.level;
+      const pipClass = lvl === 0 ? "level-pip cantrip" : "level-pip";
+      const pipText  = lvl === 0 ? "C" : lvl;
+      const classes  = Array.isArray(s.classes) ? s.classes.join(", ") : s.classes || "";
+      return `<tr data-slug="${s.slug}" onclick="selectItem('${s.slug}')">
+        <td><span class="${pipClass}">${pipText}</span></td>
+        <td class="td-name"><div class="monster-name">${s.name}</div>${s.ritual ? '<div style="font-size:11px;color:#888">Ritual</div>' : ""}</td>
+        <td><span class="school-badge">${s.school || "—"}</span></td>
+        <td style="font-size:12px;color:var(--text-dim)">${s.casting_time || "—"}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${classes}</td>
+      </tr>`;
+    }).join("");
+
+  } else if (section === "magic_items") {
+    thead.innerHTML = `<tr><th>Name</th><th>Type</th><th>Rarity</th><th>Attunement</th></tr>`;
+    tbody.innerHTML = items.map(i => {
+      const rc = rarityClass(i.rarity);
+      return `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+        <td class="td-name">${i.name}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${i.type || "—"}</td>
+        <td><span class="rarity-badge ${rc}">${i.rarity || "—"}</span></td>
+        <td style="font-size:12px;color:var(--text-dim)">${i.requires_attunement ? "Yes" : ""}</td>
+      </tr>`;
+    }).join("");
+
+  } else if (section === "npcs") {
+    thead.innerHTML = `<tr><th></th><th>Name</th><th>Faction</th><th>Status</th><th>Location</th></tr>`;
+    tbody.innerHTML = items.map(n => {
+      const url = n.portrait ? portraitUrl(n.portrait) : "";
+      const portrait = url
+        ? `<img class="portrait-thumb" src="${url}" alt="" onerror="this.parentNode.innerHTML='<div class=portrait-placeholder>🧙</div>'">`
+        : `<div class="portrait-placeholder">🧙</div>`;
+      return `<tr data-slug="${n.slug}" onclick="selectItem('${n.slug}')">
+        <td class="td-portrait">${portrait}</td>
+        <td class="td-name">${n.name}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${n.faction||"—"}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${n.status||"—"}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${n.location||"—"}</td>
+      </tr>`;
+    }).join("");
+
+  } else if (section === "locations") {
+    thead.innerHTML = `<tr><th></th><th></th><th>Name</th><th>Region</th><th>Type</th></tr>`;
+    tbody.innerHTML = items.map(i => {
+      const visitedDot = i.visited
+        ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#3c9e5c" title="Players have visited"></span>`
+        : `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--border2)"></span>`;
+      const url = i.portrait ? portraitUrl(i.portrait) : "";
+      const thumb = url
+        ? `<img class="portrait-thumb" src="${url}" alt="" onerror="this.style.display='none'">`
+        : `<div class="portrait-placeholder">🏰</div>`;
+      return `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+        <td style="width:20px;padding:8px 4px 8px 12px">${visitedDot}</td>
+        <td class="td-portrait">${thumb}</td>
+        <td class="td-name">${i.name}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${i.region || "—"}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${i.type || "—"}</td>
+      </tr>`;
+    }).join("");
+
+  } else if (section === "races") {
+    thead.innerHTML = `<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability Scores</th><th>Source</th></tr>`;
+    tbody.innerHTML = items.map(i => `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+      <td class="td-name">${i.name}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.size || "—"}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.speed || "—"}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.ability_scores || "—"}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${i.source || ""}</td>
+    </tr>`).join("");
+  } else if (section === "classes") {
+    thead.innerHTML = `<tr><th>Name</th><th>Hit Die</th><th>Saving Throws</th><th>Source</th></tr>`;
+    tbody.innerHTML = items.map(i => `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+      <td class="td-name">${i.name}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.hit_die || "—"}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.saving_throws || "—"}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${i.source || ""}</td>
+    </tr>`).join("");
+  } else if (section === "backgrounds") {
+    thead.innerHTML = `<tr><th>Name</th><th>Skills</th><th>Source</th></tr>`;
+    tbody.innerHTML = items.map(i => `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+      <td class="td-name">${i.name}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.skill_proficiencies || "—"}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${i.source || ""}</td>
+    </tr>`).join("");
+  } else if (section === "feats") {
+    thead.innerHTML = `<tr><th>Name</th><th>Category</th><th>Prerequisite</th><th>Source</th></tr>`;
+    tbody.innerHTML = items.map(i => `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+      <td class="td-name">${i.name}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.category || "—"}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.prerequisite || "None"}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${i.source || ""}</td>
+    </tr>`).join("");
+  } else {
+    thead.innerHTML = `<tr><th>Name</th><th>Type</th><th>Details</th></tr>`;
+    tbody.innerHTML = items.map(i => `<tr data-slug="${i.slug}" onclick="selectItem('${i.slug}')">
+      <td class="td-name">${i.name}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.type || i.race || i.class || "—"}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${i.region || i.faction || i.rarity || ""}</td>
+    </tr>`).join("");
+  }
+
+  // Restore highlight
+  if (selected) {
+    const row = tbody.querySelector(`[data-slug="${selected}"]`);
+    if (row) row.classList.add("selected");
+  }
+}
+
+function rarityClass(r) {
+  const map = { "common":"r-common","uncommon":"r-uncommon","rare":"r-rare","very rare":"r-very-rare","legendary":"r-legendary" };
+  return map[(r||"").toLowerCase()] || "r-common";
+}
+
+// ── Detail panel ──────────────────────────────────────────────────
+const API_DETAIL_SECTIONS = new Set(["monsters", "spells"]);
+
+async function selectItem(slug) {
+  document.querySelectorAll("#table-body tr").forEach(r => r.classList.remove("selected"));
+  const row = document.querySelector(`[data-slug="${slug}"]`);
+  if (row) row.classList.add("selected");
+  selected = slug;
+
+  const panel = document.getElementById("detail-panel");
+  const body  = document.getElementById("panel-body");
+  body.innerHTML = `<div style="padding:40px;text-align:center;color:var(--text-dim)">Loading…</div>`;
+  panel.classList.add("open");
+
+  try {
+    let data;
+    const cfg = SECTIONS[section];
+    if (API_DETAIL_SECTIONS.has(section) && cfg?.open5e) {
+      const r = await fetch(`${OPEN5E_BASE}/${cfg.open5e}/${slug}/`);
+      if (!r.ok) throw new Error();
+      const raw = await r.json();
+      data = (NORMALIZERS[section] || (x => x))(raw);
+    } else {
+      data = allItems.find(i => i.slug === slug);
+      if (!data) throw new Error();
+    }
+    body.innerHTML = renderDetail(data);
+  } catch {
+    body.innerHTML = `<div style="padding:24px;color:var(--text-dim)">Could not load detail.</div>`;
+  }
+}
+
+function closePanel() {
+  document.getElementById("detail-panel").classList.remove("open");
+  document.querySelectorAll("#table-body tr").forEach(r => r.classList.remove("selected"));
+  selected = null;
+}
+
+function renderDetail(data) {
+  if (section === "monsters")    return renderMonster(data);
+  if (section === "spells")      return renderSpell(data);
+  if (section === "magic_items") return renderMagicItem(data);
+  if (section === "items")       return renderItem(data);
+  if (section === "locations")   return renderLocation(data);
+  if (section === "npcs")        return renderNpc(data);
+  if (section === "races")       return renderRace(data);
+  if (section === "classes")     return renderClass(data);
+  if (section === "backgrounds") return renderBackground(data);
+  if (section === "feats")       return renderFeat(data);
+  return renderGeneric(data);
+}
+
+// ── Monster stat block ────────────────────────────────────────────
+function renderMonster(m) {
+  const portrait = monsterBigPortrait(m);
+  const subtitle = [m.size, m.type, m.subtype ? "("+m.subtype+")" : "", m.alignment].filter(Boolean).join(" ");
+  function abil(score) {
+    const n = parseInt(score);
+    if (isNaN(n)) return "<span class=\"ab-score\">—</span><span class=\"ab-mod\">—</span>";
+    const mod = Math.floor((n - 10) / 2);
+    return "<span class=\"ab-score\">"+n+"</span><span class=\"ab-mod\">"+(mod>=0?"+":"")+mod+"</span>";
+  }
+  function prop(label, val) { if (!val) return ""; return "<div class=\"sb-prop\"><strong>"+label+"</strong> "+val+"</div>"; }
+  function actions(text, heading) {
+    if (!text) return "";
+    const lines = text.split(/\n+/).filter(l => l.trim());
+    const rendered = lines.map(l => {
+      // Matches: **Name.** desc  OR  **Name:** desc  OR  *Name.* desc
+      const m2 = l.match(/^\*{1,2}(.+?)\.*\*{1,2}[.:\s]\s*(.*)/);
+      if (m2) return "<div class=\"sb-action\"><span class=\"action-name\">"+m2[1]+".</span> "+m2[2]+"</div>";
+      // Fallback: plain bold at start of line
+      const m3 = l.match(/^\*\*(.+?)\*\*[.:]?\s*(.*)/);
+      if (m3) return "<div class=\"sb-action\"><span class=\"action-name\">"+m3[1]+".</span> "+m3[2]+"</div>";
+      return "<div class=\"sb-action\">"+l+"</div>";
+    }).join("");
+    return "<div class=\"sb-section-title\">"+heading+"</div>"+rendered;
+  }
+  const abilities = ["STR","DEX","CON","INT","WIS","CHA"].map((ab,i) => {
+    const key = ["str","dex","con","int","wis","cha"][i];
+    return "<div class=\"sb-ability\"><span class=\"ab-label\">"+ab+"</span>"+abil(m[key])+"</div>";
+  }).join("");
+  return portrait+"<div class=\"sb\">"
+    +"<div class=\"sb-name\">"+m.name+"</div>"
+    +"<div class=\"sb-meta\">"+subtitle+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"sb-top-stats\">"
+    +(m.ac?"<div class=\"sb-stat-line\"><strong>Armor Class</strong> "+m.ac+"</div>":"")
+    +(m.hp?"<div class=\"sb-stat-line\"><strong>Hit Points</strong> "+m.hp+"</div>":"")
+    +(m.speed?"<div class=\"sb-stat-line\"><strong>Speed</strong> "+m.speed+"</div>":"")
+    +"</div><hr class=\"sb-divider\">"
+    +"<div class=\"sb-abilities\">"+abilities+"</div>"
+    +"<hr class=\"sb-divider\">"
+    +"<div class=\"sb-props\">"
+    +prop("Saving Throws",m.saving_throws)+prop("Skills",m.skills)
+    +prop("Damage Resistances",m.damage_resistances)+prop("Damage Immunities",m.damage_immunities)
+    +prop("Condition Immunities",m.condition_immunities)+prop("Senses",m.senses)
+    +prop("Languages",m.languages)
+    +(m.cr?"<div class=\"sb-prop\"><strong>Challenge</strong> "+m.cr+(m.xp?" ("+m.xp+" XP)":"")+"</div>":"")
+    +"</div><hr class=\"sb-divider thick\">"
+    +(m.traits?"<div class=\"sb-section-title\">Traits</div><div class=\"sb-desc\">"+m.traits+"</div>":"")
+    +(m.actions?actions(m.actions,"Actions"):"")
+    +(m.reactions?actions(m.reactions,"Reactions"):"")
+    +(m.legendary_actions?actions(m.legendary_actions,"Legendary Actions"):"")
+    +(!m.traits&&!m.actions&&m.desc?"<div class=\"sb-desc\">"+m.desc+"</div>":"")
+    +"</div>";
+}
+
+// ── Spell detail ──────────────────────────────────────────────────
+function renderSpell(s) {
+  const lvlText = s.level === 0 ? "Cantrip" : ordinal(s.level)+"-Level";
+  const school  = s.school || "";
+  const classes = Array.isArray(s.classes) ? s.classes.join(", ") : (s.classes || "");
+  const flags   = [s.ritual ? "Ritual" : "", s.concentration ? "Concentration" : ""].filter(Boolean).join(" · ");
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+s.name+"</div>"
+    +"<div class=\"sb-meta\">"+lvlText+" "+school+(flags?" · "+flags:"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"sb-spell-header\">"
+    +"<div class=\"sb-spell-stats\">"
+    +"<div class=\"sb-spell-stat\"><span class=\"ss-key\">Casting Time</span><span class=\"ss-val\">"+(s.casting_time||"—")+"</span></div>"
+    +"<div class=\"sb-spell-stat\"><span class=\"ss-key\">Range</span><span class=\"ss-val\">"+(s.range||"—")+"</span></div>"
+    +"<div class=\"sb-spell-stat\"><span class=\"ss-key\">Components</span><span class=\"ss-val\">"+(s.components||"—")+"</span></div>"
+    +"<div class=\"sb-spell-stat\"><span class=\"ss-key\">Duration</span><span class=\"ss-val\">"+(s.duration||"—")+"</span></div>"
+    +"</div>"+(classes?"<div style=\"margin-top:8px;font-size:12px;color:var(--text-dim)\">Classes: "+classes+"</div>":"")
+    +"</div>"
+    +"<div class=\"sb-desc\">"+(s.desc||"")+"</div>"
+    +(s.higher_levels?"<div class=\"sb-higher\"><strong>At Higher Levels.</strong> "+s.higher_levels+"</div>":"")
+    +"</div>";
+}
+
+// ── Shared markdown renderer ──────────────────────────────────────
+function mdBody(content) {
+  if (!content) return "";
+  return window.marked ? marked.parse(content) : "<p>"+content.replace(/\n\n/g,"</p><p>")+"</p>";
+}
+
+// ── Item detail ───────────────────────────────────────────────────
+function renderItem(i) {
+  const hasMeta = i.cost || i.weight;
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+i.name+"</div>"
+    +"<div class=\"sb-meta\">"+(i.type||"Item")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +(hasMeta?"<div class=\"sb-props\">"+(i.cost?"<div class=\"sb-prop\"><strong>Cost</strong> "+i.cost+"</div>":"")+(i.weight?"<div class=\"sb-prop\"><strong>Weight</strong> "+i.weight+"</div>":"")+"</div><hr class=\"sb-divider\">" :"")
+    +"<div class=\"location-body\">"+mdBody(i.body||i.desc||"")+"</div>"
+    +"</div>";
+}
+
+function renderMagicItem(i) {
+  const rc = rarityClass(i.rarity);
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+i.name+"</div>"
+    +"<div class=\"sb-meta\">"+(i.type||"Magic Item")+" — <span class=\"rarity-badge "+rc+"\">"+(i.rarity||"")+"</span></div>"
+    +(i.requires_attunement?"<div style=\"font-size:12px;color:var(--text-dim);margin-top:4px\">Requires attunement"+(i.requires_attunement!=="true"?" by "+i.requires_attunement:"")+"</div>":"")
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"location-body\">"+mdBody(i.body||i.desc||"")+"</div>"
+    +"</div>";
+}
+
+// ── NPC detail ────────────────────────────────────────────────────
+function renderNpc(npc) {
+  const url = npc.portrait ? portraitUrl(npc.portrait) : "";
+  const banner = url
+    ? `<img class="sb-banner" src="${url}" alt="" onerror="this.style.display='none'">`
+    : "";
+  const metaRows = [
+    npc.faction  ? "<div class=\"sb-prop\"><strong>Faction</strong> "+npc.faction+"</div>"   : "",
+    npc.status   ? "<div class=\"sb-prop\"><strong>Status</strong> "+npc.status+"</div>"     : "",
+    npc.location ? "<div class=\"sb-prop\"><strong>Location</strong> "+npc.location+"</div>" : "",
+    npc.tier     ? "<div class=\"sb-prop\"><strong>Tier</strong> "+npc.tier+"</div>"          : "",
+  ].join("");
+  return banner
+    +"<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+npc.name+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +(metaRows?"<div class=\"sb-props\" style=\"margin-bottom:10px\">"+metaRows+"</div><hr class=\"sb-divider\">" :"")
+    +"<div class=\"location-body\">"+mdBody(npc.body||npc.desc||"")+"</div>"
+    +"</div>";
+}
+
+// ── Race / Class / Background / Feat ─────────────────────────────
+function renderRace(r) {
+  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+r.name+"</div>"
+    +"<div class=\"sb-meta\">"+(r.size||"")+" &middot; "+(r.source||"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"sb-props\">"
+    +prop("Speed",r.speed)+prop("Ability Scores",r.ability_scores)
+    +(r.darkvision&&r.darkvision!=="0"?prop("Darkvision",r.darkvision+" ft."):"")
+    +prop("Traits",r.traits)
+    +(r.subraces&&r.subraces!=="0"?prop("Subraces",r.subraces):"")
+    +"</div><hr class=\"sb-divider\">"
+    +"<div class=\"location-body\">"+mdBody(r.body||r.desc||"")+"</div>"
+    +"</div>";
+}
+
+function renderClass(c) {
+  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+c.name+"</div>"
+    +"<div class=\"sb-meta\">"+(c.source||"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"sb-props\">"
+    +prop("Hit Die",c.hit_die)+prop("Saving Throws",c.saving_throws)
+    +prop("Armor",c.armor_proficiencies)+prop("Weapons",c.weapon_proficiencies)
+    +"</div>"
+    +(c.subclasses?"<hr class=\"sb-divider\"><div class=\"sb-prop\"><strong>Subclasses</strong> "+c.subclasses+"</div>":"")
+    +"<hr class=\"sb-divider\"><div class=\"location-body\">"+mdBody(c.body||c.desc||"")+"</div>"
+    +"</div>";
+}
+
+function renderBackground(b) {
+  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+b.name+"</div>"
+    +"<div class=\"sb-meta\">"+(b.source||"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div class=\"sb-props\">"
+    +prop("Skill Proficiencies",b.skill_proficiencies)
+    +prop("Tool Proficiencies",b.tool_proficiencies)
+    +prop("Languages",b.languages)
+    +"</div><hr class=\"sb-divider\">"
+    +"<div class=\"location-body\">"+mdBody(b.body||b.desc||"")+"</div>"
+    +"</div>";
+}
+
+function renderFeat(f) {
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+f.name+"</div>"
+    +"<div class=\"sb-meta\">"+(f.category||"")+" &middot; "+(f.source||"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +(f.prerequisite?"<div class=\"sb-prop\" style=\"margin-bottom:10px\"><strong>Prerequisite</strong> "+f.prerequisite+"</div><hr class=\"sb-divider\">" :"")
+    +"<div class=\"location-body\">"+mdBody(f.body||f.desc||"")+"</div>"
+    +"</div>";
+}
+
+// ── Location / visited ────────────────────────────────────────────
+function toggleVisited(slug) {
+  const visited = getVisited();
+  if (visited.has(slug)) visited.delete(slug);
+  else visited.add(slug);
+  saveVisited(visited);
+  const isVisited = visited.has(slug);
+  const btn = document.getElementById("visited-btn");
+  if (btn) {
+    btn.textContent = isVisited ? "✓ Players have visited" : "○ Mark as visited";
+    btn.style.background  = isVisited ? "rgba(60,158,92,0.15)" : "";
+    btn.style.borderColor = isVisited ? "#3c9e5c" : "";
+    btn.style.color       = isVisited ? "#3c9e5c" : "";
+  }
+  allItems = allItems.map(loc => loc.slug === slug ? { ...loc, visited: isVisited } : loc);
+  renderTable(filterItems());
+}
+
+function renderLocation(loc) {
+  const visitedStyle = loc.visited ? "background:rgba(60,158,92,0.15);border-color:#3c9e5c;color:#3c9e5c" : "";
+  const visitedText  = loc.visited ? "✓ Players have visited" : "○ Mark as visited";
+  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
+  const hasMeta = loc.faction||loc.status||loc.government||loc.ruler||loc.population;
+  const metaBlock = hasMeta
+    ? "<div class=\"sb-props\" style=\"margin-bottom:10px\">"
+      +prop("Faction",loc.faction)+prop("Status",loc.status)
+      +prop("Government",loc.government)+prop("Ruler",loc.ruler)+prop("Population",loc.population)
+      +"</div><hr class=\"sb-divider\">" : "";
+  const content = loc.body||loc.desc||"";
+  const bodyHtml = content
+    ? (window.marked ? marked.parse(content) : "<p>"+content.replace(/\n\n/g,"</p><p>")+"</p>")
+    : "<p style=\"color:var(--text-dim)\">No content yet.</p>";
+  const url = loc.portrait ? portraitUrl(loc.portrait) : "";
+  const banner = url
+    ? `<img class="sb-banner" src="${url}" alt="" onerror="this.style.display='none'">`
+    : "";
+  return banner
+    +"<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+loc.name+"</div>"
+    +"<div class=\"sb-meta\">"+(loc.type||"")+(loc.region?" &middot; "+loc.region:"")+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +"<div style=\"display:flex;gap:8px;align-items:center;margin-bottom:12px\">"
+    +"<button id=\"visited-btn\" onclick=\"toggleVisited('"+loc.slug+"')\" "
+    +"style=\"padding:6px 14px;border-radius:4px;border:1px solid var(--border2);"
+    +"background:none;color:var(--text-dim);cursor:pointer;font-size:12px;"+visitedStyle+"\">"+visitedText+"</button>"
+    +"<a class=\"open-map-btn\" href=\"/map.html?slug="+loc.slug+"\" target=\"_blank\">🌍 View on Map</a>"
+    +"</div>"
+    +metaBlock
+    +"<div class=\"location-body\">"+bodyHtml+"</div>"
+    +"</div>";
+}
+
+// ── Generic fallback ──────────────────────────────────────────────
+function renderGeneric(data) {
+  const name = data.name || "Unknown";
+  const rows = Object.entries(data)
+    .filter(([k]) => !["slug","name","desc","body","portrait","file","source","visited"].includes(k))
+    .filter(([,v]) => v !== null && v !== undefined && v !== "" && v !== "0")
+    .map(([k,v]) => "<div class=\"sb-prop\"><strong>"+k.replace(/_/g," ")+"</strong> "+v+"</div>")
+    .join("");
+  const desc = data.body || data.desc || "";
+  return "<div class=\"sb\">"
+    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+name+"</div>"
+    +"<hr class=\"sb-divider thick\">"
+    +(rows?"<div class=\"sb-props\">"+rows+"</div><hr class=\"sb-divider\">" :"")
+    +(desc?"<div class=\"location-body\">"+mdBody(desc)+"</div>" :"")
+    +"</div>";
+}
+
+// ── Helpers ───────────────────────────────────────────────────────
+function ordinal(n) {
+  const s = ["th","st","nd","rd"], v = n % 100;
+  return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+init();
+</script>
+</body>
+</html>

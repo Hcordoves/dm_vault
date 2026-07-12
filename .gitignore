@@ -1,0 +1,6 @@
+# Large local-only asset folders
+Tabletop Tokens/
+
+# OS
+.DS_Store
+Thumbs.db
