@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "mourn-eveningfall",
+    "name": "Mourn Eveningfall",
+    "race_class": "High Elf / Paladin",
+    "faction": "Lord's Alliance",
+    "faction_slug": "lords-alliance",
+    "status": "Alive — gravely wounded; recovering in Silverymoon",
+    "relationship": "Friendly",
+    "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Mourn%20Eveningfall.jpeg",
+    "body": "Mourn Eveningfall is a legend. A High Elf paladin and General of the Armies of Faerûn, he fought in some of the most significant conflicts of the last few centuries — the Avatar Crisis, the War of the Spider Queen, the fall of Netheril. He rose from private to General, earned the title **Knight of ALL Realms** from Lady Alustriel Silverhand, and co-founded the Knights of Legend with his best friend Taeghen Moondown.\n\nHe is tall, with long blond hair and piercing blue eyes. He wears full plate and carries a Moonblade called **Malevolent Defender** and a shield bearing the symbol of his patron deity, Corellon Larenthian. His presence is commanding — the kind of person that a room organizes itself around.\n\nHe is strict, tactically precise, and expects the same standard of excellence from everyone around him that he holds himself to. He is not warm in the conventional sense. But he is absolutely loyal to those under his protection, and he has given everything he has to the realm for centuries.\n\n**Current status:** After battling the god Bane and the goddess Lolth directly during the Spree's invasion of Silverymoon, Mourn was gravely wounded. He is being cared for by Lady Alustriel Silverhand. He is out of the field. The Knights of Legend are effectively operating without their leader.\n\n---\n\n## What He Wants\n\nTo retire. He has wanted this for a long time. To settle in Silverymoon with Alustriel, raise a family, and hand the realm's problems to someone else. He stays because he believes it isn't safe to stop yet.\n\n---\n\n## Notable Facts\n- Named Knight of ALL Realms by Lady Alustriel Silverhand — an honor given to almost no one\n- His Moonblade *Malevolent Defender* is a legendary weapon — and it hates its name\n- Co-founded the Knights of Legend with Taeghen Moondown\n- Worshiper and champion of Corellon Larenthian"
+  },
+  {
+    "slug": "augrin-bravecarver",
+    "name": "Augrin Bravecarver",
+    "race_class": "Minotaur / Barbarian",
+    "faction": "Knights of Legend",
+    "faction_slug": null,
+    "status": "Missing — High Forest",
+    "relationship": "Friendly — current rescue target",
+    "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Augrin%20Bravecarver.jpeg",
+    "body": "Augrin Bravecarver is a Minotaur barbarian and member of the Knights of Legend — and the reason the party is in the High Forest in Chapter 4. He has gone missing, and recovering him is the current primary objective.\n\nHe is enormous. Covered in scars from years of gladiatorial combat. Not a subtle presence by any measure. What he lacks in social refinement he makes up for in raw loyalty and physical capability — when Augrin commits to something, he does not stop.\n\nHis story is a rough one. Abandoned as a small child and left in the wild to die, he was found and raised by a wandering band of barbarians. His unique nature eventually got him kidnapped by slavers and sold into the arena, where he became a champion — suffering only one defeat in his entire career: a loss to Taeghen Moondown, fighting in disguise as the Blue Wyvern. He was later recruited and freed by Charles Vane, who brought him into the Knights of Legend as their muscle.\n\nHe is most at ease in the wilds. Cities confuse him. Politics frustrate him. But ask him to protect someone or push through something dangerous, and there is no one more reliable.\n\n---\n\n## What He Wants\n\nTo be free. To find his tribe — the band of barbarians who raised him after his abandonment. He may not fully understand that he already is free, that the Knights of Legend don't hold him there. He serves because it gives him purpose, not because he's compelled to."
+  },
+  {
+    "slug": "valas-halfinas",
+    "name": "Valas Halfinas",
+    "race_class": "Fallen Aasimar / Vampire Lord",
+    "faction": "Spree Alliance",
+    "faction_slug": "spree-alliance",
+    "status": "Alive",
+    "relationship": "Hostile",
+    "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Valas%20Halfinas.jpeg",
+    "body": "Valas Halfinas is the primary villain of the current campaign arc — the figure believed to lead the Spree Alliance under the alias **Merrick**. He is a Fallen Aasimar who has been transformed into a Vampire Lord, and he is responsible for the Spree's systematic war against the gods and the cities that serve them.\n\nHe is tall, with light olive skin, light blue eyes, and short black hair. He wears blackened steel full plate with a cloak that seems to absorb light around it. He carries a longsword that pulsates with dark energy and a tower shield trimmed with strips of human flesh. He is not a subtle presence.\n\nValas operates from the shadows, preferring to work through lieutenants and proxies rather than appearing directly. When he does act, it is with calculated purpose. He is not chaotic — he is patient, intelligent, and driven by a very specific hatred.\n\n---\n\n## What He Wants\n\nValas wants to destroy the gods. He blames them for abandonment and betrayal — for a life he believes they ruined. His goal is a world free from divine influence: no gods, no divine mandate, no power over mortals that comes from above. The Spree Alliance is the instrument of that agenda.\n\nHe uses manipulation, terror, and the corruption of souls as his methods. He rarely shows his hand until he's already won.\n\n---\n\n## What's Known About His Past\n\nNot much is publicly known. He was once, apparently, a figure of some religious standing — a cleric, by the look of his knowledge of divine systems. Something happened that turned him against the gods completely. The specifics are unclear.\n\n---\n\n## What You Don't Know\n\nQuite a lot. His true history, how he became what he is, and who — if anyone — might be above him in the chain of power are all open questions."
+  },
+  {
+    "slug": "bryleth",
+    "name": "Bryleth",
+    "race_class": "Fierna Tiefling / Druid",
+    "faction": "Spree Alliance",
+    "faction_slug": "spree-alliance",
+    "status": "Alive — active in the High Forest",
+    "relationship": "Hostile",
+    "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Bryleth%20the%20Southwood%20Witch.jpeg",
+    "body": "Bryleth is a Spree Alliance operative and a serious threat in the current chapter. She is a Fierna Tiefling druid with olive-green skin, prominent horns, long grey hair, and dark, intense eyes. She carries a druidic staff and wears rough, earthy clothing. She looks like someone who chose the wilderness completely — not as a retreat, but as a weapon.\n\nHer powers center on the land itself: she can summon roots and vines to entangle enemies, call animals and elementals to attack, control weather, and cause earthquakes and landslides. She is territorial in the extreme. People who enter her domain uninvited disappear. There are folk tales about her in the villages near the High Forest — warnings told to children.\n\nShe calls herself the protector of the land, but her real motivation is revenge. The gods, in her view, destroyed her home and killed everyone she loved. She survived alone. That grief became something harder and colder — and she has been hunting anything connected to divine power ever since.\n\nShe is operating in the background of Chapter 4. She knows more about what's happening in the High Forest than the party does.\n\n---\n\n## What She Wants\n\nVengeance against the gods. She will not stop. She will not negotiate on this point. Anyone who serves the gods, worships them, or benefits from their power is, to her, complicit.\n\n---\n\n## Known Capabilities\n- Roots and vines — can entangle enemies and drag them into the earth\n- Summon animals and elementals\n- Weather control\n- Earthquakes and landslides\n- Extreme territorial awareness — she knows her domain intimately"
+  },
+  {
+    "slug": "king-oberon",
+    "name": "King Oberon",
+    "race_class": "Archfey",
+    "faction": "Fey Alliance",
+    "faction_slug": "fey-alliance",
+    "status": "Alive — rules Silverymoon's North Bank",
+    "relationship": "Neutral",
+    "portrait": null,
+    "body": "King Oberon is the co-ruler of the Fey Alliance alongside Queen Titania. He is the diplomatic face of the fey in Silverymoon — the one who meets with outsiders, manages relationships between the fey clans, and projects an image of stability and reasonable governance.\n\nHe presents as measured, gracious, and approachable. He speaks carefully and listens well. He is the kind of ruler who makes you feel heard, which makes him effective and, if you're paying attention, slightly unnerving — you are rarely entirely sure what he wants from a conversation until it's over.\n\nHe is not a pushover. The Fey Alliance has survived displacement from their home plane and carved out a significant territorial foothold in the prime material plane under his and Titania's leadership. That doesn't happen by accident.\n\n---\n\n## What He Wants\n\nPrimarily: to keep the fey clans unified and surviving until they can find a way home. In the short term: to maintain Fey Alliance control of Silverymoon's North Bank, build useful relationships, and avoid being drawn into the war between the Lord's Alliance and the Spree.\n\nHe is neutral by policy, not by nature. If the right offer came along — something that meaningfully advanced the fey's path home — that neutrality would shift.\n\n---\n\n## How to Read Him\n\nOberon is the easier of the two fey rulers to deal with. He will meet you, hear you out, and respond in kind. What you get from him is honest as far as it goes — but it doesn't go all the way.\n\nFor the full picture, you'd need Titania."
+  },
+  {
+    "slug": "queen-titania",
+    "name": "Queen Titania",
+    "race_class": "Archfey",
+    "faction": "Fey Alliance",
+    "faction_slug": "fey-alliance",
+    "status": "Alive — present in Silverymoon",
+    "relationship": "Neutral",
+    "portrait": null,
+    "body": "Queen Titania co-rules the Fey Alliance with King Oberon. She is the harder encounter of the two.\n\nWhere Oberon is the diplomat, Titania is the power. The Fey Alliance's direction — its neutrality, its territorial decisions, its long-term strategy — reflects her will. Oberon implements it and presents it. Titania decides it.\n\nShe is radiant in the way that something overwhelming is radiant — not just beautiful, but impossible to look at straight on for too long without feeling the weight of it. She is ancient, even by fey standards, and she carries that age as authority rather than fragility.\n\nShe does not explain herself to people who haven't earned an explanation. She listens more than she speaks. When she does speak, the conversation has usually already moved in a direction you didn't notice until it arrived.\n\n---\n\n## What She Wants\n\nThe same as Oberon, ultimately: get the fey home. But her approach to achieving that is more opaque. She is playing a longer game than most people in the room, and she is accounting for possibilities they haven't thought of yet.\n\nShe maintained the Fey Alliance's neutrality through the Spree war and the occupation of Silverymoon. That is not a small thing. She could have chosen sides. She didn't. There's a reason.\n\n---\n\n## How to Read Her\n\nYou probably won't read her, at first. She will read you.\n\nIf you want something from Titania — real cooperation, real information, real support — you will need to offer something meaningful in return. Not flattery. Not political promises. Something that actually matters to the fey."
+  }
+]

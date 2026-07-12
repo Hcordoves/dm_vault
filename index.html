@@ -691,8 +691,12 @@ function typeIcon(type) {
 // ── Portrait URL helpers ──────────────────────────────────────────
 function portraitUrl(filename) {
   if (!filename) return "";
+  // Full URLs (open5e img_main, external CDN) — use directly
+  if (filename.startsWith("http://") || filename.startsWith("https://")) return filename;
+  // Absolute paths — use as-is
   if (filename.startsWith("/")) return filename;
-  return `/portraits/find/${encodeURIComponent(filename)}`;
+  // Unrecognised format — return empty to trigger fallback chain
+  return "";
 }
 
 // ── 5etools token CDN ─────────────────────────────────────────────
@@ -722,45 +726,52 @@ function nextMonsterSrc(img) {
 
 // Build monster portrait <img> for the list thumbnail
 function monsterThumb(m) {
-  const icon    = typeIcon(m.type);
-  const etoSrc  = (m.source && m.source !== "SRD") ? m.source : "MM";
-  const localTok = `/api/find-token/${encodeURIComponent(m.name)}`;
-  const cdnTok1  = etoolsTokenUrl(m.name, etoSrc);
-  const cdnTok2  = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
-  const cdnTok3  = etoolsTokenUrl(m.name, "XMM");
+  const icon   = typeIcon(m.type);
+  const etoSrc = (m.source && m.source !== "SRD") ? m.source : "MM";
+  const cdnTok1 = etoolsTokenUrl(m.name, etoSrc);
+  const cdnTok2 = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
+  const cdnTok3 = etoolsTokenUrl(m.name, "XMM");
 
   if (m.portrait) {
-    const fallbacks = JSON.stringify([localTok, cdnTok1, cdnTok2, cdnTok3]);
-    return `<img class="portrait-thumb" src="${portraitUrl(m.portrait)}" loading="lazy"
-      data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="portrait-placeholder" data-sz="18px"
-      onerror="nextMonsterSrc(this)" alt="">`;
+    const src = portraitUrl(m.portrait);
+    // If portraitUrl returned a real URL, use it with CDN fallbacks
+    if (src) {
+      const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
+      return `<img class="portrait-thumb" src="${src}" loading="lazy"
+        data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="portrait-placeholder" data-sz="18px"
+        onerror="nextMonsterSrc(this)" alt="">`;
+    }
   }
 
-  const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
-  return `<img class="portrait-thumb token-img" src="${localTok}" loading="lazy"
+  // No portrait or unresolvable — go straight to CDN chain
+  const fallbacks = JSON.stringify([cdnTok2, cdnTok3]);
+  return `<img class="portrait-thumb token-img" src="${cdnTok1}" loading="lazy"
     data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="portrait-placeholder" data-sz="18px"
     onerror="nextMonsterSrc(this)" alt="">`;
 }
 
 // Build monster portrait for the detail panel
 function monsterBigPortrait(m) {
-  const icon    = typeIcon(m.type);
-  const etoSrc  = (m.source && m.source !== "SRD") ? m.source : "MM";
-  const localTok = `/api/find-token/${encodeURIComponent(m.name)}`;
-  const cdnTok1  = etoolsTokenUrl(m.name, etoSrc);
-  const cdnTok2  = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
-  const cdnTok3  = etoolsTokenUrl(m.name, "XMM");
+  const icon   = typeIcon(m.type);
+  const etoSrc = (m.source && m.source !== "SRD") ? m.source : "MM";
+  const cdnTok1 = etoolsTokenUrl(m.name, etoSrc);
+  const cdnTok2 = etoolsTokenUrl(m.name, etoSrc === "MM" ? "XMM" : "MM");
+  const cdnTok3 = etoolsTokenUrl(m.name, "XMM");
 
   if (m.portrait) {
-    const fallbacks = JSON.stringify([localTok, cdnTok1, cdnTok2, cdnTok3]);
-    return `<img class="sb-portrait" src="${portraitUrl(m.portrait)}"
-      data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="sb-portrait-placeholder" data-sz="56px"
-      onerror="nextMonsterSrc(this)" alt="">`;
+    const src = portraitUrl(m.portrait);
+    if (src) {
+      const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
+      return `<img class="sb-portrait" src="${src}"
+        data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="sb-portrait-placeholder" data-sz="56px"
+        onerror="nextMonsterSrc(this)" alt="">`;
+    }
   }
 
-  const fallbacks = JSON.stringify([cdnTok1, cdnTok2, cdnTok3]);
+  // No portrait — token circle from CDN
+  const fallbacks = JSON.stringify([cdnTok2, cdnTok3]);
   return `<div style="width:100%;background:var(--bg3);display:flex;align-items:center;justify-content:center;padding:28px 0">
-    <img src="${localTok}" style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--border2)"
+    <img src="${cdnTok1}" style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--border2)"
       data-fallbacks='${fallbacks}' data-icon="${icon}" data-cls="sb-portrait-placeholder" data-sz="56px"
       onerror="nextMonsterSrc(this)" alt="${m.name}">
   </div>`;
@@ -1331,15 +1342,19 @@ async function selectItem(slug) {
   try {
     let data;
     const cfg = SECTIONS[section];
-    if (API_DETAIL_SECTIONS.has(section) && cfg?.open5e) {
+
+    // Use already-loaded list data first — instant, works offline
+    data = allItems.find(i => i.slug === slug);
+
+    // Fall back to live API only if item isn't in loaded list
+    if (!data && API_DETAIL_SECTIONS.has(section) && cfg?.open5e) {
       const r = await fetch(`${OPEN5E_BASE}/${cfg.open5e}/${slug}/`);
       if (!r.ok) throw new Error();
       const raw = await r.json();
       data = (NORMALIZERS[section] || (x => x))(raw);
-    } else {
-      data = allItems.find(i => i.slug === slug);
-      if (!data) throw new Error();
     }
+
+    if (!data) throw new Error();
     body.innerHTML = renderDetail(data);
   } catch {
     body.innerHTML = `<div style="padding:24px;color:var(--text-dim)">Could not load detail.</div>`;
@@ -1515,118 +1530,4 @@ function renderClass(c) {
   function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
   return "<div class=\"sb\">"
     +"<div class=\"sb-name\" style=\"margin-top:14px\">"+c.name+"</div>"
-    +"<div class=\"sb-meta\">"+(c.source||"")+"</div>"
-    +"<hr class=\"sb-divider thick\">"
-    +"<div class=\"sb-props\">"
-    +prop("Hit Die",c.hit_die)+prop("Saving Throws",c.saving_throws)
-    +prop("Armor",c.armor_proficiencies)+prop("Weapons",c.weapon_proficiencies)
-    +"</div>"
-    +(c.subclasses?"<hr class=\"sb-divider\"><div class=\"sb-prop\"><strong>Subclasses</strong> "+c.subclasses+"</div>":"")
-    +"<hr class=\"sb-divider\"><div class=\"location-body\">"+mdBody(c.body||c.desc||"")+"</div>"
-    +"</div>";
-}
-
-function renderBackground(b) {
-  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
-  return "<div class=\"sb\">"
-    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+b.name+"</div>"
-    +"<div class=\"sb-meta\">"+(b.source||"")+"</div>"
-    +"<hr class=\"sb-divider thick\">"
-    +"<div class=\"sb-props\">"
-    +prop("Skill Proficiencies",b.skill_proficiencies)
-    +prop("Tool Proficiencies",b.tool_proficiencies)
-    +prop("Languages",b.languages)
-    +"</div><hr class=\"sb-divider\">"
-    +"<div class=\"location-body\">"+mdBody(b.body||b.desc||"")+"</div>"
-    +"</div>";
-}
-
-function renderFeat(f) {
-  return "<div class=\"sb\">"
-    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+f.name+"</div>"
-    +"<div class=\"sb-meta\">"+(f.category||"")+" &middot; "+(f.source||"")+"</div>"
-    +"<hr class=\"sb-divider thick\">"
-    +(f.prerequisite?"<div class=\"sb-prop\" style=\"margin-bottom:10px\"><strong>Prerequisite</strong> "+f.prerequisite+"</div><hr class=\"sb-divider\">" :"")
-    +"<div class=\"location-body\">"+mdBody(f.body||f.desc||"")+"</div>"
-    +"</div>";
-}
-
-// ── Location / visited ────────────────────────────────────────────
-function toggleVisited(slug) {
-  const visited = getVisited();
-  if (visited.has(slug)) visited.delete(slug);
-  else visited.add(slug);
-  saveVisited(visited);
-  const isVisited = visited.has(slug);
-  const btn = document.getElementById("visited-btn");
-  if (btn) {
-    btn.textContent = isVisited ? "✓ Players have visited" : "○ Mark as visited";
-    btn.style.background  = isVisited ? "rgba(60,158,92,0.15)" : "";
-    btn.style.borderColor = isVisited ? "#3c9e5c" : "";
-    btn.style.color       = isVisited ? "#3c9e5c" : "";
-  }
-  allItems = allItems.map(loc => loc.slug === slug ? { ...loc, visited: isVisited } : loc);
-  renderTable(filterItems());
-}
-
-function renderLocation(loc) {
-  const visitedStyle = loc.visited ? "background:rgba(60,158,92,0.15);border-color:#3c9e5c;color:#3c9e5c" : "";
-  const visitedText  = loc.visited ? "✓ Players have visited" : "○ Mark as visited";
-  function prop(l,v){return v?"<div class=\"sb-prop\"><strong>"+l+"</strong> "+v+"</div>":"";}
-  const hasMeta = loc.faction||loc.status||loc.government||loc.ruler||loc.population;
-  const metaBlock = hasMeta
-    ? "<div class=\"sb-props\" style=\"margin-bottom:10px\">"
-      +prop("Faction",loc.faction)+prop("Status",loc.status)
-      +prop("Government",loc.government)+prop("Ruler",loc.ruler)+prop("Population",loc.population)
-      +"</div><hr class=\"sb-divider\">" : "";
-  const content = loc.body||loc.desc||"";
-  const bodyHtml = content
-    ? (window.marked ? marked.parse(content) : "<p>"+content.replace(/\n\n/g,"</p><p>")+"</p>")
-    : "<p style=\"color:var(--text-dim)\">No content yet.</p>";
-  const url = loc.portrait ? portraitUrl(loc.portrait) : "";
-  const banner = url
-    ? `<img class="sb-banner" src="${url}" alt="" onerror="this.style.display='none'">`
-    : "";
-  return banner
-    +"<div class=\"sb\">"
-    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+loc.name+"</div>"
-    +"<div class=\"sb-meta\">"+(loc.type||"")+(loc.region?" &middot; "+loc.region:"")+"</div>"
-    +"<hr class=\"sb-divider thick\">"
-    +"<div style=\"display:flex;gap:8px;align-items:center;margin-bottom:12px\">"
-    +"<button id=\"visited-btn\" onclick=\"toggleVisited('"+loc.slug+"')\" "
-    +"style=\"padding:6px 14px;border-radius:4px;border:1px solid var(--border2);"
-    +"background:none;color:var(--text-dim);cursor:pointer;font-size:12px;"+visitedStyle+"\">"+visitedText+"</button>"
-    +"<a class=\"open-map-btn\" href=\"/map.html?slug="+loc.slug+"\" target=\"_blank\">🌍 View on Map</a>"
-    +"</div>"
-    +metaBlock
-    +"<div class=\"location-body\">"+bodyHtml+"</div>"
-    +"</div>";
-}
-
-// ── Generic fallback ──────────────────────────────────────────────
-function renderGeneric(data) {
-  const name = data.name || "Unknown";
-  const rows = Object.entries(data)
-    .filter(([k]) => !["slug","name","desc","body","portrait","file","source","visited"].includes(k))
-    .filter(([,v]) => v !== null && v !== undefined && v !== "" && v !== "0")
-    .map(([k,v]) => "<div class=\"sb-prop\"><strong>"+k.replace(/_/g," ")+"</strong> "+v+"</div>")
-    .join("");
-  const desc = data.body || data.desc || "";
-  return "<div class=\"sb\">"
-    +"<div class=\"sb-name\" style=\"margin-top:14px\">"+name+"</div>"
-    +"<hr class=\"sb-divider thick\">"
-    +(rows?"<div class=\"sb-props\">"+rows+"</div><hr class=\"sb-divider\">" :"")
-    +(desc?"<div class=\"location-body\">"+mdBody(desc)+"</div>" :"")
-    +"</div>";
-}
-
-// ── Helpers ───────────────────────────────────────────────────────
-function ordinal(n) {
-  const s = ["th","st","nd","rd"], v = n % 100;
-  return n + (s[(v-20)%10] || s[v] || s[0]);
-}
-
-init();
-</script>
-</body>
-</html>
+    +"<div class=\"sb-meta\">"+(c.source||"")+"</div>
