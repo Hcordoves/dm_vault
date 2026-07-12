@@ -385,6 +385,52 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 /* ── Loading ─────────────────────────────────────────────── */
 .loading { padding: 60px; text-align: center; color: var(--text-dim); font-style: italic; }
 
+/* ── Location map thumbnail ──────────────────────────────── */
+.location-map-wrap {
+  position: relative; border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border2); margin-top: 14px;
+  height: 160px;
+}
+.location-map-thumb {
+  width: 100%; height: 100%;
+  background-image: url('../Map of Faerun.jpeg');
+  /* zoom & pan — update background-position to reframe the current location:
+     x% = how far right to pan (0=far west, 100=far east)
+     y% = how far down to pan (0=far north, 100=far south)
+     background-size controls zoom level (higher % = more zoomed in) */
+  background-size: var(--map-zoom, 380%);
+  background-position: var(--map-x, 37%) var(--map-y, 30%);
+  background-repeat: no-repeat;
+  transition: background-position 0.4s ease, background-size 0.4s ease;
+  filter: brightness(0.75) saturate(0.9);
+}
+.location-map-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(10,9,6,0.9));
+  padding: 20px 12px 10px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.location-map-label .lm-name {
+  font-family: var(--font-head); font-size: 13px;
+  color: var(--gold-lite); letter-spacing: 0.06em;
+}
+.location-map-label .lm-sub {
+  font-size: 11px; color: var(--text-dim); font-style: italic;
+}
+.location-map-pin {
+  position: absolute;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.3), 0 0 8px rgba(201,168,76,0.6);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: pulse-pin 2s ease-in-out infinite;
+}
+@keyframes pulse-pin {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(201,168,76,0.3), 0 0 8px rgba(201,168,76,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 0 14px rgba(201,168,76,0.4); }
+}
+
 /* ── Scrollbar ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
@@ -443,6 +489,18 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
               <tr><td>Current Location</td><td>Silverymoon — partially destroyed, under Fey Alliance control</td></tr>
               <tr><td>Active Mission</td><td>Find Oberon's champion, lost somewhere in the High Forest</td></tr>
             </table>
+          </div>
+
+          <!-- Map thumbnail — update MAP_LOCATION to reframe when the party moves -->
+          <div class="location-map-wrap" id="loc-map-wrap">
+            <div class="location-map-thumb" id="loc-map-thumb"></div>
+            <div class="location-map-pin" id="loc-map-pin"></div>
+            <div class="location-map-label">
+              <div>
+                <div class="lm-name" id="loc-map-name">The High Forest</div>
+                <div class="lm-sub">Current party location</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -565,6 +623,34 @@ let allData = {};         // { npcs: [...], locations: [...], factions: [...], p
 let filteredItems = [];
 let selectedSlug = null;
 
+// ── Map thumbnail config ──────────────────────────────────────────
+// To reframe when the party moves:
+//   zoom:   higher % = more zoomed in (try 300–500)
+//   x/y:    0% = top/left edge, 100% = bottom/right edge
+//   pinX/Y: where to place the pulsing dot within the thumbnail (%)
+const MAP_LOCATION = {
+  label: "The High Forest",
+  zoom:  "380%",
+  x:     "37%",    // pan east–west (higher = further east)
+  y:     "30%",    // pan north–south (higher = further south)
+  pinX:  "46%",    // dot x position within the thumbnail
+  pinY:  "52%",    // dot y position within the thumbnail
+};
+
+function initMapThumb() {
+  const wrap  = document.getElementById("loc-map-wrap");
+  const thumb = document.getElementById("loc-map-thumb");
+  const pin   = document.getElementById("loc-map-pin");
+  const name  = document.getElementById("loc-map-name");
+  if (!thumb) return;
+  thumb.style.setProperty("--map-zoom", MAP_LOCATION.zoom);
+  thumb.style.setProperty("--map-x",    MAP_LOCATION.x);
+  thumb.style.setProperty("--map-y",    MAP_LOCATION.y);
+  pin.style.left = MAP_LOCATION.pinX;
+  pin.style.top  = MAP_LOCATION.pinY;
+  if (name) name.textContent = MAP_LOCATION.label;
+}
+
 // ── Init ──────────────────────────────────────────────────────────
 async function init() {
   // Handle URL params for deep linking
@@ -572,6 +658,7 @@ async function init() {
   const sec  = params.get("section") || "home";
   const slug = params.get("slug");
 
+  initMapThumb();
   await showSection(sec, false);
   if (slug) openDetail(slug);
 }
