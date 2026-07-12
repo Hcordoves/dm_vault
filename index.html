@@ -954,20 +954,25 @@ async function fetchAllPages(url) {
 async function fetchData(sec) {
   const cfg = SECTIONS[sec];
   if (!cfg) return [];
-  // Campaign content — local static files
-  if (!cfg.open5e) {
-    const r = await fetch(`data/${sec}.json`);
-    if (!r.ok) return [];
-    const items = await r.json();
-    if (sec === "locations") {
-      const visited = getVisited();
-      return items.map(loc => ({ ...loc, visited: visited.has(loc.slug) }));
-    }
-    return items;
-  }
-  // open5e content
   const normalize = NORMALIZERS[sec] || (x => x);
-  const raw = await fetchAllPages(`${OPEN5E_BASE}/${cfg.open5e}/?limit=5000`);
+
+  // Always try a pre-built local static file first (fast, works offline)
+  try {
+    const r = await fetch(`data/${sec}.json`);
+    if (r.ok) {
+      const items = await r.json();
+      if (sec === "locations") {
+        const visited = getVisited();
+        return items.map(loc => ({ ...loc, visited: visited.has(loc.slug) }));
+      }
+      // Normalize open5e data whether it came from a pre-built file or the API
+      return cfg.open5e ? items.map(normalize) : items;
+    }
+  } catch(_) {}
+
+  // Fall back to live open5e API (slower, requires internet)
+  if (!cfg.open5e) return [];
+  const raw = await fetchAllPages(`${OPEN5E_BASE}/${cfg.open5e}/?limit=500`);
   return raw.map(normalize);
 }
 

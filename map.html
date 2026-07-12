@@ -249,7 +249,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
       <div class="top-sub">Forgotten Realms · Faerûn</div>
     </div>
     <div class="top-divider"></div>
-    <a href="/" id="back-btn">← DM Vault</a>
+    <a href="index.html" id="back-btn">← DM Vault</a>
     <div class="top-divider"></div>
     <button id="pin-mode-btn" onclick="togglePinMode()">📍 Place Pin</button>
     <div class="top-instructions">
@@ -334,13 +334,12 @@ function initMap() {
     zoomDelta: 0.5,
   });
 
-  // Try to load the map image — attempt several common filenames
-  // Try loading map image from static folder (copy your map image there)
+  // Try to load the map image — relative paths so it works on GitHub Pages
   const MAP_IMAGE_CANDIDATES = [
-    "/Map%20of%20Faerun.jpeg",
-    "/Map%20of%20Faerun.jpg",
-    "/faerun.jpeg",
-    "/faerun.jpg",
+    "Map%20of%20Faerun.jpeg",
+    "Map%20of%20Faerun.jpg",
+    "faerun.jpeg",
+    "faerun.jpg",
   ];
 
   function tryLoadMapImage(candidates) {
@@ -369,10 +368,23 @@ function initMap() {
 }
 
 // ── Data loading ──────────────────────────────────────────────────
+function getVisited() {
+  try { return new Set(JSON.parse(localStorage.getItem("dm_vault_visited") || "[]")); }
+  catch { return new Set(); }
+}
+
+function storedPins() {
+  try { return JSON.parse(localStorage.getItem("dm_vault_pins") || "{}"); }
+  catch { return {}; }
+}
+function writePins(p) { localStorage.setItem("dm_vault_pins", JSON.stringify(p)); }
+
 async function loadLocations() {
   try {
-    const r = await fetch("/api/locations");
-    allLocations = await r.json();
+    const r = await fetch("data/locations.json");
+    const items = await r.json();
+    const visited = getVisited();
+    allLocations = items.map(loc => ({ ...loc, visited: visited.has(loc.slug) }));
   } catch(e) {
     console.error("Failed to load locations:", e);
     allLocations = [];
@@ -380,38 +392,17 @@ async function loadLocations() {
 }
 
 async function loadPins() {
-  try {
-    const r = await fetch("/api/map/pins");
-    pins = await r.json();
-  } catch(e) {
-    pins = {};
-  }
+  pins = storedPins();
 }
 
 async function savePin(slug, lat, lng) {
-  try {
-    await fetch("/api/map/pins", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug, lat, lng }),
-    });
-    pins[slug] = { lat, lng };
-  } catch(e) {
-    console.error("Failed to save pin:", e);
-  }
+  pins[slug] = { lat, lng };
+  writePins(pins);
 }
 
 async function removePin(slug) {
-  try {
-    await fetch("/api/map/pins", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug, lat: null, lng: null }),
-    });
-    delete pins[slug];
-  } catch(e) {
-    console.error("Failed to remove pin:", e);
-  }
+  delete pins[slug];
+  writePins(pins);
 }
 
 // ── Map interactions ──────────────────────────────────────────────
@@ -560,7 +551,7 @@ function openPopup(slug, marker) {
     ${meta ? `<div class="popup-meta">${meta}</div>` : ""}
     ${desc ? `<div class="popup-desc">${desc}</div>` : ""}
     <div class="popup-actions">
-      <a class="popup-btn popup-btn-vault" href="/?section=locations&slug=${slug}" target="_blank">📖 Open in Vault</a>
+      <a class="popup-btn popup-btn-vault" href="index.html?section=locations&slug=${slug}" target="_blank">📖 Open in Vault</a>
       <button class="popup-btn popup-btn-remove" onclick="deletePinAndMarker('${slug}')">🗑 Remove Pin</button>
     </div>`;
 
@@ -610,7 +601,7 @@ function renderList() {
       </div>
       <div class="loc-item-actions">
         ${pinBtn}
-        <a class="loc-action-btn vault-btn" href="/?section=locations&slug=${loc.slug}" target="_blank" onclick="event.stopPropagation()" title="Open in Vault">📖</a>
+        <a class="loc-action-btn vault-btn" href="index.html?section=locations&slug=${loc.slug}" target="_blank" onclick="event.stopPropagation()" title="Open in Vault">📖</a>
       </div>
     </div>`;
   }).join("");
