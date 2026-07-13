@@ -456,6 +456,19 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── Home background image ───────────────────────────────── */
+#home-bg-overlay {
+  display: none;
+  position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+  background-image: url('images/locations/high-forest.jpeg');
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+}
+#home-bg-overlay.visible { display: block; }
 </style>
 </head>
 <body>
@@ -629,6 +642,8 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 </div><!-- #app -->
 
 <!-- Detail panel -->
+<div id="home-bg-overlay"></div>
+
 <div id="detail-panel">
   <div id="detail-bg-img"></div>
   <div id="detail-topbar">
@@ -707,6 +722,9 @@ async function showSection(sec, updateURL = true) {
   if (updateURL) {
     try { history.replaceState(null, "", `?section=${sec}`); } catch(e) {}
   }
+
+  // Toggle home background
+  document.getElementById("home-bg-overlay").classList.toggle("visible", sec === "home");
 
   if (sec === "home") {
     document.getElementById("home-view").style.display = "";
@@ -897,59 +915,51 @@ function filterSidebar() {
   renderSidebar(filtered, currentSection);
 }
 
-// ── Detail panel ──────────────────────────────────────────────────
+// -- Detail panel --
 function openDetail(slug) {
   const items = allData[currentSection] || [];
   const item = items.find(i => i.slug === slug);
   if (!item) return;
-
   selectedSlug = slug;
-  try { history.replaceState(null, "", `?section=${currentSection}&slug=${slug}`); } catch(e) {}
+  try { history.replaceState(null, "", "?section=" + currentSection + "&slug=" + slug); } catch(e) {}
 
+  document.querySelectorAll(".list-item").forEach(el => el.classList.remove("selected"));
   document.querySelectorAll(".list-item").forEach(el => {
-    el.classList.toggle("selected", el.onclick?.toString().includes(`'${slug}'`));
+    if (el.getAttribute("onclick") && el.getAttribute("onclick").includes("'" + slug + "'")) {
+      el.classList.add("selected");
+    }
   });
-  const sidebarItem = document.querySelector(`.list-item[onclick*="'${slug}'"]`);
-  if (sidebarItem) sidebarItem.classList.add("selected");
 
   document.getElementById("detail-title").textContent = item.name;
-
-  // Background image (locations only)
   const bgImg = document.getElementById("detail-bg-img");
-  bgImg.style.backgroundImage = item.background ? `url('${item.background}')` : "none";
+  bgImg.style.backgroundImage = item.background ? "url('" + item.background + "')" : "none";
 
   const img = item.portrait || item.image;
-  const imgHTML = img
-    ? `<img class="detail-portrait" src="${img}" alt="" onerror="this.style.display='none'">`
-    : "";
-
-  const relationship = item.relationship ? `<div class="detail-badge">${badgeHTML(item.relationship)}</div>` : "";
+  const imgHTML = img ? '<img class="detail-portrait" src="' + img + '" alt="" onerror="this.style.display=\'none\'">' : "";
+  const relationship = item.relationship ? '<div class="detail-badge">' + badgeHTML(item.relationship) + '</div>' : "";
 
   let metaLines = [];
   if (currentSection === "npcs") {
     if (item.race_class) metaLines.push(item.race_class);
-    if (item.faction)    metaLines.push(`Faction: ${item.faction}`);
+    if (item.faction)    metaLines.push("Faction: " + item.faction);
     if (item.status)     metaLines.push(item.status);
   } else if (currentSection === "locations") {
     if (item.type)    metaLines.push(item.type);
     if (item.region)  metaLines.push(item.region);
-    if (item.faction) metaLines.push(`Controlled by: ${item.faction}`);
+    if (item.faction) metaLines.push("Controlled by: " + item.faction);
     if (item.status)  metaLines.push(item.status);
   } else if (currentSection === "factions") {
     if (item.type)         metaLines.push(item.type);
-    if (item.headquarters) metaLines.push(`HQ: ${item.headquarters}`);
-    if (item.insignia)     metaLines.push(`Insignia: ${item.insignia}`);
+    if (item.headquarters) metaLines.push("HQ: " + item.headquarters);
+    if (item.insignia)     metaLines.push("Insignia: " + item.insignia);
     if (item.status)       metaLines.push(item.status);
   }
 
-  const body = document.getElementById("detail-body");
-  body.innerHTML = imgHTML + `
-    <div class="detail-content">
-      <div class="detail-name">${item.name}</div>
-      <div class="detail-sub">${metaLines.join(" &nbsp;·&nbsp; ")}</div>
-      ${relationship}
-      <div class="md-body">${renderMarkdown(item.body || "")}</div>
-    </div>`;
+  document.getElementById("detail-body").innerHTML = imgHTML +
+    '<div class="detail-content"><div class="detail-name">' + item.name +
+    '</div><div class="detail-sub">' + metaLines.join(" &nbsp;&middot;&nbsp; ") +
+    '</div>' + relationship +
+    '<div class="md-body">' + renderMarkdown(item.body || "") + '</div></div>';
 
   document.getElementById("detail-panel").classList.add("open");
 }
@@ -964,14 +974,30 @@ function closeDetail() {
   document.querySelectorAll(".list-item").forEach(el => el.classList.remove("selected"));
 }
 
-// ── Markdown ──────────────────────────────────────────────────────
 function renderMarkdown(text) {
   if (!text) return "";
-  text = text.replace(/\[\[([^\]]+?)(?:\s*\(Player\))?\]\]/g, (_, name) => {
+  text = text.replace(/\[\[([^\]]+?)(?:\s*\(Player\))?\]\]/g, function(_, name) {
     const slug = name.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-    return `<span class="wiki-link" onclick="wikiNavigate('${slug}')">${name.split(" (")[0]}</span>`;
+    return '<span class="wiki-link" onclick="wikiNavigate(\'' + slug + '\')">' + name.split(" (")[0] + '</span>';
   });
   return marked.parse(text);
+}
+
+function wikiNavigate(slug) {
+  for (const key of ["npcs","locations","factions"]) {
+    if ((allData[key] || []).find(i => i.slug === slug)) {
+      showSection(key).then(() => openDetail(slug));
+      return;
+    }
+  }
+}
+
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeDetail(); });
+init();
+</script>
+</body>
+</html>
+);
 }
 
 function wikiNavigate(slug) {
