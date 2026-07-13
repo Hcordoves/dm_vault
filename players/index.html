@@ -979,25 +979,3 @@ init();
 </script>
 </body>
 </html>
-);
-}
-
-function wikiNavigate(slug) {
-  for (const key of ["npcs","locations","factions"]) {
-    const items = allData[key] || [];
-    if (items.find(i => i.slug === slug)) {
-      showSection(key).then(() => openDetail(slug));
-      return;
-    }
-  }
-}
-
-// ── Keyboard ──────────────────────────────────────────────────────
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeDetail();
-});
-
-init();
-</script>
-</body>
-</html>
