@@ -456,19 +456,6 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-
-/* ── Home background image ───────────────────────────────── */
-#home-bg-overlay {
-  display: none;
-  position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
-  background-image: url('images/locations/high-forest.jpeg');
-  background-size: cover;
-  background-position: center center;
-  opacity: 0.09;
-  pointer-events: none;
-  z-index: 0;
-}
-#home-bg-overlay.visible { display: block; }
 </style>
 </head>
 <body>
@@ -642,8 +629,6 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 </div><!-- #app -->
 
 <!-- Detail panel -->
-<div id="home-bg-overlay"></div>
-
 <div id="detail-panel">
   <div id="detail-bg-img"></div>
   <div id="detail-topbar">
@@ -722,9 +707,6 @@ async function showSection(sec, updateURL = true) {
   if (updateURL) {
     try { history.replaceState(null, "", `?section=${sec}`); } catch(e) {}
   }
-
-  // Toggle home background
-  document.getElementById("home-bg-overlay").classList.toggle("visible", sec === "home");
 
   if (sec === "home") {
     document.getElementById("home-view").style.display = "";
