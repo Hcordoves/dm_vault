@@ -1,24 +1,184 @@
 [
-  { "number": 1,  "title": "Session Zero, The Introduction",              "chapter": 1, "location": "Waterdeep",    "recap": null },
-  { "number": 2,  "title": "Path to the Stone Tooth",                     "chapter": 1, "location": "The North",    "recap": null },
-  { "number": 3,  "title": "A Dire Situation (The Test)",                 "chapter": 1, "location": "The North",    "recap": null },
-  { "number": 4,  "title": "The Return (Debriefing)",                     "chapter": 1, "location": "Waterdeep",    "recap": null },
-  { "number": 5,  "title": "The Battles (Second Chances)",                "chapter": 1, "location": "The North",    "recap": null },
-  { "number": 6,  "title": "In Which the Party Goes to Yartar",           "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 7,  "title": "In Which the Party Goes to Yartar (Part 2)",  "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 8,  "title": "Battle in Yartar, Ambush",                    "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 9,  "title": "Battle in Yartar, Ambush Continued",          "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 10, "title": "In Which the Party Flees from Yartar",        "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 11, "title": "In Which the Party Returns to Yartar (Expanded)", "chapter": 2, "location": "Yartar",  "recap": null },
-  { "number": 12, "title": "In Which the Party Liberates Yartar",         "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 13, "title": "In Which the Party Continues to Liberate Yartar", "chapter": 2, "location": "Yartar",  "recap": null },
-  { "number": 14, "title": "In Which the Party Finally Liberates Yartar", "chapter": 2, "location": "Yartar",       "recap": null },
-  { "number": 15, "title": "In Which the Party Returns Back to the World","chapter": 2, "location": "The North",    "recap": null },
-  { "number": 16, "title": "The Shopping Episode (Sigil)",                 "chapter": 3, "location": "Sigil",        "recap": null },
-  { "number": 17, "title": "In Which the Party Become Thieves",           "chapter": 3, "location": "Sigil",        "recap": null },
-  { "number": 18, "title": "Are We Finally Leaving Sigil",                "chapter": 3, "location": "Sigil",        "recap": null },
-  { "number": 19, "title": "A Meeting with Friends",                       "chapter": 3, "location": "Sigil",        "recap": null },
-  { "number": 20, "title": "The Long Farewell",                           "chapter": 3, "location": "Sigil",        "recap": null },
-  { "number": 21, "title": "The Party Finally Makes Its Way to Silverymoon", "chapter": 3, "location": "Silverymoon", "recap": null },
-  { "number": 22, "title": "High Forest Encounters",                      "chapter": 4, "location": "High Forest / Silverymoon", "recap": null }
+  {
+    "number": 1,
+    "chapter": 1,
+    "title": "Session Zero: The Introduction",
+    "location": "Waterdeep",
+    "recap": "Each of you received a mysterious invitation — a letter and a token bearing a feather, signed by someone calling himself Mourn Eveningfall. Following the letter's instructions, you made your way to Waterdeep and the Yawning Portal, where the barkeep Durnan was expecting you. Using the tokens he provided sent you somewhere else entirely — the story had already begun."
+  },
+  {
+    "number": 2,
+    "chapter": 1,
+    "title": "The Test (The Meeting)",
+    "location": "Waterdeep",
+    "recap": "You arrived in an unfamiliar, impossibly advanced room. There you met Mourn Eveningfall in person, along with a human ranger named Declan Harp. They explained the Knights of Legend and offered you the chance to join — but only after passing a test."
+  },
+  {
+    "number": 3,
+    "chapter": 1,
+    "title": "Path to the Stone Tooth",
+    "location": "Outside Waterdeep",
+    "recap": "En route to the test itself, you dealt with a scouting party and gathered what information you could before continuing on."
+  },
+  {
+    "number": 4,
+    "chapter": 1,
+    "title": "A Dire Situation (The Test)",
+    "location": "Waterdeep",
+    "recap": "The test went sideways fast — a dangerous encounter with a Gravewitch and a young dragon, resolved only with help from a mysterious half-elf stranger who didn't look happy about how things had gone. Afterward, you were made probationary members of the Knights of Legend, pending an audience with the King."
+  },
+  {
+    "number": 5,
+    "chapter": 1,
+    "title": "The Return (Debriefing)",
+    "location": "Waterdeep",
+    "recap": "Back at headquarters, the truth came out: by the letter of the mission, you'd failed the test. Just as you were being escorted out, a stranger intervened on your behalf — revealing himself as Taeghen Moondown, a founding member of the Knights who had left the order years ago. He vouched for you, and you were given a second chance: hunt down the remaining lieutenants of a threat called Ulfe and recover stolen weapons."
+  },
+  {
+    "number": 6,
+    "chapter": 1,
+    "title": "The Battles (Second Chances)",
+    "location": "Various",
+    "recap": "A string of battles across multiple fronts — Burdog, Yarrack, Karrghaz — tested and proved your growing skill as a team. Along the way, you uncovered a spy in the form of an unassuming crow."
+  },
+  {
+    "number": 7,
+    "chapter": 1,
+    "title": "In the Time That Passed",
+    "location": "Waterdeep and surrounding lands",
+    "recap": "As you waited between missions, the party matured. A few notable threads from this stretch:\n\n- **Trouble in the Sewers** — investigating strange activity below the city, you fought off a pair of duergar and learned the name of one of Ulfe's lieutenants, Nimira.\n- **She's Not Like Other Girls** — a routine target turned out to be a shapeshifting succubus, in one of your toughest fights yet.\n- **Great Ulfe** — an ambush at a cave mouth turned into a brutal fight against Ulfe himself, a ten-foot monstrosity with two massive hounds. You won, exhausted and bloodied.\n- News arrived of a growing crisis — a massive explosion and pillar of light to the north signaled that something enormous had just happened."
+  },
+  {
+    "number": 8,
+    "chapter": 1,
+    "title": "Player 2 Has Entered the Game",
+    "location": "Waterdeep",
+    "recap": "Returning to headquarters, you found the Knights scattered — Mourn, Declan, and others gone to deal with the unfolding crisis, leaving only Aramil (and a very unimpressed young woman named Mystra) behind. A note from Mourn asked you to hold down the fort and protect Mystra until they returned. For the first time, you were truly on your own."
+  },
+  {
+    "number": 9,
+    "chapter": 2,
+    "title": "In Which the Party Goes to Yartar",
+    "location": "Yartar",
+    "recap": "A new threat emerged in the city of Yartar: a controlling force had moved in, tightening its grip through gambling, public brutality, and infiltration of the city guard. You traveled to investigate."
+  },
+  {
+    "number": 10,
+    "chapter": 2,
+    "title": "Battle in Yartar, Ambush",
+    "location": "Yartar",
+    "recap": "While settling into the city, you were confronted in an alleyway by an assassin. The fight escalated quickly, drawing unwanted attention from guards and patrols — and left the party battered, with a building on fire behind you."
+  },
+  {
+    "number": 11,
+    "chapter": 2,
+    "title": "In Which the Party Flees from Yartar",
+    "location": "Noanar's Hold",
+    "recap": "On the run, you made a stop at a town called Noanar's Hold to search for a missing messenger. What you found instead was a powerful, dangerous figure who had taken hostages for her own purposes. After defeating her, you learned just how dire the situation back in Silverymoon had become — the city breached, its people starving, refugees flooding the south bank."
+  },
+  {
+    "number": 12,
+    "chapter": 2,
+    "title": "In Which the Party Returns to Yartar",
+    "location": "Yartar",
+    "recap": "Back in the city, you were approached by a hooded figure — secretly the city's true ruler — asking for your help retaking Yartar from the forces that had seized it."
+  },
+  {
+    "number": 13,
+    "chapter": 2,
+    "title": "In Which the Party Liberates Yartar?",
+    "location": "Yartar",
+    "recap": "A drawn-out campaign of stealth, espionage, and hard fighting to free the city."
+  },
+  {
+    "number": 14,
+    "chapter": 2,
+    "title": "In Which the Party Continues to Liberate Yartar?",
+    "location": "Yartar",
+    "recap": "The campaign to free Yartar dragged on, tense and complicated, as the city's true loyalties and dangers came further into focus."
+  },
+  {
+    "number": 15,
+    "chapter": 2,
+    "title": "In Which the Party Finally Liberates Yartar?",
+    "location": "Yartar",
+    "recap": "It ended in a chaotic, magic-charged confrontation in the town square — one that ripped a hole in reality itself and scattered the party far from where they'd started."
+  },
+  {
+    "number": 16,
+    "chapter": 2,
+    "title": "In Which the Party Returns Back to the World",
+    "location": "Sigil",
+    "recap": "You surfaced in Sigil, the City of Doors — a plane between planes, ruled by the enigmatic Lady of Pain. There, you reunited with an old companion who now called the city home, and who filled you in on what little was known of the situation back home."
+  },
+  {
+    "number": 17,
+    "chapter": 2,
+    "title": "In Which the Party Returns Back to the World: The Shopping Episode",
+    "location": "Sigil",
+    "recap": "With days to kill before your route home opened up, you explored Sigil's market district, learned of dangerous fugitives with steep bounties on their heads, and discovered that Mourn was stranded in the city too — his own way home stolen from him."
+  },
+  {
+    "number": 18,
+    "chapter": 2,
+    "title": "In Which the Party Become Thieves",
+    "location": "Sigil",
+    "recap": "To help Mourn recover a way out of Sigil, you struck a deal and began laying the groundwork to acquire one by less-than-legal means."
+  },
+  {
+    "number": 19,
+    "chapter": 2,
+    "title": "Are We Finally Leaving Sigil?!",
+    "location": "Sigil",
+    "recap": "A tense brush with the local thieves' guild nearly went very wrong. Eventually, your numbers were called, and after passing through a strange customs process, you found yourselves back on the Material Plane — only to be led, solemnly, to the Tomb of the Unnamed Heroes and shown your own graves."
+  },
+  {
+    "number": 20,
+    "chapter": 2,
+    "title": "A Meeting with Friends",
+    "location": "Yartar",
+    "recap": "Brought to the Waterbaron's estate, you discovered an old friend now held that very title. She began the process of granting you formal passage to Silverymoon. During the city's Shieldmeet festival, you investigated rumors of a spy and confronted her directly — a tiefling rogue named Elysia Shadowthorn — leading to a hard-fought battle against shadow creatures in the streets."
+  },
+  {
+    "number": 21,
+    "chapter": 2,
+    "title": "The Party Says Farewell",
+    "location": "Yartar",
+    "recap": "A quiet, personal moment for Kaylee — a crossroads between two very different divine paths, the Raven Queen's offer set against Helm's plea to hold to her oath. She chose to stay with Helm, but not gently — the choice came with real anger at him, for a god she felt had ignored her and left her to make this decision alone, even though the amulet that brought her to this crossroads had been hers to keep and use all along. The Amulet of Ravenkind shattered in the moment of her choosing. Come morning, the city guard had questions about the previous night's violence, and the Waterbaron thanked you for your help before finalizing your writ of passage to Silverymoon."
+  },
+  {
+    "number": 22,
+    "chapter": 2,
+    "title": "The Long Road to Silverymoon",
+    "location": "The Evermoor Way",
+    "recap": "The road from Yartar was long — nearly two weeks of travel, with something unseen shadowing your every step the whole way. You never caught more than glimpses: displaced tracks, rustling leaves, a feeling of being watched that never fully let up. Along the road, Spree preachers held court in town squares, speaking of a leader called Merrick and a new order free of the gods. At Calling Horns and Olostin's Hold, locals traded rumors of strange wolf-like predators in the Evermoors. Whatever was following you never showed itself before Silverymoon came into view — towering spires and shimmering wards, scarred but still standing."
+  },
+  {
+    "number": 23,
+    "chapter": 2,
+    "title": "The Party Finally Makes It to Silverymoon",
+    "location": "Silverymoon",
+    "recap": "At Hunter's Gate, your writ of introduction got you past the Knights in Silver and into a city still visibly recovering from siege. A Tabaxi official named Whispering Wind met you and led you toward the High Palace, past the ruin of House Invincible — defaced, overgrown, abandoned since its fall. At the High Palace, you were received by Aleina Brightlance, commander of the Knights in Silver, whose armor style struck a strange chord of recognition for those who'd met Valas back in Barovia."
+  },
+  {
+    "number": 24,
+    "chapter": 2,
+    "title": "The Party Has a Showdown in the War Room",
+    "location": "Silverymoon — High Palace",
+    "recap": "Everything changed in an instant. Senyar — your old companion, presumed lost — stepped forward with murder in her eyes and hurled fire at the assembled party. Queen Titania's force cage sealed the room before anyone could be hurt, and in the chaos that followed, Merrick revealed his true face: Valas, the fallen cleric whose name had been spoken in Spree sermons the whole way here. Senyar handed him a scroll the party hadn't even known they were carrying. Valas summoned shadow creatures; Titania and the dragon god Zorquan tore them apart. Cornered, Valas's form unraveled into smoke and fled. The war room fell silent, the immediate threat gone — but nothing about what you'd just learned made the road ahead feel safer."
+  },
+  {
+    "number": 25,
+    "chapter": 2,
+    "title": "The Party Meets the Fey King",
+    "location": "Silverymoon — High Palace",
+    "recap": "Titania, calm but resolute, ordered you out of the war room — not as punishment, she made clear, but because the palace's neutrality couldn't hold with violence inside it. Before you reached the gates, an emissary of King Oberon intercepted you: the King wanted words of his own. In a chamber of root and stone beneath the palace, Oberon spoke in riddles about balance and broken branches — and then bound the party in a Fey Geas, a pull toward a task rather than a command. Somewhere in the High Forest, at a place called Briarthorn Ridge, one of his own knights had gone missing, marked by his sigil and lost to something in the dark. Oberon's charge was simple and final: return him, or don't come back.\n\nBefore leaving, you were given the chance to speak with Senyar's body directly. Her spirit, called back just long enough to answer, confirmed the name Valas and admitted — bitterly, painfully — that she'd helped him because she'd felt abandoned and forgotten after her death. She pointed you toward Helm's Hold, maybe Baldur's Gate, as places he'd been seen. It wasn't a happy conversation. It wasn't meant to be."
+  },
+  {
+    "number": 26,
+    "chapter": 3,
+    "title": "The Party Goes to the Woods",
+    "location": "The High Forest",
+    "recap": "Carrying Oberon's geas, you entered the High Forest — and encountered your first taste of what's wrong there. A clearing that looked untouched, perfect and still, turned out to hide something corrupted beneath its calm: a shadow-twisted creature that fought you in a fierce, strange battle. You won, but the wrongness of that clearing — a place that looked fine and wasn't — has stayed with you.\n\nThis is where things currently stand. Oberon's knight is still out there, somewhere deeper in the Forest, and the pull of the geas hasn't faded."
+  }
 ]
