@@ -419,16 +419,28 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 }
 .location-map-pin {
   position: absolute;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.3), 0 0 8px rgba(201,168,76,0.6);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #fff;
+  border: 2px solid #e03030;
+  box-shadow: 0 0 6px rgba(224,48,48,0.9), 0 0 14px rgba(224,48,48,0.5), 0 0 2px rgba(0,0,0,0.8);
   transform: translate(-50%, -50%);
   pointer-events: none;
-  animation: pulse-pin 2s ease-in-out infinite;
+  z-index: 2;
 }
-@keyframes pulse-pin {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(201,168,76,0.3), 0 0 8px rgba(201,168,76,0.6); }
-  50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 0 14px rgba(201,168,76,0.4); }
+.location-map-pin::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 2px solid #e03030;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.9;
+  animation: ripple-pin 2s ease-out infinite;
+}
+@keyframes ripple-pin {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
 }
 
 /* ── Scrollbar ───────────────────────────────────────────── */
@@ -631,10 +643,10 @@ let selectedSlug = null;
 const MAP_LOCATION = {
   label: "The High Forest",
   zoom:  "380%",
-  x:     "37%",    // pan east–west (higher = further east)
-  y:     "30%",    // pan north–south (higher = further south)
-  pinX:  "46%",    // dot x position within the thumbnail
-  pinY:  "52%",    // dot y position within the thumbnail
+  x:     "63%",    // pan east–west (higher = further east)
+  y:     "25%",    // pan north–south (higher = further south)
+  pinX:  "50%",    // dot x position within the thumbnail
+  pinY:  "50%",    // dot y position within the thumbnail
 };
 
 function initMapThumb() {
