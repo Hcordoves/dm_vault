@@ -309,6 +309,19 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
   z-index: 50;
   overflow: hidden;
 }
+/* Location background image at low opacity */
+#detail-bg-img {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.18;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+#detail-topbar { position: relative; z-index: 1; }
+#detail-body   { position: relative; z-index: 1; }
 #detail-panel.open { transform: translateX(0); }
 
 #detail-topbar {
@@ -394,10 +407,6 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 .location-map-thumb {
   width: 100%; height: 100%;
   background-image: url('../Map of Faerun.jpeg');
-  /* zoom & pan — update background-position to reframe the current location:
-     x% = how far right to pan (0=far west, 100=far east)
-     y% = how far down to pan (0=far north, 100=far south)
-     background-size controls zoom level (higher % = more zoomed in) */
   background-size: var(--map-zoom, 380%);
   background-position: var(--map-x, 37%) var(--map-y, 30%);
   background-repeat: no-repeat;
@@ -621,6 +630,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 
 <!-- Detail panel -->
 <div id="detail-panel">
+  <div id="detail-bg-img"></div>
   <div id="detail-topbar">
     <div id="detail-title"></div>
     <button id="detail-close" onclick="closeDetail()">×</button>
@@ -631,7 +641,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 <script>
 // ── State ─────────────────────────────────────────────────────────
 let currentSection = "home";
-let allData = {};         // { npcs: [...], locations: [...], factions: [...], party: {...}, sessions: [...] }
+let allData = {};
 let filteredItems = [];
 let selectedSlug = null;
 
@@ -665,7 +675,6 @@ function initMapThumb() {
 
 // ── Init ──────────────────────────────────────────────────────────
 async function init() {
-  // Handle URL params for deep linking
   const params = new URLSearchParams(window.location.search);
   const sec  = params.get("section") || "home";
   const slug = params.get("slug");
@@ -679,28 +688,24 @@ async function init() {
 async function showSection(sec, updateURL = true) {
   currentSection = sec;
 
-  // Update nav tabs
   document.querySelectorAll(".nav-tab").forEach(t => {
     t.classList.toggle("active", t.dataset.section === sec);
   });
 
-  // Close detail panel
   closeDetail();
 
-  // Hide all views
   document.getElementById("home-view").style.display     = "none";
   document.getElementById("sessions-view").style.display = "none";
   document.getElementById("party-view").style.display    = "none";
   document.getElementById("cards-view").style.display    = "none";
   document.getElementById("notes-view").style.display    = "none";
 
-  // Show/hide sidebar
   const hasSidebar = ["npcs","locations","factions"].includes(sec);
   document.getElementById("sidebar").classList.toggle("hidden", !hasSidebar);
   document.getElementById("sidebar-search").value = "";
 
   if (updateURL) {
-    history.replaceState(null, "", `?section=${sec}`);
+    try { history.replaceState(null, "", `?section=${sec}`); } catch(e) {}
   }
 
   if (sec === "home") {
@@ -731,10 +736,14 @@ async function showSection(sec, updateURL = true) {
 // ── Data loading ──────────────────────────────────────────────────
 async function loadData(key) {
   if (allData[key]) return allData[key];
-  const r = await fetch(`../data/players/${key}.json`);
-  if (!r.ok) return key === "party" ? { active: [], retired: [] } : [];
-  allData[key] = await r.json();
-  return allData[key];
+  try {
+    const r = await fetch(`../data/players/${key}.json`);
+    if (!r.ok) return key === "party" ? { active: [], retired: [] } : [];
+    allData[key] = await r.json();
+    return allData[key];
+  } catch(e) {
+    return key === "party" ? { active: [], retired: [] } : [];
+  }
 }
 
 // ── Sessions ──────────────────────────────────────────────────────
@@ -742,7 +751,6 @@ async function renderSessions() {
   const sessions = await loadData("sessions");
   const container = document.getElementById("sessions-list");
 
-  // Group by chapter
   const chapters = {};
   sessions.forEach(s => {
     const ch = `Chapter ${s.chapter}`;
@@ -774,6 +782,7 @@ function openSessionDetail(num) {
 
   selectedSlug = `session-${num}`;
   document.getElementById("detail-title").textContent = `Session ${String(num).padStart(2,"0")}`;
+  document.getElementById("detail-bg-img").style.backgroundImage = "none";
 
   const body = document.getElementById("detail-body");
   body.innerHTML = `
@@ -895,9 +904,8 @@ function openDetail(slug) {
   if (!item) return;
 
   selectedSlug = slug;
-  history.replaceState(null, "", `?section=${currentSection}&slug=${slug}`);
+  try { history.replaceState(null, "", `?section=${currentSection}&slug=${slug}`); } catch(e) {}
 
-  // Update sidebar selection
   document.querySelectorAll(".list-item").forEach(el => {
     el.classList.toggle("selected", el.onclick?.toString().includes(`'${slug}'`));
   });
@@ -905,6 +913,10 @@ function openDetail(slug) {
   if (sidebarItem) sidebarItem.classList.add("selected");
 
   document.getElementById("detail-title").textContent = item.name;
+
+  // Background image (locations only)
+  const bgImg = document.getElementById("detail-bg-img");
+  bgImg.style.backgroundImage = item.background ? `url('${item.background}')` : "none";
 
   const img = item.portrait || item.image;
   const imgHTML = img
@@ -943,7 +955,11 @@ function openDetail(slug) {
 }
 
 function closeDetail() {
-  document.getElementById("detail-panel").classList.remove("open");
+  const panel = document.getElementById("detail-panel");
+  if (!panel) return;
+  panel.classList.remove("open");
+  const bg = document.getElementById("detail-bg-img");
+  if (bg) bg.style.backgroundImage = "none";
   selectedSlug = null;
   document.querySelectorAll(".list-item").forEach(el => el.classList.remove("selected"));
 }
@@ -951,7 +967,6 @@ function closeDetail() {
 // ── Markdown ──────────────────────────────────────────────────────
 function renderMarkdown(text) {
   if (!text) return "";
-  // Convert Obsidian wiki-links: [[Name (Player)]] → clickable span
   text = text.replace(/\[\[([^\]]+?)(?:\s*\(Player\))?\]\]/g, (_, name) => {
     const slug = name.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
     return `<span class="wiki-link" onclick="wikiNavigate('${slug}')">${name.split(" (")[0]}</span>`;
@@ -960,7 +975,6 @@ function renderMarkdown(text) {
 }
 
 function wikiNavigate(slug) {
-  // Try to find in any section
   for (const key of ["npcs","locations","factions"]) {
     const items = allData[key] || [];
     if (items.find(i => i.slug === slug)) {

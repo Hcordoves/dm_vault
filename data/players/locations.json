@@ -2,6 +2,7 @@
   {
     "slug": "silverymoon",
     "name": "Silverymoon",
+    "background": "images/locations/silverymoon.jpeg",
     "region": "Luruar, Northwest Faerûn",
     "type": "City",
     "status": "Partially destroyed — Fey Alliance occupied",
@@ -12,6 +13,7 @@
   {
     "slug": "yartar",
     "name": "Yartar",
+    "background": "images/locations/yartar.jpeg",
     "region": "Dessarin Valley, Savage Frontier",
     "type": "City — fortified small city",
     "status": "Rebuilding after the Battle of Yartar",
@@ -22,6 +24,7 @@
   {
     "slug": "waterdeep",
     "name": "Waterdeep",
+    "background": "images/locations/waterdeep.jpeg",
     "region": "Sword Coast North",
     "type": "City — major metropolitan city-state",
     "status": "Active",
