@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -390,10 +392,85 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 }
 
 /* ── Notes view ──────────────────────────────────────────── */
-#notes-view { padding: 40px 32px; max-width: 700px; margin: 0 auto; text-align: center; }
-.notes-icon { font-size: 48px; margin-bottom: 16px; }
-.notes-title { font-family: var(--font-head); font-size: 22px; color: var(--gold-lite); margin-bottom: 12px; }
-.notes-desc { color: var(--text-dim); font-size: 15px; line-height: 1.7; }
+#notes-view { padding: 24px 24px 40px; max-width: 820px; }
+.notes-header {
+  font-family: var(--font-head); font-size: 20px; color: var(--gold-lite);
+  letter-spacing: 0.06em; margin-bottom: 20px;
+  border-bottom: 1px solid var(--border2); padding-bottom: 10px;
+}
+.notes-form-card {
+  background: var(--bg2); border: 1px solid var(--border2); border-radius: 6px;
+  padding: 16px 18px; margin-bottom: 20px;
+}
+.notes-form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.notes-form-row input, .notes-form-row select {
+  background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px;
+  color: var(--text); padding: 7px 10px; font-size: 14px;
+  font-family: var(--font); outline: none;
+}
+.notes-form-row input { flex: 1; }
+.notes-form-row input:focus, .notes-form-row select:focus { border-color: var(--gold-dim); }
+.notes-form-row input::placeholder { color: var(--text-dim); }
+.notes-form-row select { background: var(--bg3); }
+.notes-form-row select option { background: var(--bg3); }
+#note-text {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px;
+  color: var(--text); padding: 9px 10px; font-size: 15px; font-family: var(--font);
+  resize: vertical; outline: none; margin-bottom: 10px; display: block;
+}
+#note-text:focus { border-color: var(--gold-dim); }
+#note-text::placeholder { color: var(--text-dim); }
+#note-submit {
+  padding: 8px 22px; background: var(--gold-dim); border: 1px solid var(--gold-dark);
+  border-radius: 4px; color: #0f0e0b; font-family: var(--font-head); font-size: 13px;
+  letter-spacing: 0.06em; cursor: pointer; transition: all .15s;
+}
+#note-submit:hover { background: var(--gold); }
+#note-submit:disabled { opacity: 0.45; cursor: default; }
+
+.notes-filter-row { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.nf-btn {
+  padding: 5px 14px; border-radius: 12px; border: 1px solid var(--border2);
+  background: none; color: var(--text-dim); font-size: 12px;
+  font-family: var(--font-head); letter-spacing: 0.05em; cursor: pointer; transition: all .12s;
+}
+.nf-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+.nf-btn.active { background: rgba(201,168,76,0.12); border-color: var(--gold-dark); color: var(--gold); }
+
+.note-item {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 5px;
+  padding: 12px 14px; margin-bottom: 10px; transition: border-color .12s;
+}
+.note-item:hover { border-color: var(--border2); }
+.note-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.note-category-badge {
+  font-family: var(--font-head); font-size: 10px; letter-spacing: 0.05em;
+  padding: 2px 8px; border-radius: 10px; text-transform: uppercase; flex-shrink: 0;
+}
+.badge-general { background: rgba(201,168,76,0.10); color: var(--gold);    border: 1px solid var(--gold-dim); }
+.badge-clue    { background: rgba(90,158,200,0.12); color: #7ab4d4;        border: 1px solid rgba(90,158,200,0.28); }
+.badge-npc     { background: rgba(170,120,200,0.12); color: #c498e8;       border: 1px solid rgba(170,120,200,0.28); }
+.badge-quest   { background: rgba(90,158,106,0.12); color: var(--green);   border: 1px solid rgba(90,158,106,0.28); }
+.badge-lore    { background: rgba(200,130,80,0.12); color: #e8a070;        border: 1px solid rgba(200,130,80,0.28); }
+.note-author { font-family: var(--font-head); font-size: 12px; color: var(--text-bright); }
+.note-time { font-size: 12px; color: var(--text-dim); margin-left: auto; }
+.note-delete-btn {
+  background: none; border: none; color: var(--text-dim); cursor: pointer;
+  font-size: 16px; line-height: 1; padding: 0 2px; transition: color .12s;
+}
+.note-delete-btn:hover { color: var(--red); }
+.note-text { font-size: 15px; line-height: 1.65; color: var(--text); white-space: pre-wrap; word-break: break-word; }
+
+.notes-empty { padding: 30px 0; text-align: center; color: var(--text-dim); font-style: italic; }
+.notes-setup-msg {
+  background: var(--bg2); border: 1px solid var(--border2); border-radius: 6px;
+  padding: 24px 28px; margin-top: 8px;
+}
+.notes-setup-title { font-family: var(--font-head); font-size: 15px; color: var(--gold); margin-bottom: 12px; }
+.notes-setup-msg p { margin-bottom: 8px; font-size: 14px; line-height: 1.65; color: var(--text-dim); }
+.notes-setup-msg ol { margin: 10px 0 10px 20px; }
+.notes-setup-msg li { margin-bottom: 5px; font-size: 14px; line-height: 1.6; color: var(--text-dim); }
+.notes-setup-msg code { background: var(--bg3); padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 13px; color: var(--gold-lite); }
 
 /* ── Loading ─────────────────────────────────────────────── */
 .loading { padding: 60px; text-align: center; color: var(--text-dim); font-style: italic; }
@@ -614,13 +691,33 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 
       <!-- Notes -->
       <div id="notes-view" style="display:none">
-        <div class="notes-icon">✍️</div>
-        <div class="notes-title">Party Notes</div>
-        <p class="notes-desc">
-          Shared notes for the party — coming soon.<br><br>
-          This section will let anyone in the party add notes that everyone can see.
-          No account required.
-        </p>
+        <div class="notes-header">Party Notes</div>
+
+        <div class="notes-form-card">
+          <div class="notes-form-row">
+            <input id="note-author" type="text" placeholder="Your name" maxlength="40" autocomplete="off">
+            <select id="note-category">
+              <option value="general">General</option>
+              <option value="clue">Clue</option>
+              <option value="npc">NPC</option>
+              <option value="quest">Quest</option>
+              <option value="lore">Lore</option>
+            </select>
+          </div>
+          <textarea id="note-text" placeholder="Add a note the whole party can see…" rows="3"></textarea>
+          <button id="note-submit" onclick="submitNote()">Add Note</button>
+        </div>
+
+        <div class="notes-filter-row">
+          <button class="nf-btn active" data-cat="all"     onclick="filterNotes('all')">All</button>
+          <button class="nf-btn"        data-cat="clue"    onclick="filterNotes('clue')">Clues</button>
+          <button class="nf-btn"        data-cat="npc"     onclick="filterNotes('npc')">NPCs</button>
+          <button class="nf-btn"        data-cat="quest"   onclick="filterNotes('quest')">Quests</button>
+          <button class="nf-btn"        data-cat="lore"    onclick="filterNotes('lore')">Lore</button>
+          <button class="nf-btn"        data-cat="general" onclick="filterNotes('general')">General</button>
+        </div>
+
+        <div id="notes-list"><div class="loading">Loading notes…</div></div>
       </div>
 
     </div><!-- #content -->
@@ -639,6 +736,22 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 </div>
 
 <script>
+// ── Firebase Config ───────────────────────────────────────────────
+// Paste your Firebase config object here (get it from Firebase Console →
+// Project Settings → Your apps → SDK setup → Config).
+// Leave as null until you have a Firebase project set up.
+const FIREBASE_CONFIG = null;
+// Example of what it looks like when filled in:
+// const FIREBASE_CONFIG = {
+//   apiKey:            "AIzaSy...",
+//   authDomain:        "your-project.firebaseapp.com",
+//   databaseURL:       "https://your-project-default-rtdb.firebaseio.com",
+//   projectId:         "your-project",
+//   storageBucket:     "your-project.appspot.com",
+//   messagingSenderId: "123456789",
+//   appId:             "1:123456789:web:abc123..."
+// };
+
 // ── State ─────────────────────────────────────────────────────────
 let currentSection = "home";
 let allData = {};
@@ -730,6 +843,7 @@ async function showSection(sec, updateURL = true) {
     await loadAndRenderCards("factions");
   } else if (sec === "notes") {
     document.getElementById("notes-view").style.display = "";
+    renderNotesSection();
   }
 }
 
@@ -972,6 +1086,164 @@ function wikiNavigate(slug) {
       return;
     }
   }
+}
+
+// ── Notes (Firebase) ──────────────────────────────────────────────
+let notesDb       = null;
+let allNotes      = [];
+let notesFilter   = "all";
+let notesListening = false;
+
+function renderNotesSection() {
+  // Restore last-used author name
+  const savedAuthor = localStorage.getItem("kol_notes_author") || "";
+  const authorEl = document.getElementById("note-author");
+  if (authorEl && !authorEl.value && savedAuthor) authorEl.value = savedAuthor;
+
+  if (!FIREBASE_CONFIG) {
+    document.getElementById("notes-list").innerHTML = `
+      <div class="notes-setup-msg">
+        <div class="notes-setup-title">⚙️ One-time setup needed</div>
+        <p>Party Notes uses Firebase Realtime Database (free). To activate it:</p>
+        <ol>
+          <li>Go to <strong>console.firebase.google.com</strong> and create a project (skip Analytics).</li>
+          <li>In the project, go to <strong>Build → Realtime Database → Create database</strong>, choose any location, then <strong>Start in test mode</strong>.</li>
+          <li>Go to <strong>Project Settings → Your apps → Add web app</strong>, register the app, then copy the <code>firebaseConfig</code> object.</li>
+          <li>Open <code>players/index.html</code>, find <code>const FIREBASE_CONFIG = null;</code> near the top of the &lt;script&gt; block, and replace <code>null</code> with your config object.</li>
+          <li>Push the updated file to GitHub — notes will be live instantly.</li>
+        </ol>
+      </div>`;
+    return;
+  }
+
+  // Init Firebase once
+  if (!notesDb) {
+    try {
+      if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+      notesDb = firebase.database();
+    } catch(e) {
+      console.error("Firebase init failed:", e);
+      document.getElementById("notes-list").innerHTML =
+        `<div class="notes-empty">Firebase error — check your config in the console.</div>`;
+      return;
+    }
+  }
+
+  // Subscribe once; listener survives section switches
+  if (!notesListening) {
+    notesListening = true;
+    notesDb.ref("notes").on("value", snapshot => {
+      const data = snapshot.val() || {};
+      allNotes = Object.entries(data)
+        .map(([id, n]) => ({ id, ...n }))
+        .sort((a, b) => b.timestamp - a.timestamp);
+      renderNotesList();
+    }, err => {
+      console.error("Notes read error:", err);
+      document.getElementById("notes-list").innerHTML =
+        `<div class="notes-empty">Couldn't load notes — check Firebase rules.</div>`;
+    });
+  } else {
+    renderNotesList();
+  }
+}
+
+function renderNotesList() {
+  const filtered = notesFilter === "all"
+    ? allNotes
+    : allNotes.filter(n => n.category === notesFilter);
+
+  const container = document.getElementById("notes-list");
+  if (!container) return;
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="notes-empty">No notes yet${notesFilter !== "all" ? " in this category" : ""}. Be the first!</div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(note => `
+    <div class="note-item">
+      <div class="note-header">
+        <span class="note-category-badge badge-${escapeAttr(note.category || "general")}">${escapeHtml(note.category || "general")}</span>
+        <span class="note-author">${escapeHtml(note.author || "Anonymous")}</span>
+        <span class="note-time">${relativeTime(note.timestamp)}</span>
+        <button class="note-delete-btn" onclick="deleteNote('${escapeAttr(note.id)}')" title="Delete note">×</button>
+      </div>
+      <div class="note-text">${escapeHtml(note.text || "")}</div>
+    </div>`).join("");
+}
+
+function submitNote() {
+  if (!notesDb) return;
+  const authorEl   = document.getElementById("note-author");
+  const categoryEl = document.getElementById("note-category");
+  const textEl     = document.getElementById("note-text");
+  const submitBtn  = document.getElementById("note-submit");
+
+  const author   = (authorEl.value   || "").trim();
+  const category = categoryEl.value  || "general";
+  const text     = (textEl.value     || "").trim();
+  if (!text) { textEl.focus(); return; }
+
+  // Remember author
+  if (author) { try { localStorage.setItem("kol_notes_author", author); } catch(e) {} }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Saving…";
+
+  notesDb.ref("notes").push({
+    author:    author || "Anonymous",
+    category,
+    text,
+    timestamp: Date.now()
+  }).then(() => {
+    textEl.value = "";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Add Note";
+  }).catch(err => {
+    console.error("Write failed:", err);
+    alert("Couldn't save note. Make sure the Firebase database rules allow writes.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Add Note";
+  });
+}
+
+function deleteNote(id) {
+  if (!notesDb || !id) return;
+  if (!confirm("Delete this note?")) return;
+  notesDb.ref("notes/" + id).remove().catch(err => {
+    console.error("Delete failed:", err);
+    alert("Couldn't delete note.");
+  });
+}
+
+function filterNotes(cat) {
+  notesFilter = cat;
+  document.querySelectorAll(".nf-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.cat === cat));
+  renderNotesList();
+}
+
+function relativeTime(ts) {
+  if (!ts) return "";
+  const diff = Date.now() - ts;
+  const m = Math.floor(diff / 60000);
+  if (m < 1)  return "just now";
+  if (m < 60) return m + "m ago";
+  const h = Math.floor(m / 60);
+  if (h < 24) return h + "h ago";
+  const d = Math.floor(h / 24);
+  if (d < 7)  return d + "d ago";
+  return new Date(ts).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function escapeAttr(str) {
+  return String(str).replace(/'/g,"\\'").replace(/"/g,"&quot;");
 }
 
 document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeDetail(); });
