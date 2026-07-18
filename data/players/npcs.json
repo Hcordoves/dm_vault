@@ -1,5 +1,17 @@
 [
   {
+    "slug": "aramil-amakiir",
+    "name": "Aramil Amakiir",
+    "race_class": "Eladrin / Sorcerer",
+    "faction": "Knights of Legend",
+    "faction_slug": "knights-of-legend",
+    "status": "Alive",
+    "relationship": "Friendly — with reservations",
+    "portrait": null,
+    "npc_type": "ally",
+    "body": "**Race/Class:** Eladrin / Sorcerer\n**Faction:** Knights of Legend\n**Status:** Alive\n**Relationship:** Friendly — with reservations\n\n---\n\n## What You Know\n\nAramil Amakiir is a member of the Knights of Legend — an exotic-looking elf, tall and thin, with long black hair and a distant look in his eyes, as if he's always working out a problem only he can see. He is almost certainly drunk, or partway there, at any given moment. Despite that, he carries himself with an unsettling precision that suggests the drinking is covering for something more calculated underneath.\n\nHe's charismatic and cunning, and presents as a lovable eccentric — the charming drunk with enormous magical talent. His loyalty to the Knights of Legend is genuine, but everyone who spends time around him gets the sense there's a larger agenda he doesn't discuss.\n\n---\n\n## What He Wants\n\nTo be known as the greatest magic user in the realms — not for fame, but for the power that comes with being undisputed. What exactly that ambition is building toward is still unclear.\n\n---\n\n## Connections\n- Mourn Eveningfall — Allied through the Knights of Legend\n- Knights of Legend — Member; his access to the organization's resources and missions serves purposes of his own"
+  },
+  {
     "slug": "augrin-bravecarver",
     "name": "Augrin Bravecarver",
     "race_class": "Minotaur / Barbarian",
@@ -8,18 +20,84 @@
     "status": "Missing — High Forest",
     "relationship": "Friendly",
     "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Augrin%20Bravecarver.jpeg",
+    "npc_type": "ally",
     "body": "**Race/Class:** Minotaur / Barbarian\n**Faction:** Knights of Legend\n**Status:** Missing — High Forest\n**Relationship:** Friendly\n\n---\n\n## What You Know\n\nAugrin Bravecarver is a Minotaur barbarian and member of the Knights of Legend. He has gone missing somewhere in the High Forest.\n\nHe is enormous. Covered in scars from years of gladiatorial combat. Not a subtle presence by any measure. What he lacks in social refinement he makes up for in raw loyalty and physical capability — when Augrin commits to something, he does not stop.\n\nHis story is a rough one. Abandoned as a small child and left in the wild to die, he was found and raised by a wandering band of barbarians. His unique nature eventually got him kidnapped by slavers and sold into the arena, where he became a champion — suffering only one defeat in his entire career: a loss to Taeghen Moondown, fighting in disguise as the Blue Wyvern. He was later recruited and freed by Charles Vane, who brought him into the Knights of Legend as their muscle.\n\nHe is most at ease in the wilds. Cities confuse him. Politics frustrate him. But ask him to protect someone or push through something dangerous, and there is no one more reliable.\n\n---\n\n## What He Wants\n\nTo be free. To find his tribe — the band of barbarians who raised him after his abandonment. He may not fully understand that he already is free, that the Knights of Legend don't hold him there. He serves because it gives him purpose, not because he's compelled to.\n\n---\n\n## Connections\n- Mourn Eveningfall — Leader of the Knights of Legend; incapacitated\n- Taeghen Moondown — The only person to ever defeat Augrin in combat\n- Charles Vane — Recruited and freed him from the arena"
   },
   {
-    "slug": "bryleth-player-1",
-    "name": "Bryleth",
-    "race_class": "Fierna Tiefling / Druid",
-    "faction": "Spree Alliance",
-    "faction_slug": "spree-alliance",
-    "status": "Alive — whereabouts unknown",
+    "slug": "aurgolarossa",
+    "name": "Aurgolarossa",
+    "race_class": "Unknown",
+    "faction": "Unknown",
+    "faction_slug": "unknown",
+    "status": "Alive",
     "relationship": "Hostile",
     "portrait": null,
-    "body": "**Race/Class:** Fierna Tiefling / Druid\n**Faction:** Spree Alliance\n**Status:** Alive — whereabouts unknown\n**Relationship:** Hostile\n\n---\n\n## What You Know\n\nBryleth is a Spree Alliance operative and a serious threat in the current chapter. She is a Fierna Tiefling druid with olive-green skin, prominent horns, long grey hair, and dark, intense eyes. She carries a druidic staff and wears rough, earthy clothing. She looks like someone who chose the wilderness completely — not as a retreat, but as a weapon.\n\nHer powers center on the land itself: she can summon roots and vines to entangle enemies, call animals and elementals to attack, control weather, and cause earthquakes and landslides. She is territorial in the extreme. People who enter her domain uninvited disappear. There are folk tales about her in the villages near the High Forest — warnings told to children.\n\nShe calls herself the protector of the land, but her real motivation is revenge. The gods, in her view, destroyed her home and killed everyone she loved. She survived alone. That grief became something harder and colder — and she has been hunting anything connected to divine power ever since.\n\n---\n\n## What She Wants\n\nVengeance against the gods. She will not stop. She will not negotiate on this point. Anyone who serves the gods, worships them, or benefits from their power is, to her, complicit.\n\n---\n\n## Known Capabilities\n- Roots and vines — can entangle enemies and drag them into the earth\n- Summon animals and elementals\n- Weather control\n- Earthquakes and landslides\n- Extreme territorial awareness — she knows her domain intimately\n\n---\n\n## Connections\n- Valas Halfinas — Operates within his organization; shares his hatred of divine power"
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": false,
+        "text": null
+      }
+    ]
+  },
+  {
+    "slug": "beira",
+    "name": "Beira",
+    "race_class": "Goliath / Wizard",
+    "faction": "Spree Alliance",
+    "faction_slug": "spree-alliance",
+    "status": "Alive",
+    "relationship": "Hostile",
+    "portrait": null,
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": false,
+        "text": null
+      }
+    ]
   },
   {
     "slug": "bryleth",
@@ -30,7 +108,96 @@
     "status": "Alive — whereabouts unknown",
     "relationship": "Hostile",
     "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Bryleth%20the%20Southwood%20Witch.jpeg",
-    "body": "**Race/Class:** Fierna Tiefling / Druid\n**Faction:** Spree Alliance\n**Status:** Alive — whereabouts unknown\n**Relationship:** Hostile\n\n---\n\n## What You Know\n\nBryleth is a Spree Alliance operative and a serious threat in the current chapter. She is a Fierna Tiefling druid with olive-green skin, prominent horns, long grey hair, and dark, intense eyes. She carries a druidic staff and wears rough, earthy clothing. She looks like someone who chose the wilderness completely — not as a retreat, but as a weapon.\n\nHer powers center on the land itself: she can summon roots and vines to entangle enemies, call animals and elementals to attack, control weather, and cause earthquakes and landslides. She is territorial in the extreme. People who enter her domain uninvited disappear. There are folk tales about her in the villages near the High Forest — warnings told to children.\n\nShe calls herself the protector of the land, but her real motivation is revenge. The gods, in her view, destroyed her home and killed everyone she loved. She survived alone. That grief became something harder and colder — and she has been hunting anything connected to divine power ever since.\n\n---\n\n## What She Wants\n\nVengeance against the gods. She will not stop. She will not negotiate on this point. Anyone who serves the gods, worships them, or benefits from their power is, to her, complicit.\n\n---\n\n## Known Capabilities\n- Roots and vines — can entangle enemies and drag them into the earth\n- Summon animals and elementals\n- Weather control\n- Earthquakes and landslides\n- Extreme territorial awareness — she knows her domain intimately\n\n---\n\n## Connections\n- Valas Halfinas — Operates within his organization; shares his hatred of divine power"
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": true,
+        "text": "Bryleth is a Spree Alliance operative and a serious threat in the current chapter. She is a Fierna Tiefling druid with olive-green skin, prominent horns, long grey hair, and dark, intense eyes. She carries a druidic staff and wears rough, earthy clothing. She looks like someone who chose the wilderness completely — not as a retreat, but as a weapon.\n\nHer powers center on the land itself: she can summon roots and vines to entangle enemies, call animals and elementals to attack, control weather, and cause earthquakes and landslides. She is territorial in the extreme. People who enter her domain uninvited disappear. There are folk tales about her in the villages near the High Forest — warnings told to children.\n\nShe calls herself the protector of the land, but her real motivation is revenge. The gods, in her view, destroyed her home and killed everyone she loved. She survived alone. That grief became something harder and colder — and she has been hunting anything connected to divine power ever since."
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": true,
+        "text": "Vengeance against the gods. She will not stop. She will not negotiate on this point. Anyone who serves the gods, worships them, or benefits from their power is, to her, complicit."
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": true,
+        "text": "- Roots and vines — can entangle enemies and drag them into the earth\n- Summon animals and elementals\n- Weather control\n- Earthquakes and landslides\n- Extreme territorial awareness — she knows her domain intimately"
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": true,
+        "text": "- Valas Halfinas — Operates within his organization; shares his hatred of divine power"
+      }
+    ]
+  },
+  {
+    "slug": "charles-vane",
+    "name": "Charles Vane",
+    "race_class": "Changeling / Rogue-Fighter",
+    "faction": "Knights of Legend",
+    "faction_slug": "knights-of-legend",
+    "status": "Alive",
+    "relationship": "Friendly — trust carefully",
+    "portrait": null,
+    "npc_type": "ally",
+    "body": "**Race/Class:** Changeling / Rogue-Fighter\n**Faction:** Knights of Legend\n**Status:** Alive\n**Relationship:** Friendly — trust carefully\n\n---\n\n## What You Know\n\nCharles Vane is the Knights of Legend's spymaster and emissary. As a Changeling, he takes whatever form serves him best — his default presentation is a human male with long golden blonde hair and piercing blue eyes flecked with green, handsome and wealthy-looking, the kind of face that disarms people before they realize what's happened. He carries a rapier and pistol and dresses like someone who owns the room he just walked into.\n\nHe's secretive and cunning, with a hot temper underneath a polished surface. Vane has a gift for making everyone feel like the most important person in the conversation — until they're not. He is genuinely loyal to the Knights of Legend, but loyalty for Charles Vane has always meant loyalty to the outcome, not the principle.\n\nCaptain of the warship *Ranger* and owner of the Black Sails Trading Company — the largest trading company in Faerûn — he built his fortune through methods that have never been formally proven but are widely rumored to involve piracy and smuggling. He was the one who walked into a gladiatorial arena and personally recruited Augrin Bravecarver (Player)|Augrin Bravecarver.\n\n---\n\n## What He Wants\n\nTo make the Black Sails Trading Company the only trading company in Faerûn — he doesn't much care how he gets there. His work as the Knights of Legend's spymaster runs in parallel: information is the most profitable commodity, and he collects it from everyone.\n\n---\n\n## Connections\n- Augrin Bravecarver (Player)|Augrin Bravecarver — Recruited and freed him from the arena; Augrin's primary loyalty figure\n- Mourn Eveningfall — Fellow Knights of Legend leadership\n- Knights of Legend — Spymaster and emissary"
+  },
+  {
+    "slug": "declan-harp",
+    "name": "Declan Harp",
+    "race_class": "Human / Ranger",
+    "faction": "Knights of Legend",
+    "faction_slug": "knights-of-legend",
+    "status": "Alive",
+    "relationship": "Friendly",
+    "portrait": null,
+    "npc_type": "ally",
+    "body": "**Race/Class:** Human / Ranger\n**Faction:** Knights of Legend\n**Status:** Alive\n**Relationship:** Friendly\n\n---\n\n## What You Know\n\nDeclan Harp is Mourn Eveningfall's second-in-command and, with Mourn currently incapacitated, the de facto field leader of the Knights of Legend. Long wavy black hair, a long beard, heavily muscular, with piercing yellow eyes and a scar above his left eye — he looks like someone who has spent a lifetime in wilderness that didn't want him there, and won.\n\nHe's aggressive and intelligent, the blunt instrument the Knights of Legend reach for when diplomacy has been exhausted. Wise and calculating in the field, but with a strong tendency to solve problems with violence — effective, and occasionally a liability. He's also a notorious ranger and bounty hunter, leader of the Black Wolf Company, and built his reputation on results: quiet, efficient, and final.\n\n---\n\n## What He Wants\n\nTo protect the forests and wildlife of Faerûn, at whatever cost necessary. He allied with the Knights of Legend because it gives him the reach and authority to act on threats to the natural world he couldn't address alone — and right now, that makes him the most immediate point of contact for anything involving the High Forest.\n\n---\n\n## Connections\n- Mourn Eveningfall — Direct superior; Declan is his second-in-command\n- Knights of Legend — Senior member; field leader in Mourn's absence\n- Black Wolf Company — His own mercenary and bounty-hunting company"
+  },
+  {
+    "slug": "drus-the-butcher-fullmaw",
+    "name": "Drus the Butcher Fullmaw",
+    "race_class": "Orc",
+    "faction": "Spree Alliance (allied) — Leader of the Dead Rabbits",
+    "faction_slug": "spree-alliance-allied-leader-of-the-dead-rabbits",
+    "status": "Deceased",
+    "relationship": "Hostile",
+    "portrait": null,
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": false,
+        "text": null
+      }
+    ]
   },
   {
     "slug": "king-oberon",
@@ -41,7 +208,46 @@
     "status": "Alive — rules Silverymoon's North Bank",
     "relationship": "Neutral",
     "portrait": null,
+    "npc_type": "ally",
     "body": "**Race/Class:** Archfey\n**Faction:** Fey Alliance\n**Status:** Alive — rules Silverymoon's North Bank\n**Relationship:** Neutral\n\n---\n\n## What You Know\n\nKing Oberon is the co-ruler of the Fey Alliance alongside Queen Titania. He is the diplomatic face of the fey in Silverymoon — the one who meets with outsiders, manages relationships between the fey clans, and projects an image of stability and reasonable governance.\n\nHe presents as measured, gracious, and approachable. He speaks carefully and listens well. He is the kind of ruler who makes you feel heard, which makes him effective and, if you're paying attention, slightly unnerving — you are rarely entirely sure what he wants from a conversation until it's over.\n\nHe is not a pushover. The Fey Alliance has survived displacement from their home plane and carved out a significant territorial foothold in the prime material plane under his and Titania's leadership. That doesn't happen by accident.\n\n---\n\n## What He Wants\n\nPrimarily: to keep the fey clans unified and surviving until they can find a way home. In the short term: to maintain Fey Alliance control of Silverymoon's North Bank, build useful relationships, and avoid being drawn into the war between the Lord's Alliance and the Spree.\n\nHe is neutral by policy, not by nature. If the right offer came along — something that meaningfully advanced the fey's path home — that neutrality would shift.\n\n---\n\n## How to Read Him\n\nOberon is the easier of the two fey rulers to deal with. He will meet you, hear you out, and respond in kind. What you get from him is honest as far as it goes — but it doesn't go all the way.\n\nFor the full picture, you'd need Titania.\n\n---\n\n## Connections\n- Queen Titania — Co-ruler; partner; she holds the true power\n- Silverymoon — Controls the North Bank"
+  },
+  {
+    "slug": "maradim",
+    "name": "Maradim",
+    "race_class": "Human / Monk",
+    "faction": "Spree Alliance",
+    "faction_slug": "spree-alliance",
+    "status": "Alive",
+    "relationship": "Hostile",
+    "portrait": null,
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": false,
+        "text": null
+      }
+    ]
   },
   {
     "slug": "mourn-eveningfall",
@@ -52,6 +258,7 @@
     "status": "Alive — gravely wounded; recovering in Silverymoon",
     "relationship": "Friendly",
     "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Mourn%20Eveningfall.jpeg",
+    "npc_type": "ally",
     "body": "**Race/Class:** High Elf / Paladin\n**Faction:** Lord's Alliance — founder of the Knights of Legend\n**Status:** Alive — gravely wounded; recovering in Silverymoon\n**Relationship:** Friendly\n\n---\n\n## What You Know\n\nMourn Eveningfall is a legend. A High Elf paladin and General of the Armies of Faerûn, he fought in some of the most significant conflicts of the last few centuries — the Avatar Crisis, the War of the Spider Queen, the fall of Netheril. He rose from private to General, earned the title **Knight of ALL Realms** from Lady Alustriel Silverhand, and co-founded the Knights of Legend with his best friend Taeghen Moondown.\n\nHe is tall, with long blond hair and piercing blue eyes. He wears full plate and carries a Moonblade called **Malevolent Defender** and a shield bearing the symbol of his patron deity, Corellon Larenthian. His presence is commanding — the kind of person that a room organizes itself around.\n\nHe is strict, tactically precise, and expects the same standard of excellence from everyone around him that he holds himself to. He is not warm in the conventional sense. But he is absolutely loyal to those under his protection, and he has given everything he has to the realm for centuries.\n\n**Current status:** After battling the god Bane and the goddess Lolth directly during the Spree's invasion of Silverymoon, Mourn was gravely wounded. He is being cared for by Lady Alustriel Silverhand. He is out of the field. The Knights of Legend are effectively operating without their leader.\n\n---\n\n## What He Wants\n\nTo retire. He has wanted this for a long time. To settle in Silverymoon with Alustriel, raise a family, and hand the realm's problems to someone else. He stays because he believes it isn't safe to stop yet.\n\n---\n\n## Notable Facts\n- Named Knight of ALL Realms by Lady Alustriel Silverhand — an honor given to almost no one\n- His Moonblade *Malevolent Defender* is a legendary weapon — and it hates its name\n- Co-founded the Knights of Legend with Taeghen Moondown\n- Worshiper and champion of Corellon Larenthian\n\n---\n\n## Connections\n- Augrin Bravecarver — Member of the Knights of Legend under his command; currently missing\n- Lady Alustriel Silverhand — His love; currently caring for him\n- Taeghen Moondown — Best friend and co-founder of the Knights of Legend"
   },
   {
@@ -63,7 +270,20 @@
     "status": "Alive — present in Silverymoon",
     "relationship": "Neutral",
     "portrait": null,
+    "npc_type": "ally",
     "body": "**Race/Class:** Archfey\n**Faction:** Fey Alliance\n**Status:** Alive — present in Silverymoon\n**Relationship:** Neutral\n\n---\n\n## What You Know\n\nQueen Titania co-rules the Fey Alliance with King Oberon. She is the harder encounter of the two.\n\nWhere Oberon is the diplomat, Titania is the power. The Fey Alliance's direction — its neutrality, its territorial decisions, its long-term strategy — reflects her will. Oberon implements it and presents it. Titania decides it.\n\nShe is radiant in the way that something overwhelming is radiant — not just beautiful, but impossible to look at straight on for too long without feeling the weight of it. She is ancient, even by fey standards, and she carries that age as authority rather than fragility.\n\nShe does not explain herself to people who haven't earned an explanation. She listens more than she speaks. When she does speak, the conversation has usually already moved in a direction you didn't notice until it arrived.\n\n---\n\n## What She Wants\n\nThe same as Oberon, ultimately: get the fey home. But her approach to achieving that is more opaque. She is playing a longer game than most people in the room, and she is accounting for possibilities they haven't thought of yet.\n\nShe maintained the Fey Alliance's neutrality through the Spree war and the occupation of Silverymoon. That is not a small thing. She could have chosen sides. She didn't. There's a reason.\n\n---\n\n## How to Read Her\n\nYou probably won't read her, at first. She will read you.\n\nIf you want something from Titania — real cooperation, real information, real support — you will need to offer something meaningful in return. Not flattery. Not political promises. Something that actually matters to the fey.\n\n---\n\n## Connections\n- King Oberon — Co-ruler; partner; the face of Alliance diplomacy\n- Silverymoon — Present in the city; the Alliance's true power resides here"
+  },
+  {
+    "slug": "taeghen-moondown",
+    "name": "Taeghen Moondown",
+    "race_class": "Half-Elf / Monk",
+    "faction": "Knights of Legend — co-founder, retired",
+    "faction_slug": "knights-of-legend-co-founder-retired",
+    "status": "Alive — in self-imposed seclusion",
+    "relationship": "Friendly — rarely available",
+    "portrait": null,
+    "npc_type": "ally",
+    "body": "**Race/Class:** Half-Elf / Monk\n**Faction:** Knights of Legend — co-founder, retired\n**Status:** Alive — in self-imposed seclusion\n**Relationship:** Friendly — rarely available\n\n---\n\n## What You Know\n\nTaeghen Moondown co-founded the Knights of Legend alongside Mourn Eveningfall, and has since retired into seclusion at a private monastery whose location is unknown. Very old, stoic, and immensely strong, he's a half-elf covered in tattoos — most decorative, a few plainly not. He dresses like a monk. He moves like a weapon.\n\nHe's reckless and disciplined at once — a rare and dangerous combination. Taeghen has made peace with dying; what he hasn't made peace with is a world that keeps demanding he fight. He trains a small number of students in seclusion and has sworn off joining another war. And yet, when the realm truly needs him, he answers. He hates that about himself.\n\nMost of the world believes he's dead. He isn't.\n\n---\n\n## What He Wants\n\nTo be left in peace. He's tired of war, and ready — whenever it comes — to join his elven ancestors in the afterlife. This isn't resignation; it's the most dangerous kind of certainty. He'll still do what's right if it comes to that, and he always knows when it has.\n\n---\n\n## Connections\n- Mourn Eveningfall — Best friend and co-founder of the Knights of Legend; there was a falling-out over his retirement that remains unresolved\n- Knights of Legend — Co-founder; now retired from active participation"
   },
   {
     "slug": "valas-halfinas",
@@ -74,6 +294,71 @@
     "status": "Alive",
     "relationship": "Hostile",
     "portrait": "https://raw.githubusercontent.com/Hcordoves/KOL-player-wiki/v5/content/Valas%20Halfinas.jpeg",
-    "body": "**Race/Class:** Fallen Aasimar / Vampire Lord\n**Faction:** Spree Alliance\n**Status:** Alive\n**Relationship:** Hostile\n\n---\n\n## What You Know\n\nValas Halfinas is the primary villain of the current campaign arc — the figure believed to lead the Spree Alliance under the alias **Merrick**. He is a Fallen Aasimar who has been transformed into a Vampire Lord, and he is responsible for the Spree's systematic war against the gods and the cities that serve them.\n\nHe is tall, with light olive skin, light blue eyes, and short black hair. He wears blackened steel full plate with a cloak that seems to absorb light around it. He carries a longsword that pulsates with dark energy and a tower shield trimmed with strips of human flesh. He is not a subtle presence.\n\nValas operates from the shadows, preferring to work through lieutenants and proxies rather than appearing directly. When he does act, it is with calculated purpose. He is not chaotic — he is patient, intelligent, and driven by a very specific hatred.\n\n---\n\n## What He Wants\n\nValas wants to destroy the gods. He blames them for abandonment and betrayal — for a life he believes they ruined. His goal is a world free from divine influence: no gods, no divine mandate, no power over mortals that comes from above. The Spree Alliance is the instrument of that agenda.\n\nHe uses manipulation, terror, and the corruption of souls as his methods. He rarely shows his hand until he's already won.\n\n---\n\n## What's Known About His Past\n\nNot much is publicly known. He was once, apparently, a figure of some religious standing — a cleric, by the look of his knowledge of divine systems. Something happened that turned him against the gods completely. The specifics are unclear.\n\n---\n\n## Connections\n- Bryleth — A Spree operative who appears to work within his organization\n- Mourn Eveningfall — The battle between Mourn and the gods that Valas's Spree triggered destroyed Silverymoon's wards\n\n---\n\n## What You Don't Know\n\nQuite a lot. His true history, how he became what he is, and who — if anyone — might be above him in the chain of power are all open questions."
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": true,
+        "text": "Valas Halfinas is the primary villain of the current campaign arc — the figure believed to lead the Spree Alliance under the alias **Merrick**. He is a Fallen Aasimar who has been transformed into a Vampire Lord, and he is responsible for the Spree's systematic war against the gods and the cities that serve them.\n\nHe is tall, with light olive skin, light blue eyes, and short black hair. He wears blackened steel full plate with a cloak that seems to absorb light around it. He carries a longsword that pulsates with dark energy and a tower shield trimmed with strips of human flesh. He is not a subtle presence.\n\nValas operates from the shadows, preferring to work through lieutenants and proxies rather than appearing directly. When he does act, it is with calculated purpose. He is not chaotic — he is patient, intelligent, and driven by a very specific hatred.\n\nNot much is publicly known about his past. He was once, apparently, a figure of some religious standing — a cleric, by the look of his knowledge of divine systems. Something happened that turned him against the gods completely. The specifics are unclear."
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": true,
+        "text": "Valas wants to destroy the gods. He blames them for abandonment and betrayal — for a life he believes they ruined. His goal is a world free from divine influence: no gods, no divine mandate, no power over mortals that comes from above. The Spree Alliance is the instrument of that agenda.\n\nHe uses manipulation, terror, and the corruption of souls as his methods. He rarely shows his hand until he's already won."
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": true,
+        "text": "- Bryleth — A Spree operative who appears to work within his organization\n- Mourn Eveningfall — The battle between Mourn and the gods that Valas's Spree triggered destroyed Silverymoon's wards"
+      }
+    ]
+  },
+  {
+    "slug": "xissira",
+    "name": "Xissira",
+    "race_class": "Dragonborn / Oathbreaker Paladin",
+    "faction": "Spree Alliance — Right Hand of Valas",
+    "faction_slug": "spree-alliance-right-hand-of-valas",
+    "status": "Alive",
+    "relationship": "Hostile — complicated",
+    "portrait": null,
+    "npc_type": "villain",
+    "body": null,
+    "sections": [
+      {
+        "key": "know",
+        "label": "What You Know",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "wants",
+        "label": "What They Want",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "capabilities",
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": null
+      },
+      {
+        "key": "connections",
+        "label": "Connections",
+        "revealed": false,
+        "text": null
+      }
+    ]
   }
 ]
