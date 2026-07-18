@@ -249,7 +249,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
       <div class="top-sub">Forgotten Realms · Faerûn</div>
     </div>
     <div class="top-divider"></div>
-    <a href="index.html" id="back-btn">← DM Vault</a>
+    <a href="players/index.html" id="back-btn">← Player Wiki</a>
     <div class="top-divider"></div>
     <button id="pin-mode-btn" onclick="togglePinMode()">📍 Place Pin</button>
     <div class="top-instructions">
@@ -551,7 +551,7 @@ function openPopup(slug, marker) {
     ${meta ? `<div class="popup-meta">${meta}</div>` : ""}
     ${desc ? `<div class="popup-desc">${desc}</div>` : ""}
     <div class="popup-actions">
-      <a class="popup-btn popup-btn-vault" href="index.html?section=locations&slug=${slug}" target="_blank">📖 Open in Vault</a>
+      <a class="popup-btn popup-btn-vault" href="players/index.html?section=locations&slug=${slug}" target="_blank">📖 View in Wiki</a>
       <button class="popup-btn popup-btn-remove" onclick="deletePinAndMarker('${slug}')">🗑 Remove Pin</button>
     </div>`;
 
@@ -601,7 +601,7 @@ function renderList() {
       </div>
       <div class="loc-item-actions">
         ${pinBtn}
-        <a class="loc-action-btn vault-btn" href="index.html?section=locations&slug=${loc.slug}" target="_blank" onclick="event.stopPropagation()" title="Open in Vault">📖</a>
+        <a class="loc-action-btn vault-btn" href="players/index.html?section=locations&slug=${loc.slug}" target="_blank" onclick="event.stopPropagation()" title="View in Wiki">📖</a>
       </div>
     </div>`;
   }).join("");
