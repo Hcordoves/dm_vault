@@ -10,42 +10,54 @@
     {
       "name": "Dorroth of Catalonia (DOC)",
       "player": "Strangeway",
-      "race_class": "TBD / Paladin (Zorquan)",
+      "race_class": "Dragonborn / Paladin (Zorquan)",
       "status": "Active",
-      "bio": "Left his tribe to serve in the army. When he returned, his entire tribe had been wiped out. Searching through the ashes, he found a document in an elder's possession pointing to a hidden temple. With nothing else, he followed that path — and found Zorquan's holy symbol waiting for him. The goddess declared him her paladin. He carved dragon runes into his armor for every act of justice he has served since, each one in memory of his lost family.\n\nFrom the cold woods of northeast Faerûn. Had a wife and two children — they are dead. He still wears his wife's necklace. Always one to protect the helpless. That is his purpose as his goddess speaks to him through his deeds."
+      "bio": "Left his tribe to serve in the army. When he returned, his entire tribe had been wiped out. Searching through the ashes, he found a document in an elder's possession pointing to a hidden temple. With nothing else, he followed that path — and found Zorquan's holy symbol waiting for him. The goddess declared him her paladin. He carved dragon runes into his armor for every act of justice he has served since, each one in memory of his lost family.\n\nFrom the cold woods of northeast Faerûn. Had a wife and two children — they are dead. He still wears his wife's necklace. Always one to protect the helpless. That is his purpose as his god speaks to him through his deeds."
     },
     {
       "name": "Meranir",
       "player": "Erin",
-      "race_class": "TBD / Bard / Barbarian",
+      "race_class": "Half-Orc / Bard / Barbarian",
       "status": "Active",
       "bio": "Her mother was a great chieftess. Her father was a silver-tongued bard who charmed his way out of being killed, spent a night with the chieftess, and slipped away before dawn. Meranir never knew him.\n\nShe showed early aptitude for drums, was apprenticed to the tribe's lorekeeper and wardrummer, and discovered her bardic gift by accident — the loremaster demanded more volume than was physically possible, and she delivered a blast of sound that knocked him on his back. She grew into her power, won a contest of strength between tribal wardrummers through sheer skill, and returned to her tribe in triumph.\n\nShe returned to ashes. Her tribe's camp was destroyed and burned. Now she wanders, looking for survivors and answers."
     },
     {
       "name": "Malrus Grygarn",
       "player": "Jason",
-      "race_class": "TBD",
+      "race_class": "Dwarf / Cleric",
       "status": "Active",
       "bio": ""
     },
     {
       "name": "Jiang Silvermark",
       "player": "Yad",
-      "race_class": "TBD",
+      "race_class": "Half-Elf / Barbarian",
       "status": "Active",
       "bio": ""
     },
     {
       "name": "Dare",
       "player": "Wes",
-      "race_class": "TBD",
+      "race_class": "Tiefling / Warlock / Wizard",
       "status": "Active",
       "bio": ""
     }
   ],
   "retired": [
-    { "name": "Cal Grygarn", "player": "Jason", "fate": "Deceased / Retired" },
-    { "name": "Fendarial Meliamne", "player": "Yad", "fate": "Deceased / Retired" },
-    { "name": "Senyar", "player": "Asai", "fate": "Deceased / Retired" }
+    {
+      "name": "Cal Grygarn",
+      "player": "Jason",
+      "fate": "Deceased/Retired"
+    },
+    {
+      "name": "Fendarial Meliamne",
+      "player": "Yad",
+      "fate": "Deceased/Retired"
+    },
+    {
+      "name": "Senyar",
+      "player": "Asai",
+      "fate": "Deceased/Retired"
+    }
   ]
 }
