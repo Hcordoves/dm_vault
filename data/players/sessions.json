@@ -106,76 +106,83 @@
   },
   {
     "number": 16,
+    "chapter": 2,
+    "title": "The Party Meets a New Friend",
+    "location": "Barovia",
+    "recap": "The portal that swallowed the party at the end of Yartar deposited them somewhere else entirely — Barovia, a demiplane sealed away from the world and governed by the dark powers of the Vampire Lord Strahd von Zarovich. The rules of this place were strange, the sky perpetually overcast, and the locals spoke in hushed fear of forces they couldn't escape.\n\nIt was here that the party encountered a cleric named Valas Halfinas — a man of divine conviction, or so it seemed, stranded in Barovia and desperate to find a way out. He helped you survive the demiplane, and you helped him find an exit. He seemed grateful. You had no reason, then, to look any closer at what he believed or what he wanted.\n\nYou would not meet him again until the war room in Silverymoon — where he wore a different name."
+  },
+  {
+    "number": 17,
     "chapter": 3,
     "title": "In Which the Party Returns Back to the World",
     "location": "Sigil",
     "recap": "You surfaced in Sigil, the City of Doors — a plane between planes, ruled by the enigmatic Lady of Pain. There, you reunited with an old companion who now called the city home, and who filled you in on what little was known of the situation back home."
   },
   {
-    "number": 17,
+    "number": 18,
     "chapter": 3,
     "title": "In Which the Party Returns Back to the World: The Shopping Episode",
     "location": "Sigil",
     "recap": "With days to kill before your route home opened up, you explored Sigil's market district, learned of dangerous fugitives with steep bounties on their heads, and discovered that Mourn was stranded in the city too — his own way home stolen from him."
   },
   {
-    "number": 18,
+    "number": 19,
     "chapter": 3,
     "title": "In Which the Party Become Thieves",
     "location": "Sigil",
     "recap": "To help Mourn recover a way out of Sigil, you struck a deal and began laying the groundwork to acquire one by less-than-legal means."
   },
   {
-    "number": 19,
+    "number": 20,
     "chapter": 3,
     "title": "Are We Finally Leaving Sigil?!",
     "location": "Sigil",
     "recap": "A tense brush with the local thieves' guild nearly went very wrong. Eventually, your numbers were called, and after passing through a strange customs process, you found yourselves back on the Material Plane — only to be led, solemnly, to the Tomb of the Unnamed Heroes and shown your own graves."
   },
   {
-    "number": 20,
+    "number": 21,
     "chapter": 3,
     "title": "A Meeting with Friends",
     "location": "Yartar",
     "recap": "Brought to the Waterbaron's estate, you discovered an old friend now held that very title. She began the process of granting you formal passage to Silverymoon. During the city's Shieldmeet festival, you investigated rumors of a spy and confronted her directly — a tiefling rogue named Elysia Shadowthorn — leading to a hard-fought battle against shadow creatures in the streets."
   },
   {
-    "number": 21,
+    "number": 22,
     "chapter": 3,
     "title": "The Party Says Farewell",
     "location": "Yartar",
     "recap": "A quiet, personal moment for Kaylee — a crossroads between two very different divine paths, the Raven Queen's offer set against Helm's plea to hold to her oath. She chose to stay with Helm, but not gently — the choice came with real anger at him, for a god she felt had ignored her and left her to make this decision alone, even though the amulet that brought her to this crossroads had been hers to keep and use all along. The Amulet of Ravenkind shattered in the moment of her choosing. Come morning, the city guard had questions about the previous night's violence, and the Waterbaron thanked you for your help before finalizing your writ of passage to Silverymoon."
   },
   {
-    "number": 22,
+    "number": 23,
     "chapter": 3,
     "title": "The Long Road to Silverymoon",
     "location": "The Evermoor Way",
     "recap": "The road from Yartar was long — nearly two weeks of travel, with something unseen shadowing your every step the whole way. You never caught more than glimpses: displaced tracks, rustling leaves, a feeling of being watched that never fully let up. Along the road, Spree preachers held court in town squares, speaking of a leader called Merrick and a new order free of the gods. At Calling Horns and Olostin's Hold, locals traded rumors of strange wolf-like predators in the Evermoors. Whatever was following you never showed itself before Silverymoon came into view — towering spires and shimmering wards, scarred but still standing."
   },
   {
-    "number": 23,
+    "number": 24,
     "chapter": 3,
     "title": "The Party Finally Makes It to Silverymoon",
     "location": "Silverymoon",
     "recap": "At Hunter's Gate, your writ of introduction got you past the Knights in Silver and into a city still visibly recovering from siege. A Tabaxi official named Whispering Wind met you and led you toward the High Palace, past the ruin of House Invincible — defaced, overgrown, abandoned since its fall. At the High Palace, you were received by Aleina Brightlance, commander of the Knights in Silver, whose armor style struck a strange chord of recognition for those who'd met Valas back in Barovia."
   },
   {
-    "number": 24,
+    "number": 25,
     "chapter": 4,
     "title": "The Party Has a Showdown in the War Room",
     "location": "Silverymoon — High Palace",
     "recap": "Everything changed in an instant. Senyar — your old companion, presumed lost — stepped forward with murder in her eyes and hurled fire at the assembled party. Queen Titania's force cage sealed the room before anyone could be hurt, and in the chaos that followed, Merrick revealed his true face: Valas, the fallen cleric whose name had been spoken in Spree sermons the whole way here. Senyar handed him a scroll the party hadn't even known they were carrying. Valas summoned shadow creatures; Titania and the dragon god Zorquan tore them apart. Cornered, Valas's form unraveled into smoke and fled. The war room fell silent, the immediate threat gone — but nothing about what you'd just learned made the road ahead feel safer."
   },
   {
-    "number": 25,
+    "number": 26,
     "chapter": 4,
     "title": "The Party Meets the Fey King",
     "location": "Silverymoon — High Palace",
     "recap": "Titania, calm but resolute, ordered you out of the war room — not as punishment, she made clear, but because the palace's neutrality couldn't hold with violence inside it. Before you reached the gates, an emissary of King Oberon intercepted you: the King wanted words of his own. In a chamber of root and stone beneath the palace, Oberon spoke in riddles about balance and broken branches — and then bound the party in a Fey Geas, a pull toward a task rather than a command. Somewhere in the High Forest, at a place called Briarthorn Ridge, one of his own knights had gone missing, marked by his sigil and lost to something in the dark. Oberon's charge was simple and final: return him, or don't come back.\n\nBefore leaving, you were given the chance to speak with Senyar's body directly. Her spirit, called back just long enough to answer, confirmed the name Valas and admitted — bitterly, painfully — that she'd helped him because she'd felt abandoned and forgotten after her death. She pointed you toward Helm's Hold, maybe Baldur's Gate, as places he'd been seen. It wasn't a happy conversation. It wasn't meant to be."
   },
   {
-    "number": 26,
+    "number": 27,
     "chapter": 4,
     "title": "The Party Goes to the Woods",
     "location": "The High Forest",
