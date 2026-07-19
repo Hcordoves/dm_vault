@@ -1,5 +1,405 @@
 [
   {
+    "slug": "amn",
+    "name": "Amn",
+    "type": "Nation",
+    "region": "Lands of Intrigue, West Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance (historically)",
+    "background": null,
+    "body": "**Region:** Lands of Intrigue, West Faerûn\n**Type:** Nation\n**Status:** Active\n**Controlling Faction:** Lords' Alliance (historically)\n\n---\n\n## What You Know\n\nAmn — the Merchant's Domain — is a tremendously wealthy nation in West Faerûn. Its population (historically ~3 million, mostly human with a large halfling minority) and its control of key trade routes to Calimshan, Baldur's Gate, and colonial ports in the Moonshaes and Chult make it one of the most important trading centers in Faerûn. Its capital, Athkatla, is known throughout the Realms as the \"City of Coin.\"\n\n---"
+  },
+  {
+    "slug": "amphail",
+    "name": "Amphail",
+    "type": "Village",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** Village\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nAmphail is a quiet village on the Long Road between Waterdeep and Red Larch. Known primarily as a source of fine horses and agricultural produce, it is a modest waypoint community with a mixed but mostly human population.\n\n---"
+  },
+  {
+    "slug": "arabel",
+    "name": "Arabel",
+    "type": "Metropolis",
+    "region": "Cormyr",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Cormyr\n**Type:** Metropolis\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nArabel is a fortified city in northern Cormyr standing at a critical crossroads — the junction of the High Road, Calantar's Way, the East Way, and the Moonsea Ride. This position makes it one of Cormyr's most important trade centers, known as the Granary of the North and the Overland City of Cormyr.\n\n---"
+  },
+  {
+    "slug": "ascore",
+    "name": "Ascore",
+    "type": "Ruins (formerly Port City)",
+    "region": "Anauroch (formerly Narrow Sea, Delzoun)",
+    "status": "Destroyed — Ruins",
+    "faction": "None (haunted ruin)",
+    "background": null,
+    "body": "**Region:** Anauroch (formerly Narrow Sea, Delzoun)\n**Type:** Ruins (formerly Port City)\n**Status:** Destroyed — Ruins\n**Controlling Faction:** None (haunted ruin)\n\n---\n\n## What You Know\n\nAscore was once a wealthy and bustling port city of the dwarven nation of Delzoun during the Netherese Empire — a gateway where dwarves traded with elves of Eaerlann and Myth Drannor and humans of Netheril. By the 14th century DR, it had become a lonely, windswept ruin on the edge of Anauroch, near the Frozen Sea, reputedly haunted by ancient evil.\n\nThe docks that once met the Narrow Sea now meet only the sea of sand that has half-buried the city.\n\n---"
+  },
+  {
+    "slug": "baldurs-gate",
+    "name": "Baldur's Gate",
+    "type": "Metropolis",
+    "region": "Sword Coast, Western Heartlands",
+    "status": "Fallen — Spree-Controlled",
+    "faction": "Spree Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast, Western Heartlands\n**Type:** Metropolis\n**Status:** Fallen — Spree-Controlled\n**Controlling Faction:** Spree Alliance\n\n---\n\n## What You Know\n\nBaldur's Gate — also called simply \"the Gate\" — is the largest metropolis on the Sword Coast and among the most prosperous and influential merchant cities in Faerûn. A crowded city of commerce and opportunity, it once maintained its neutrality through wealth and the strength of its peacekeeping forces: the Watch and the powerful Flaming Fists mercenary company.\n\nThat neutrality is gone. The leaders of Baldur's Gate are now members of the Spree Alliance. The city's incredible wealth and trade networks are now directed by the Spree.\n\n---"
+  },
+  {
+    "slug": "candlekeep",
+    "name": "Candlekeep",
+    "type": "Fortress-Library",
+    "region": "Sword Coast, Western Heartlands",
+    "status": "Active — Neutral",
+    "faction": "Neutral (Avowed)",
+    "background": null,
+    "body": "**Region:** Sword Coast, Western Heartlands\n**Type:** Fortress-Library\n**Status:** Active — Neutral\n**Controlling Faction:** Neutral (Avowed)\n\n---\n\n## What You Know\n\nCandlekeep is the famous library-fortress that has stood as a bastion of enlightenment and knowledge on the Sword Coast for centuries. It houses the greatest collection of books and scrolls of lore in all of Faerûn. The keep is home to the Avowed — a group of scholars devoted to the great seer Alaundo and his collection of prophecies.\n\nTo enter the Inner Ward and access the Great Library, visitors (called \"Seekers\") must pass the magically-protected Emerald Door. Beneath the keep lie secured spellcasting chambers, catacombs, sewers, and subterranean passageways, including the Chamber of Lost Lore — a room allowing communion with long-deceased scholars.\n\n---"
+  },
+  {
+    "slug": "citadel-adbar",
+    "name": "Citadel Adbar",
+    "type": "Dwarven Fortress",
+    "region": "Silver Marches, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Silver Marches, Northwest Faerûn\n**Type:** Dwarven Fortress\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nCitadel Adbar is a massive dwarven fortress named for King Adbar, who began its construction in −370 DR and completed it in −272 DR — the last shard of the once-mighty dwarven kingdom of Delzoun. The Citadel provides surface access to miles of defensive granite corridors, tunnels, and hallways winding under the Ice Mountains. It can house up to 60,000 dwarves in relative comfort, though less than a third of that number are usually present.\n\n---"
+  },
+  {
+    "slug": "citadel-felbarr",
+    "name": "Citadel Felbarr",
+    "type": "Dwarven Citadel",
+    "region": "Silver Marches, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Silver Marches, Northwest Faerûn\n**Type:** Dwarven Citadel\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nCitadel Felbarr is a dwarven citadel at the base of the Rauvin Mountains along the River Redrun. Originally a fortress of 25,000+ dwarves, it has changed hands multiple times between dwarves, humans, and orcs throughout history. Since 1367 DR, it has been back in dwarven hands. It connects via the Silverymoon Pass to the south and Sundabar Vale to the east, with tunnels in the Upper Underdark connecting it to Mithral Hall to the west.\n\n---"
+  },
+  {
+    "slug": "cloud-peaks",
+    "name": "Cloud Peaks",
+    "type": "Mountain Range",
+    "region": "West Faerûn (northern border of Amn)",
+    "status": "Wild",
+    "faction": "None",
+    "background": null,
+    "body": "**Region:** West Faerûn (northern border of Amn)\n**Type:** Mountain Range\n**Status:** Wild\n**Controlling Faction:** None\n\n---\n\n## What You Know\n\nThe Cloud Peaks mark the northern border of Amn. Despite being a small range, the peaks are very tall — Mount Speartop reaches 14,500 ft (4,420 m). Snow-covered most of the year, with steep ravines, sudden drops, and dangerous winds. Popular with wealthy mountain climbers. Inhabited by ogres, cloud giants, hill giants, and white dragons.\n\n---"
+  },
+  {
+    "slug": "cormanthor",
+    "name": "Cormanthor",
+    "type": "Ancient Forest",
+    "region": "Interior Faerûn (east of Cormyr)",
+    "status": "Largely Abandoned — Recovering",
+    "faction": "Independent (Elven, partially)",
+    "background": null,
+    "body": "**Region:** Interior Faerûn (east of Cormyr)\n**Type:** Ancient Forest\n**Status:** Largely Abandoned — Recovering\n**Controlling Faction:** Independent (Elven, partially)\n\n---\n\n## What You Know\n\nCormanthor is the great forest of the ancient elven empire of Cormanthyr — a large, dense woodland with trees growing over 100 ft (30 m) in the deep interior. The Retreat (when over 90% of elven inhabitants departed for Evereska, Evermeet, or the west) left it largely abandoned for many centuries. With the revival of Cormanthyr, it has begun to come alive again.\n\n---"
+  },
+  {
+    "slug": "cormyr",
+    "name": "Cormyr",
+    "type": "Nation",
+    "region": "Interior Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Interior Faerûn\n**Type:** Nation\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nCormyr — the Forest Country, Land of the Purple Dragon — is one of Faerûn's most historically prosperous nations. Protected by the elite Purple Dragons (military) and War Wizards (arcane corps), Cormyr has survived countless threats: the Goblin War, the death of King Azoun IV, Shadovar attacks, Zhentarim infiltration, and more. As of 1486 DR, Queen Raedra Obarskyr rules and focuses on rebuilding after years of war.\n\nAdventuring requires an official license, but Cormyr's overstretched military means skilled help is always welcome — historically rewarded with land grants.\n\n---"
+  },
+  {
+    "slug": "daggerford",
+    "name": "Daggerford",
+    "type": "Small Town",
+    "region": "Delimbiyr Vale, Sword Coast",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Delimbiyr Vale, Sword Coast\n**Type:** Small Town\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nDaggerford is a small but stubborn town on the Trade Way in Delimbiyr Vale — the largest settlement between Waterdeep (150 miles north) and Baldur's Gate to the south. It is primarily a farming community but has grand ambitions to rival Waterdeep. A relic of the old kingdom of Delimbiyr, it refuses to fall. Its coat-of-arms is a silver dagger covered in blood on a field of dark blue.\n\n---"
+  },
+  {
+    "slug": "everlund",
+    "name": "Everlund",
+    "type": "Large City",
+    "region": "Silver Marches, Northwest Faerûn",
+    "status": "Active — Fey-Influenced",
+    "faction": "Fey Alliance (current ruler King Oberon)",
+    "background": null,
+    "body": "**Region:** Silver Marches, Northwest Faerûn\n**Type:** Large City\n**Status:** Active — Fey-Influenced\n**Controlling Faction:** Fey Alliance (current ruler King Oberon)\n\n---\n\n## What You Know\n\nEverlund — formerly Besander's Blockhouse — is one of the greatest supporters of the Silver Marches league and the second-largest city in the region. Located southeast of Silverymoon on the north bank of the River Rauvin, it is one of the most active mercantile communities in the North. Resettled by humans from Ascalhorn in 515 DR, it grew from a fortified trading outpost into one of the North's most important trading cities.\n\n---"
+  },
+  {
+    "slug": "forest-of-tethir",
+    "name": "Forest of Tethir",
+    "type": "Forest (Elven)",
+    "region": "Northwest Tethyr, Sword Coast",
+    "status": "Active",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Northwest Tethyr, Sword Coast\n**Type:** Forest (Elven)\n**Status:** Active\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nThe Forest of Tethir — known to elves as Wealdath (\"unspoiled woods\") — is the largest forest in the Lands of Intrigue, one of the largest in all Faerûn. Named after the epic elven hero Tethir, first elven dragonslayer. Located in northwest Tethyr just north of the Starspire Mountains, extending to the Dragon's Neck Peninsula. Some scholars consider it \"the single most important thing\" that shaped Tethyrian culture.\n\nThe forest is dark, cool, and rain-heavy — full of small lakes, pools, streams, and cascades. The Trade Way passes through the western portion near the coast.\n\n---"
+  },
+  {
+    "slug": "gauntlgrym",
+    "name": "Gauntlgrym",
+    "type": "Ancient Dwarven City",
+    "region": "Sword Coast North/Northdark, Northwest Faerûn",
+    "status": "Rediscovered — Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast North/Northdark, Northwest Faerûn\n**Type:** Ancient Dwarven City\n**Status:** Rediscovered — Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nGauntlgrym was the ancient capital of the dwarven nation of Delzoun — a city of massive scale, with doorways large enough for dragons to pass through. Its location was lost for centuries, believed to be north of the River Dessarin. It was actually farther southwest. The city was rediscovered in 1357 DR.\n\nThe city is adorned with icons of the Morndinsamman and dwarven heroes. Doorways were constructed from iron, mithral, and stone — designed to open only for those of Delzoun blood, both magically sealed and tremendously heavy.\n\n---"
+  },
+  {
+    "slug": "greypeak-mountains",
+    "name": "Greypeak Mountains",
+    "type": "Mountain Range",
+    "region": "Savage Frontier, Northwest Faerûn",
+    "status": "Dangerous — Wild",
+    "faction": "None",
+    "background": null,
+    "body": "**Region:** Savage Frontier, Northwest Faerûn\n**Type:** Mountain Range\n**Status:** Dangerous — Wild\n**Controlling Faction:** None\n\n---\n\n## What You Know\n\nThe Greypeak Mountains are a rugged and desolate range at the eastern end of the Savage Frontier. Famous for being exceptionally hard to traverse, home to fearsome beasts, monstrous humanoids, and aberrant beings. The peaks once housed great mineral wealth, much recovered during the Golden Age of Humanity. The range forms a massive bowl encircling a morass of wet earth and wavering trees — a bog-forest rather than a lake.\n\n---"
+  },
+  {
+    "slug": "hellgate-keep",
+    "name": "Hellgate Keep",
+    "type": "Ruins (formerly Elven City / Demonic Keep)",
+    "region": "High Forest, Northwest Faerûn",
+    "status": "Destroyed — Sealed Ruins",
+    "faction": "None (sealed by treants)",
+    "background": null,
+    "body": "**Region:** High Forest, Northwest Faerûn\n**Type:** Ruins (formerly Elven City / Demonic Keep)\n**Status:** Destroyed — Sealed Ruins\n**Controlling Faction:** None (sealed by treants)\n\n---\n\n## What You Know\n\nHellgate Keep — originally founded as **Ascalhorn** — was an ancient elven city on the northeast edge of the High Forest, overtaken by demonic forces and eventually destroyed in 1369 DR. In the years following, its ruins became known as Hellgate Dell.\n\nThe site is now sealed by treants who maintain walls of sharp brier and thorn 30 ft (9 m) tall, stretching 50 ft (15 m) of land — blocking all entry. The ruins contain both wild magic zones and dead-magic zones.\n\n---"
+  },
+  {
+    "slug": "helms-hold",
+    "name": "Helm's Hold",
+    "type": "City",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Occupied",
+    "faction": "The Spree Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** City\n**Status:** Occupied\n**Controlling Faction:** The Spree Alliance\n\n---\n\n## What You Know\n\nHelm's Hold has stood for generations as a place of watchfulness and protection — a fortified city built around the faith of Helm, the Watcher. Founded by the Company of Crazed Venturers and anchored by the grand Cathedral of Helm, it was for centuries one of the most welcoming places in the North: a safe haven for travelers, a refuge for the desperate, a fortress of quiet devotion.\n\nThat is no longer what it is.\n\nMerrick — the man rumored to lead the Spree Alliance — took Helm's Hold by force. He stormed the city, displaced its elected Chief Speaker, and made it the Spree's capitol and base of operations. The Cathedral of Helm still stands at the city's center, but open worship of Helm — or any deity — is now strictly prohibited.\n\nBy all reports, the city remains prosperous. Trade continues. The streets are kept. Anyone is welcome, so long as they do not pray.\n\n---"
+  },
+  {
+    "slug": "high-forest",
+    "name": "High Forest",
+    "type": "Wilderness",
+    "region": "Northwest Faerûn, Savage Frontier",
+    "status": "Active — Contested",
+    "faction": "The Fey Alliance",
+    "background": "images/locations/high-forest.jpeg",
+    "body": "**Region:** Northwest Faerûn, Savage Frontier\n**Type:** Wilderness\n**Status:** Active — Contested\n**Controlling Faction:** The Fey Alliance\n\n---\n\n## What You Know\n\nThe High Forest is a remnant of the ancient world, when all of Faerûn was covered in green and elves, giants, and dragons ruled. It is the greatest forest in Faerûn — up to 500 miles across, covering nearly 20% of the Savage Frontier. Bounded by the Nether Mountains to the north, the High Moor to the south, the Evermoors to the west, and the vast desert of Anauroch to the east.\n\nWhat lies within the forest's depths is largely a mystery. Few venture there willingly, and those who do without permission seldom return. The forest is ancient and self-sufficient, and it does not welcome outsiders.\n\nSince the Spree's invasion of the North, the Fey Alliance has dramatically expanded its presence in the High Forest. King Oberon now claims governance of the region, and fey patrols enforce a strict no-entry policy for non-residents. Anyone who enters without permission is considered a threat.\n\n**Current State (1508 DR):** The High Forest is the active theater for Chapter 3. Augrin Bravecarver went missing somewhere in this forest. Bryleth is believed to be operating in or around here as a Spree agent. Something in the forest is wrong — the Fey Alliance's presence is heavier than it should be, and the usual inhabitants (centaurs, treants, druids) are harder to find.\n\n---"
+  },
+  {
+    "slug": "high-ice",
+    "name": "High Ice",
+    "type": "Glacier",
+    "region": "North of Anauroch",
+    "status": "Wild — Extremely Dangerous",
+    "faction": "None",
+    "background": null,
+    "body": "**Region:** North of Anauroch\n**Type:** Glacier\n**Status:** Wild — Extremely Dangerous\n**Controlling Faction:** None\n\n---\n\n## What You Know\n\nThe High Ice is a desolate, monster-infested glacier north of the Anauroch desert, extended beyond its natural size by phaerimm magic. Its western edges give way to the Frozen Sea, a frozen desert where part of the ancient Narrow Sea once stood.\n\nDespite being logical lair territory for frost giants, no true giant has entered the High Ice since a tribe attempted to enslave the local crystal dragons and was massacred.\n\n---"
+  },
+  {
+    "slug": "hillsfar",
+    "name": "Hillsfar",
+    "type": "Metropolis",
+    "region": "Moonsea",
+    "status": "Active",
+    "faction": "Lord's Alliance",
+    "background": null,
+    "body": "**Region:** Moonsea\n**Type:** Metropolis\n**Status:** Active\n**Controlling Faction:** Lord's Alliance\n\n---\n\n## What You Know\n\nHillsfar is a powerful city-state located on the southern coast of the Moonsea. Heavily involved in regional trade, it acts as a commercial hub for the surrounding cities and settlements. The city is known for its fine craftsmanship — particularly fine cloth, faceted gems, and its distinctive dragon's breath liquor — and for its nearly exclusively human population. Non-humans face significant discrimination and worse in Hillsfar.\n\nThe city has historically been notable for the Great Arena, where gladiatorial combat entertains the populace, and for the strict enforcement of anti-non-human policies that have defined its reputation across the Moonsea.\n\n---"
+  },
+  {
+    "slug": "icewind-dale",
+    "name": "Icewind Dale",
+    "type": "Arctic Region",
+    "region": "Frozenfar, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Independent (Ten Towns Confederation)",
+    "background": null,
+    "body": "**Region:** Frozenfar, Northwest Faerûn\n**Type:** Arctic Region\n**Status:** Active\n**Controlling Faction:** Independent (Ten Towns Confederation)\n\n---\n\n## What You Know\n\nIcewind Dale is an arctic tundra in the Frozenfar — the northernmost explored region in all of Faerûn. It earned its name from the harsh winds and icy storms that scour the landscape. Near-uninhabitable, with long nights and temperatures regularly below freezing, it is home only to the most hardened frontiersmen, pioneers, and barbarians. Beyond the scattered settlements dwell terrifying monsters of the North.\n\n---"
+  },
+  {
+    "slug": "kingdom-of-many-arrows",
+    "name": "Kingdom of Many Arrows",
+    "type": "Kingdom",
+    "region": "Spine of the World, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Independent (Orc Kingdom)",
+    "background": null,
+    "body": "**Region:** Spine of the World, Northwest Faerûn\n**Type:** Kingdom\n**Status:** Active\n**Controlling Faction:** Independent (Orc Kingdom)\n\n---\n\n## What You Know\n\nThe Kingdom of Many-Arrows is an orc kingdom founded by Obould Many-Arrows. It stretches from Mithral Hall in the west to the Moonwood in the east and to the Evermoors in the south. Unlike typical orc kingdoms, Many-Arrows values civilization and found as much pride in building as in tearing down. Its success has done much to improve the reputation of orcs overall.\n\n---"
+  },
+  {
+    "slug": "longsaddle",
+    "name": "Longsaddle",
+    "type": "Hamlet",
+    "region": "Savage Frontier, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Savage Frontier, Northwest Faerûn\n**Type:** Hamlet\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nLongsaddle is a sleepy little hamlet on the Long Road, east of the Crags and west of the Evermoors. Despite its tiny size (~130 people), it is a member of the Lords' Alliance. The surrounding area is vast grassland suited to ranching. Known primarily as the home of the Harpell family of wizards.\n\n---"
+  },
+  {
+    "slug": "luskan",
+    "name": "Luskan",
+    "type": "Port City",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Damaged — Recovering",
+    "faction": "Independent (formerly Arcane Brotherhood)",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** Port City\n**Status:** Damaged — Recovering\n**Controlling Faction:** Independent (formerly Arcane Brotherhood)\n\n---\n\n## What You Know\n\nLuskan, the City of Sails, is a port city at the mouth of the River Mirar on the Sword Coast North. Once regarded as civilization's farthest reach, the city has suffered catastrophically. The Arcane Brotherhood's corruption, the Spellplague, and then a siege by the Black Sails company during Charles Vane's absence nearly destroyed it. Anyone sailing into its ports today sees nothing but wreckage — a city that is a shell of its former self.\n\n---"
+  },
+  {
+    "slug": "marsember",
+    "name": "Marsember",
+    "type": "Metropolis (Port)",
+    "region": "Cormyr, Eastern Heartlands",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Cormyr, Eastern Heartlands\n**Type:** Metropolis (Port)\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nMarsember — the City of Spices — is the busiest port in all of Cormyr, established in −74 DR. Often shrouded in mist, the city sits on sandy islands in the swampy west bank of the Starwater River's mouth. Its canals double as open sewers, causing stench in warm weather but preventing freezing in winter. Open solid ground is rare. The city's population swells up to 20% during fishing season.\n\n---"
+  },
+  {
+    "slug": "menzoberranzan",
+    "name": "Menzoberranzan",
+    "type": "City-State",
+    "region": "Underdark, Upper Northdark",
+    "status": "Active",
+    "faction": "Independent (Drow — House Baenre)",
+    "background": null,
+    "body": "**Region:** Underdark, Upper Northdark\n**Type:** City-State\n**Status:** Active\n**Controlling Faction:** Independent (Drow — House Baenre)\n\n---\n\n## What You Know\n\nMenzoberranzan — the City of Spiders — is a large underground drow city-state in the Upper Northdark, possibly the most well-known drow city in all of Faerûn. It was the home of Drizzt Do'Urden, and many of his early adventures dealt with its political intrigue. Now, Drizzt's whereabouts are mostly unknown.\n\nThe city is 2 miles (3.2 km) below the surface of the Surbrin Valley, between the Moonwood and the Frost Hills. It is close to Mithral Hall and connected to it through tunnels. Other tunnels lead to the surface via the Moonwood and the western edge of the High Forest.\n\n---"
+  },
+  {
+    "slug": "mere-of-dead-men",
+    "name": "Mere of Dead Men",
+    "type": "Swamp",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Wild — Dangerous",
+    "faction": "None (Contested)",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** Swamp\n**Status:** Wild — Dangerous\n**Controlling Faction:** None (Contested)\n\n---\n\n## What You Know\n\nThe Mere of Dead Men (Elvish: *Merdelain* — \"Slow Marching Court\") is a cold saltwater swamp ~100 miles long by 30 miles wide along the Sword Coast North. Desolate, fog-covered, and constantly expanding — it has been swallowing nearby homes and property for generations. The eastern boundary appears magically linked to the High Road (possibly a wish-spell), as attempts to reroute the road always cause the swamp to expand.\n\nInside: flooded ruins of castles and settlements, many with strange wards that either strengthen or negate magic. Quicksand, hidden islands, trees, vines, bones of fallen creatures. Dark water deep enough for flat-bottomed boats but full of hidden dangers.\n\n---"
+  },
+  {
+    "slug": "mirabar",
+    "name": "Mirabar",
+    "type": "Mining City",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** Mining City\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nMirabar is a wealthy mining city on the Sword Coast, considered the richest city north of Waterdeep as of 1368 DR. 1,600 shield dwarves live underground near their workshops, producing metal goods for export; humans above handle mining operations, move ore to market, and defend against threats. The city sits on a knoll on the north bank of the River Mirar. Its walls are extremely thick and sloping — water is poured down them in winter to freeze and make them slippery for attackers.\n\nThe city's badge: a deep red double-bladed axe with a pointed haft and flaring base, on a black field. Roads lead to mines in the Spine of the World, guarded by the elite Axe of Mirabar.\n\n---"
+  },
+  {
+    "slug": "misty-forest",
+    "name": "Misty Forest",
+    "type": "Forest (Elven Kingdom)",
+    "region": "High Moor, Western Heartlands",
+    "status": "Active",
+    "faction": "Independent (Wild Elves)",
+    "background": null,
+    "body": "**Region:** High Moor, Western Heartlands\n**Type:** Forest (Elven Kingdom)\n**Status:** Active\n**Controlling Faction:** Independent (Wild Elves)\n\n---\n\n## What You Know\n\nThe Misty Forest is a fog-filled, rainy forest west of the High Moor that doubles as a small elven kingdom. Rangers patrol the area; several druids maintain groves within. A small community of wild elves dwells somewhere inside, with wood elves and hybsils also present. Deer are common.\n\nBarbarians from the High Moor use the forest as a source of food and timber. Orcs from the High Moor use it as cover to raid the Trade Way.\n\n---"
+  },
+  {
+    "slug": "mithral-hall",
+    "name": "Mithral Hall",
+    "type": "Dwarven Stronghold",
+    "region": "Fourthpeak, Frost Hills, Spine of the World",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Fourthpeak, Frost Hills, Spine of the World\n**Type:** Dwarven Stronghold\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nMithral Hall is one of the best-known dwarven strongholds in all of Faerûn, located beneath Fourthpeak Mountain in the Frost Hills. Originally a mithral mine belonging to Clan Battlehammer, it became a safe haven for various dwarven families and even some of other races. It is home to the legendary hero Bruenor Battlehammer and his companions, and has a long history of tragedy and triumph.\n\n---"
+  },
+  {
+    "slug": "mount-hotenow",
+    "name": "Mount Hotenow",
+    "type": "Volcano",
+    "region": "Crags, Neverwinter Wood, Sword Coast North",
+    "status": "Active — Dangerous",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Crags, Neverwinter Wood, Sword Coast North\n**Type:** Volcano\n**Status:** Active — Dangerous\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nMount Hotenow (pronounced *HOE-teh-NOW*) is a volcanic peak within the Crags mountain range, situated northeast of Neverwinter deep in Neverwinter Wood. It is home to a vast population of fire elementals, and their presence warms the Neverwinter River to the point where it never freezes — the source of the city's name. After its eruption, the peak resembles a set of serrated teeth, often described as \"a door to the Nine Hells.\"\n\nA river of pure elemental fire follows a serpentine path through Hotenow's interior and beneath the surrounding mountains of the Crags. The interior contains largely untapped deposits of alum, nitre, and sal ammoniac. Following the eruption, rare black diamonds have been found along the crater's rim.\n\n**Shadowfell Counterpart:** A shadowy reflection of Mount Hotenow exists in the Shadowfell — unlike its Torilian counterpart, this version constantly spills rivers of lava that flow toward the city of Evernight.\n\n---"
+  },
+  {
+    "slug": "myth-drannor",
+    "name": "Myth Drannor",
+    "type": "Ancient Elven City (Ruins / Rebuilt)",
+    "region": "North Starwood, Cormanthor",
+    "status": "Partially Rebuilt (ruins again after second fall)",
+    "faction": "Independent (Elven — in times of crisis, neutral fallback)",
+    "background": null,
+    "body": "**Region:** North Starwood, Cormanthor\n**Type:** Ancient Elven City (Ruins / Rebuilt)\n**Status:** Partially Rebuilt (ruins again after second fall)\n**Controlling Faction:** Independent (Elven — in times of crisis, neutral fallback)\n\n---\n\n## What You Know\n\nMyth Drannor — the City of Song — was the former capital of Cormanthyr, considered by many the pinnacle of shared knowledge, culture, and civilization in all of Faerûn. Tall, graceful stone towers; levitation pillars; skybridge walkways; streets wound between elven buildings and city parks. Defined by its ancient mythal.\n\nFor centuries it languished as fiend-infested ruins after the Weeping War. The elves of Evermeet reclaimed it in the late 14th century DR, sparking a century-long renaissance — before it fell to ruin once more.\n\n---"
+  },
+  {
+    "slug": "nesm",
+    "name": "Nesmé",
+    "type": "Small Town",
+    "region": "Savage Frontier, Northwest Faerûn",
+    "status": "Occupied — Liberation Pending",
+    "faction": "Contested (formerly Lords' Alliance; captured by Many-Arrows)",
+    "background": null,
+    "body": "**Region:** Savage Frontier, Northwest Faerûn\n**Type:** Small Town\n**Status:** Occupied — Liberation Pending\n**Controlling Faction:** Contested (formerly Lords' Alliance; captured by Many-Arrows)\n\n---\n\n## What You Know\n\nNesmé is a small frontier city on the River Surbrin, once home to ~6,000 people (rising to 9,000 in peak trade season). After raids by trolls and frost giants the population plummeted to under 2,000 by 1372 DR. In late 1484 DR, when Many-Arrows forces captured the city, only 600 of the original population remained — all as prisoners.\n\n**Recent development:** King Oberon has made the liberation of Nesmé a top priority.\n\n---"
+  },
+  {
+    "slug": "nether-mountains",
+    "name": "Nether Mountains",
+    "type": "Mountain Range",
+    "region": "Northwest Faerûn (between High Forest and Anauroch)",
+    "status": "Dangerous — Dragon Territory",
+    "faction": "None (Dragon Clan Territory)",
+    "background": null,
+    "body": "**Region:** Northwest Faerûn (between High Forest and Anauroch)\n**Type:** Mountain Range\n**Status:** Dangerous — Dragon Territory\n**Controlling Faction:** None (Dragon Clan Territory)\n\n---\n\n## What You Know\n\nThe Nether Mountains are a chain of dark peaks that once marked the boundary between the ancient empires of Netheril and Delzoun. Today they form the northern border of the High Forest. The greatest danger within: the Morueme clan of blue dragons, whose patriarch resides in Morueme's Cave on the peak called Dragondoom. Their hobgoblin servants — the Red Flayers tribe — maintain the Doomspire citadel and protect the dragons with almost religious devotion.\n\n---"
+  },
+  {
+    "slug": "neverwinter",
+    "name": "Neverwinter",
+    "type": "City-State",
+    "region": "Sword Coast North, Northwest Faerûn",
+    "status": "Fallen — Spree-Controlled",
+    "faction": "Spree Alliance",
+    "background": null,
+    "body": "**Region:** Sword Coast North, Northwest Faerûn\n**Type:** City-State\n**Status:** Fallen — Spree-Controlled\n**Controlling Faction:** Spree Alliance\n\n---\n\n## What You Know\n\nNeverwinter — also known as the City of Skilled Hands and the Jewel of the North — was once regarded by Volo as the most cosmopolitan and civilized city in all of Faerûn. Renowned for its craftsfolk, precision water-clocks, multi-colored glass lamps, and magnificent gardens, the city once kept flowers blooming even through winter snow. It was a proud member of the Lords' Alliance.\n\nThat era is over. Following the fall of Helm's Hold and the collapse of the Knights of Legend, Neverwinter joined the Spree Alliance. Now it is ruled by Xissira, a dictator favored by the Spree, a far cry from its humble and just origins.\n\n---"
+  },
+  {
+    "slug": "noanars-hold",
+    "name": "Noanar's Hold",
+    "type": "Hamlet",
+    "region": "Silver Marches / High Forest edge",
+    "status": "Occupied — Fey Alliance",
+    "faction": "Fey Alliance",
+    "background": null,
+    "body": "**Region:** Silver Marches / High Forest edge\n**Type:** Hamlet\n**Status:** Occupied — Fey Alliance\n**Controlling Faction:** Fey Alliance\n\n---\n\n## What You Know\n\nNoanar's Hold is a small village just off the Evermoor Way on the edge of the High Forest, built around one of the most famous hunting lodges in the North. Cottages and well-kept stables ramble between the trees.\n\nThe Hunt Lords who once ruled it struck a deal with Orcus in their old age and were transformed into wights; their steeds became warhorse skeletons. Guests were rumored to be encouraged to kill one another. That enterprise ended abruptly when King Oberon claimed the High Forest for the Fey Alliance and absorbed the Hold into his territory.\n\n---"
+  },
+  {
+    "slug": "orogoth",
+    "name": "Orogoth",
+    "type": "Ruined Villa",
+    "region": "High Moor, Western Heartlands",
+    "status": "Active — Dangerous",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** High Moor, Western Heartlands\n**Type:** Ruined Villa\n**Status:** Active — Dangerous\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nOrogoth is one of the most dangerous locations in the High Moor, primarily because of the black dragons that claim it as their domain. It is a large, sprawling ruined villa that once belonged to House Orogoth — formerly boasting great towers, which have long since collapsed.\n\nBeneath the ruins, tunnels connect Orogoth to the **Serpent Tunnels of Najara**, the underground domain of the serpentfolk. This underground connection makes Orogoth a node between the surface ruins and something considerably more dangerous below.\n\n---"
+  },
+  {
+    "slug": "secomber",
+    "name": "Secomber",
+    "type": "Small Town",
+    "region": "Savage Frontier / Western Heartlands border",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Savage Frontier / Western Heartlands border\n**Type:** Small Town\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nSecomber is a small, peaceful town that acts as the de facto border between the relatively peaceful Western Heartlands and the more savage North along the Sword Coast. Known for colorful gardens. It sits atop three stone hills at the junction of the Unicorn Run (flowing south) and the River Delimbiyr (flowing west).\n\nSouth: the dangerous High Moor. North: Uluvin via the Secomber Trail.\n\n---"
+  },
+  {
+    "slug": "settlestone",
+    "name": "Settlestone",
+    "type": "Village",
+    "region": "Fourthpeak, Frost Hills",
+    "status": "Active",
+    "faction": "Lords' Alliance (Mithral Hall allied)",
+    "background": null,
+    "body": "**Region:** Fourthpeak, Frost Hills\n**Type:** Village\n**Status:** Active\n**Controlling Faction:** Lords' Alliance (Mithral Hall allied)\n\n---\n\n## What You Know\n\nSettlestone — originally called Dwarvendarrow — is a village in the southern spurs of the Spine of the World near Mithral Hall. Originally a dwarven settlement, it fell into ruins, then was resettled in 1358 DR by Icewind Dale barbarians under Berkthgar in alliance with Mithral Hall. Cold and windy, with mountains on three sides. Used by Mithral Hall as a public front and forward base.\n\n---"
+  },
+  {
     "slug": "silverymoon",
     "name": "Silverymoon",
     "type": "City",
@@ -10,6 +410,86 @@
     "body": "**Region:** Luruar, Northwest Faerûn\n**Type:** City\n**Status:** Partially destroyed — Fey Alliance occupied\n**Controlling Faction:** Fey Alliance (North Bank)\n\n---\n\n## What You Know\n\nSilverymoon is called the Gem of the North, and even partially destroyed, you can see why. It is one of the few places in the wild North that has always felt genuinely civilized — a city of magic, culture, and scholarship, built to resemble the ancient elven city of Myth Drannor. The permanent Moonbridge, a structure of pure magic spanning the River Rauvin, connects its two halves. Even in its current damaged state, the city has a beauty to it that feels impossible and earned at the same time.\n\n**Current state (1508 DR):** The Spree Alliance invaded. Mourn Eveningfall fought Bane directly in the city's defense, and the battle destroyed the magical wards that had protected Silverymoon for centuries. The city's defenses failed. The Fey Alliance moved in. King Oberon now rules the North Bank. Lady Alustriel Silverhand — the city's former High Lady — remains here, tending to the gravely wounded Mourn.\n\nThe city is not a warzone. The fey occupation is not brutal. But it is occupation, and the city's people are living under a new order they didn't choose, in a city that is still being repaired.\n\n---\n\n## Key Places\n\n**The High Palace** — The seat of government, a soaring white marble castle on the eastern side of Northbank. Currently under Fey Alliance authority.\n\n**The Moonbridge** — The magical bridge connecting Northbank and Southbank over the River Rauvin. Still standing.\n\n**The Golden Oak Inn** — A rustic inn on Dancer's Mask Lane featuring a massive living oak tree through its atrium. Also a temple to Shiallia. Frequented by druids, rangers, and elves. A good place to hear gossip.\n\n**The Dancing Goat** — A bawdy tavern on the Moonway in Northbank. Loud, busy, and full of raucous entertainment around the clock. Also: pickpockets. Also: allegedly, a secret door connecting to passages beneath the city.\n\n**The Wyrmworks** — Dragon parts shop on Many Cats Lane. Owned by two veteran adventurers, Roryk and Delgrath. Survived the Spree invasion nearly untouched — functioned as a makeshift fortress. They know a lot about dragon activity in the region.\n\n**The House Invincible** — The former temple to Helm. Decommissioned in its original capacity after the recent events. Its current status in the post-occupation city is unclear.\n\n---\n\n## Layout\nThe city is divided by the River Rauvin into **Northbank** (older, half-circle shape; High Palace, Market, Docks, most temples and noble houses) and **Southbank** (originally for caravan trade, now home to most of the city's schools and the Conclave of Silverymoon). The city also has dwarven tunnels beneath its streets — used to evacuate civilians during the Spree invasion.\n\n---\n\n## Who's Here\n- King Oberon — Rules the North Bank\n- Queen Titania — The true power of the Fey Alliance; present in the city\n- Lady Alustriel Silverhand — Former High Lady; currently caring for Mourn\n- Mourn Eveningfall — Recovering from his wounds; out of action\n\n---\n\n## Atmosphere\nCautious. The city is rebuilding, but the people are uncertain. The fey occupation isn't harsh, but the fey are strange and don't explain themselves. The Spree threat hasn't gone away — Bryleth is active in the surrounding High Forest. There's a sense in Silverymoon that the crisis isn't over. It has just paused."
   },
   {
+    "slug": "small-teeth",
+    "name": "Small Teeth",
+    "type": "Mountain Range",
+    "region": "Amn; Muranndin",
+    "status": "Active",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Amn; Muranndin\n**Type:** Mountain Range\n**Status:** Active\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nThe Small Teeth are a cluster of mountains forming the border between Amn to the north and Muranndin to the south. Smaller and less imposing than many Faerûnian ranges, the Small Teeth average about 8,000 feet above sea level and are lightly forested except on their tallest peaks.\n\nThe mountains receive substantial snowfall; the resulting melt feeds the **Imnestream** and the **River Specie**, which flow through the Zehoarast Floodplains to the sea. The southern foothills are mild enough for viticulture — a good area for growing grapes.\n\nThe range's inhabitants include goblinoids, ogres, kobolds, and hill giants, making travel through the mountains hazardous for the unprepared.\n\n---"
+  },
+  {
+    "slug": "spine-of-the-world",
+    "name": "Spine of the World",
+    "type": "Mountain Range",
+    "region": "Northwest Faerûn",
+    "status": "Active — Impassable",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Northwest Faerûn\n**Type:** Mountain Range\n**Status:** Active — Impassable\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nThe Spine of the World is a massive mountain range stretching across the northwest of Faerûn, from the Cold Run near the Sea of Moving Ice to the Ice Spires north of the Silver Marches. To those in Scornubel and the Savage Frontier, it is simply called **\"the Wall\"** — an apt name, as on winter days the snow-covered peaks blend with the iron-gray sky, appearing to hold up the heavens themselves. For most people, it simply marks the end of the known world.\n\nThe Spine shields the civilizations of the North from the freezing expanse of the Uttermost North — the Reghed Glacier and the Endless Ice Sea. Some peaks reach over 20,000 feet (6.1 km) in height; virtually all are covered in snow and ice year-round. The range experiences devastating icy winds and frequent rock slides. The western edge is penetrated by a single circuitous, always-dangerous trade route to Icewind Dale; otherwise the range is not approached by those without exceptional survival skills or very good reasons.\n\nThe northern slopes have enough trees for loggers from the Ten Towns to risk treks across the tundra to harvest. The southern slopes, near the Druarwood and Moonwood forests, are known as the **Lands Against the Wall**.\n\n---"
+  },
+  {
+    "slug": "sundabar",
+    "name": "Sundabar",
+    "type": "Large City",
+    "region": "Sundabar Vale, Silver Marches",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Sundabar Vale, Silver Marches\n**Type:** Large City\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nSundabar — formerly Citadel Sundbarr — is one of the wealthiest and most militaristic cities in all of Faerûn. Originally a dwarven citadel, it evolved as its demographics changed. What never changed: it remains the rampart of the north. The Sundabarans are a vigilant, wary people. Outsiders and those who ask too many questions are viewed with suspicion.\n\n---"
+  },
+  {
+    "slug": "the-cloakwood",
+    "name": "The Cloakwood",
+    "type": "Ancient Forest",
+    "region": "Sword Coast, West Faerûn",
+    "status": "Wild — Ancient",
+    "faction": "None (Fey and wild beasts)",
+    "background": null,
+    "body": "**Region:** Sword Coast, West Faerûn\n**Type:** Ancient Forest\n**Status:** Wild — Ancient\n**Controlling Faction:** None (Fey and wild beasts)\n\n---\n\n## What You Know\n\nThe Cloakwood is an ancient, thickly grown forest on the south end of the Sword Coast in the Western Heartlands. The sages of Candlekeep assert it contains portals to several other parts of the cosmos — though these are believed defunct as of 1479 DR. Known for its many hiexel trees. The shoreline theoretically allows ships to moor and send boats ashore, but only desperate mariners face the forest's dangerous wildlife.\n\n---"
+  },
+  {
+    "slug": "the-evermoors",
+    "name": "The Evermoors",
+    "type": "Moorland",
+    "region": "Savage Frontier, Northwest Faerûn",
+    "status": "Wild — Uninhabited (mostly)",
+    "faction": "None",
+    "background": null,
+    "body": "**Region:** Savage Frontier, Northwest Faerûn\n**Type:** Moorland\n**Status:** Wild — Uninhabited (mostly)\n**Controlling Faction:** None\n\n---\n\n## What You Know\n\nThe Evermoors — also called the Trollmoors — is a region of the Savage Frontier comprising hills, troughs, chilly bogs, and rolling landscapes. Dense fog clouds the senses; winds roar constantly. Famous for its troll infestations. Despite the dangers, a few scattered drovers, shepherds, and prospectors manage to eke out a life within its borders.\n\nIn 932 DR, Nimoar and his barbarians eradicated all the trolls in the Evermoors and scorched much of the terrain. Scorch marks remained visible for hundreds of years afterward.\n\n---"
+  },
+  {
+    "slug": "the-snakewood",
+    "name": "The Snakewood",
+    "type": "Forest",
+    "region": "Amn, Eastern Faerûn",
+    "status": "Active — Wilderness",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Amn, Eastern Faerûn\n**Type:** Forest\n**Status:** Active — Wilderness\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nThe Snakewood is a relatively small forest located in eastern Amn. Its name comes from the enormous number of black and green snakes that inhabit it. Geographically it sits west of the Troll Mountains, south of the Green Fields, north of the Amstel and Splendarrllur rivers, and east of the Cloud Peaks.\n\nThe forest is home to beholders, lycanthropes, and wild elves — a dangerous combination that keeps most travelers on the roads that circumvent it rather than passing through. It was formerly known as Arundath the Quiet Forest or the Wyrmwood, names that predate the serpent population's dominance.\n\n---"
+  },
+  {
+    "slug": "thornhold",
+    "name": "Thornhold",
+    "type": "Fortress",
+    "region": "Mere of Dead Men, Sword Coast North",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Mere of Dead Men, Sword Coast North\n**Type:** Fortress\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nThornhold is a plain gray stone fort at the southern edge of the Mere of Dead Men — a central keep and two towers, with arrow slits and battlements but no decoration. Located on a hill whose western side drops off into a seaside cliff, just west of the High Road. Currently held by Clan Stoneshaft (dwarves); formerly a Tyr chapterhouse.\n\n---"
+  },
+  {
+    "slug": "triboar",
+    "name": "Triboar",
+    "type": "Large Town",
+    "region": "Savage Frontier, Northwest Faerûn",
+    "status": "Active",
+    "faction": "Lords' Alliance",
+    "background": null,
+    "body": "**Region:** Savage Frontier, Northwest Faerûn\n**Type:** Large Town\n**Status:** Active\n**Controlling Faction:** Lords' Alliance\n\n---\n\n## What You Know\n\nTriboar is a proud trading crossroads town where the Evermoor Way meets the Long Road. Known as \"the Town Where Only Gwaeron Sleeps\" for its constant day-and-night activity, it is a lively frontier town full of merchants, caravanners, and travelers. At the heart of town is a vast marketplace; above it rises the Tower of the Lord Protector. Surrounding the town are paddocks, horse markets, stockyards, and caravan outfitters.\n\n---"
+  },
+  {
     "slug": "waterdeep",
     "name": "Waterdeep",
     "type": "City — major metropolitan city-state",
@@ -18,6 +498,26 @@
     "faction": "Lord's Alliance — The Lords of Waterdeep",
     "background": "images/locations/waterdeep.jpeg",
     "body": "**Region:** Sword Coast North\n**Type:** City — major metropolitan city-state\n**Status:** Active\n**Controlling Faction:** Lord's Alliance — The Lords of Waterdeep\n\n---\n\n## What You Know\n\nWaterdeep is the City of Splendors. The Crown of the North. The most powerful and influential city in all of Faerûn. If something matters politically, commercially, or militarily in the North, Waterdeep is either involved or watching.\n\nIt has a population over a million people. A natural deep-water harbor that made it the commercial hub of the Sword Coast. A government of mostly-masked lords whose identities are largely secret — known only by the **Open Lord**, currently **Laeral Silverhand**, whose position is public. Beneath the city lies **Undermountain**, a vast dungeon complex in the tunnels of the mountain above it — a constant source of danger and opportunity for adventurers.\n\nThe city is divided into wards, each with its own character: the wealthy Sea Ward and North Ward, the commercial Trades Ward, the dangerous Dock Ward, the governmental Castle Ward at the base of Mount Waterdeep, and more.\n\nWaterdeep remains strong while other Alliance cities are struggling. It is the most defensible and most resourced piece of the Lord's Alliance — which makes it both a potential source of help and a potential target.\n\n---\n\n## Key People\n- **Laeral Silverhand** — Open Lord; one of the Seven Sisters; Chosen of Mystra; sister to Lady Alustriel\n\n---\n\n## What It Means Right Now\n\nFor the current arc, Waterdeep is background — a distant power that the party may eventually need to reach. If the crisis in the North escalates to the point where the party needs Alliance-level backing, real arcane resources, or access to the highest levels of political power, Waterdeep is where that happens."
+  },
+  {
+    "slug": "westgate",
+    "name": "Westgate",
+    "type": "Metropolis",
+    "region": "Dragon Coast, Interior Faerûn",
+    "status": "Active — Corrupt",
+    "faction": "Independent (Corrupt Oligarchy)",
+    "background": null,
+    "body": "**Region:** Dragon Coast, Interior Faerûn\n**Type:** Metropolis\n**Status:** Active — Corrupt\n**Controlling Faction:** Independent (Corrupt Oligarchy)\n\n---\n\n## What You Know\n\nWestgate is a seedy, squalid metropolis with a history in piracy, powerful crime syndicates, and nameless vampiric crime-lords. It thrives on black-market trade and corruption — perhaps one of the most sordid cities in all of Faerûn. The largest and most powerful city on the Dragon Coast, it is probably the oldest, richest, and most corrupt port on the Sea of Fallen Stars.\n\nDespite its reputation, Westgate is an open city — welcoming all travelers as long as they abide by local laws and have enough coin.\n\n---"
+  },
+  {
+    "slug": "wood-of-sharp-teeth",
+    "name": "Wood of Sharp Teeth",
+    "type": "Forest",
+    "region": "Western Heartlands, west Faerûn",
+    "status": "Active — Wilderness",
+    "faction": "Independent",
+    "background": null,
+    "body": "**Region:** Western Heartlands, west Faerûn\n**Type:** Forest\n**Status:** Active — Wilderness\n**Controlling Faction:** Independent\n\n---\n\n## What You Know\n\nThe Wood of Sharp Teeth — formerly known as the Glimmerwood — is a dense, dangerous forest south of the River Chionthar, southeast of Baldur's Gate and southwest of Scornubel. It is almost entirely wilderness, roamed by dire beasts, dragons, hydras, satyrs, dryads, and werewolves. The only notable structure is **Durlag's Tower**, a legendary dungeon on the forest's southern edge.\n\nThe Uldoon Trail runs to the southeast of the wood, marking the forest's rough boundary in that direction.\n\n---"
   },
   {
     "slug": "yartar",
