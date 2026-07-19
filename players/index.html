@@ -969,7 +969,7 @@ async function loadAndRenderCards(key) {
 function renderCards(items, key) {
   const grid = document.getElementById("cards-grid");
   grid.innerHTML = items.map(item => {
-    const img = item.portrait || item.image;
+    const img = item.portrait || item.image || item.background;
     const imgHTML = img
       ? `<img class="card-image" src="${img}" alt="" loading="lazy" onerror="this.style.display='none'">`
       : `<div class="card-image-placeholder">${sectionIcon(key)}</div>`;
