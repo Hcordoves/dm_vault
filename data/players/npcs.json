@@ -30,7 +30,29 @@
     "status": "Alive",
     "relationship": "Hostile",
     "portrait": "images/npcs/beira.png",
-    "body": "## What You Know\n\nBeira is a Spree Alliance operative — roughly 7 feet tall, with pale blue, almost translucent skin, milky white eyes, and long flowing white hair. She wears dark enchanted robes that protect against the elements and amplify her magic. She doesn't carry weapons. She doesn't need them.\n\nShe is cold and controlled, not warm, and she knows it. She works for the Spree because they gave her belonging and purpose when almost no one else would. Trust is not something she extends easily, if at all.\n\n## What She Wants\n\nTo continue serving the Spree Alliance and its goals. She also carries a quiet, unresolved hunger for revenge against the tribe that exiled her — they're still out there, and she hasn't forgotten them.\n\n## Known Capabilities\n- Ice and water magic, with an unusual mastery of environmental and weather manipulation\n- Casts without a spellbook or components — her magic is entirely internalized, so she can't be disarmed the way most wizards can\n- Especially lethal in outdoor environments, particularly forests and cold regions\n\n## Connections\n- Valas Halfinas — Serves his organization\n- Spree Alliance — Member and operative"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "What She Wants",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Connections",
+        "revealed": false,
+        "text": ""
+      }
+    ]
   },
   {
     "slug": "bryleth",
@@ -41,7 +63,29 @@
     "status": "Alive — whereabouts unknown",
     "relationship": "Hostile",
     "portrait": "images/npcs/bryleth.jpeg",
-    "body": "## What You Know\n\nBryleth is a Spree Alliance operative and a serious threat in the current chapter. She is a Fierna Tiefling druid with olive-green skin, prominent horns, long grey hair, and dark, intense eyes. She carries a druidic staff and wears rough, earthy clothing. She looks like someone who chose the wilderness completely — not as a retreat, but as a weapon.\n\nHer powers center on the land itself: she can summon roots and vines to entangle enemies, call animals and elementals to attack, control weather, and cause earthquakes and landslides. She is territorial in the extreme. People who enter her domain uninvited disappear. There are folk tales about her in the villages near the High Forest — warnings told to children.\n\nShe calls herself the protector of the land, but her real motivation is revenge. The gods, in her view, destroyed her home and killed everyone she loved. She survived alone. That grief became something harder and colder — and she has been hunting anything connected to divine power ever since.\n\n## What She Wants\n\nVengeance against the gods. She will not stop. She will not negotiate on this point. Anyone who serves the gods, worships them, or benefits from their power is, to her, complicit.\n\n## Known Capabilities\n- Roots and vines — can entangle enemies and drag them into the earth\n- Summon animals and elementals\n- Weather control\n- Earthquakes and landslides\n- Extreme territorial awareness — she knows her domain intimately\n\n## Connections\n- Valas Halfinas — Operates within his organization; shares his hatred of divine power"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "What She Wants",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Connections",
+        "revealed": true,
+        "text": "- Valas Halfinas — Operates within his organization; shares his hatred of divine power"
+      }
+    ]
   },
   {
     "slug": "charles-vane",
@@ -74,7 +118,24 @@
     "status": "Deceased",
     "relationship": "Hostile",
     "portrait": "images/npcs/drus-the-butcher-fullmaw.jpeg",
-    "body": "## What You Know\n\nDrus \"the Butcher\" Fullmaw was the leader of the Dead Rabbits, an orc tribe built around a single conviction: that all orcs belong to one tribe, and every divided clan is an insult to that potential. \"Orcs are orc\" wasn't just his motto — it was his entire worldview, his religion, his purpose.\n\nHe wasn't cruel for cruelty's sake. He was ruthless in service of a genuine conviction, and he would do whatever it took to unite the orc tribes under one banner. Whatever it took was not a figure of speech. He died in the High Forest.\n\n## What He Wanted\n\nTo unite all orc tribes under one banner. His alliance with the Spree was transactional, not ideological — they gave him an army, resources, and a home base in the High Forest; in exchange, he gave them soldiers. He didn't share their obsession with the gods or the Shadow Weave. He wanted a home for his people.\n\n## Known Capabilities\n- Commanded a united fighting force of multiple orc clans — the Dead Rabbits\n- Operated out of a fortified base of operations in the High Forest\n\n## Connections\n- Valas Halfinas — Transactional ally; the Spree provided resources, Drus provided soldiers\n- Spree Alliance — Allied, not subordinate — he saw himself as a partner\n- The Dead Rabbits — His tribe and army"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": true,
+        "text": "Drus \"the Butcher\" Fullmaw was the leader of the Dead Rabbits, an orc tribe built around a single conviction: that all orcs belong to one tribe, and every divided clan is an insult to that potential. \"Orcs are orc\" wasn't just his motto — it was his entire worldview, his religion, his purpose.\n\nHe wasn't cruel for cruelty's sake. He was ruthless in service of a genuine conviction, and he would do whatever it took to unite the orc tribes under one banner. Whatever it took was not a figure of speech. He died in the High Forest."
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": true,
+        "text": "- Commanded a united fighting force of multiple orc clans — the Dead Rabbits\n- Operated out of a fortified base of operations in the High Forest"
+      },
+      {
+        "label": "Connections",
+        "revealed": true,
+        "text": "- Valas Halfinas — Transactional ally; the Spree provided resources, Drus provided soldiers\n- Spree Alliance — Allied, not subordinate — he saw himself as a partner\n- The Dead Rabbits — His tribe and army"
+      }
+    ]
   },
   {
     "slug": "king-oberon",
@@ -96,7 +157,29 @@
     "status": "Deceased",
     "relationship": "Hostile",
     "portrait": null,
-    "body": "## What You Know\n\nMaradim is tall, dark-complected, and completely blind, though it isn't apparent until you're looking for it — she moves with the total spatial confidence of someone who has never needed eyes. Her bald head bears a tattoo of a black raven, and she dresses for combat with her sleeves rolled up, revealing more tattoos on her forearms. She's known among those who've faced her as \"the Witch of Pain.\"\n\nShe's patient, pragmatic, and deeply prideful. She's cruel in a calculated way — she relishes pain, particularly in her victims, and has built her fighting style around using it as information and fuel. Her pride won't let her lose a battle, which means she has no shame about retreating; she runs, waits, and comes back until one side is dead. She is never finished.\n\n## What She Wants\n\nTo one day surpass Taeghen Moondown as the greatest monk in the realms — a very specific ambition she has studied and pursued deliberately. Beyond that, she serves the Spree Alliance and, more specifically, someone above it.\n\n## Known Capabilities\n- Total combat awareness despite total blindness — her other senses have compensated fully, and then some\n- Targets spellcasters first, attacking from shadow before engaging the rest of a group\n- A recurring threat — she retreats rather than dies, and returns having learned from the encounter\n\n## Connections\n- Aurgolarossa — Her true master. She is the \"Tazenlimar\" she serves — Maradim reports to the dracolich directly, not to Valas, though almost no one in the Spree knows this.\n- Valas Halfinas — Nominal superior within the Spree — though she does not fully answer to him\n- Spree Alliance — Member, high rank\n- Taeghen Moondown — Her personal benchmark; she intends to surpass him"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "What She Wants",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Connections",
+        "revealed": false,
+        "text": ""
+      }
+    ]
   },
   {
     "slug": "mourn-eveningfall",
@@ -140,7 +223,29 @@
     "status": "Alive",
     "relationship": "Hostile",
     "portrait": "images/npcs/valas-halfinas.jpeg",
-    "body": "## What You Know\n\nValas Halfinas is the primary villain of the current campaign arc — the figure believed to lead the Spree Alliance under the alias **Merrick**. He is a Fallen Aasimar who has been transformed into a Vampire Lord, and he is responsible for the Spree's systematic war against the gods and the cities that serve them.\n\nHe is tall, with light olive skin, light blue eyes, and short black hair. He wears blackened steel full plate with a cloak that seems to absorb light around it. He carries a longsword that pulsates with dark energy and a tower shield trimmed with strips of human flesh. He is not a subtle presence.\n\nValas operates from the shadows, preferring to work through lieutenants and proxies rather than appearing directly. When he does act, it is with calculated purpose. He is not chaotic — he is patient, intelligent, and driven by a very specific hatred.\n\nNot much is publicly known about his past. He was once, apparently, a figure of some religious standing — a cleric, by the look of his knowledge of divine systems. Something happened that turned him against the gods completely. The specifics are unclear.\n\n## What He Wants\n\nValas wants to destroy the gods. He blames them for abandonment and betrayal — for a life he believes they ruined. His goal is a world free from divine influence: no gods, no divine mandate, no power over mortals that comes from above. The Spree Alliance is the instrument of that agenda.\n\nHe uses manipulation, terror, and the corruption of souls as his methods. He rarely shows his hand until he's already won.\n\n## Known Capabilities\n- Vampire Lord physiology — life drain, command over lesser undead, resistance to non-magical harm, weaknesses typical of powerful vampires\n- A dangerous melee combatant, wielding a longsword that pulsates with dark energy\n- Dark clerical magic drawn from his former faith, twisted and corrupted\n- Commands the Spree Alliance's lieutenants and operates almost entirely through proxies rather than direct confrontation\n\n## Connections\n- Bryleth — A Spree operative who appears to work within his organization\n- Mourn Eveningfall — The battle between Mourn and the gods that Valas's Spree triggered destroyed Silverymoon's wards"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": true,
+        "text": "Valas Halfinas is the primary villain of the current campaign arc — the figure believed to lead the Spree Alliance under the alias **Merrick**. He is a Fallen Aasimar who has been transformed into a Vampire Lord, and he is responsible for the Spree's systematic war against the gods and the cities that serve them.\n\nHe is tall, with light olive skin, light blue eyes, and short black hair. He wears blackened steel full plate with a cloak that seems to absorb light around it. He carries a longsword that pulsates with dark energy and a tower shield trimmed with strips of human flesh. He is not a subtle presence.\n\nValas operates from the shadows, preferring to work through lieutenants and proxies rather than appearing directly. When he does act, it is with calculated purpose. He is not chaotic — he is patient, intelligent, and driven by a very specific hatred.\n\nNot much is publicly known about his past. He was once, apparently, a figure of some religious standing — a cleric, by the look of his knowledge of divine systems. Something happened that turned him against the gods completely. The specifics are unclear."
+      },
+      {
+        "label": "What He Wants",
+        "revealed": true,
+        "text": "Valas wants to destroy the gods. He blames them for abandonment and betrayal — for a life he believes they ruined. His goal is a world free from divine influence: no gods, no divine mandate, no power over mortals that comes from above. The Spree Alliance is the instrument of that agenda.\n\nHe uses manipulation, terror, and the corruption of souls as his methods. He rarely shows his hand until he's already won."
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Connections",
+        "revealed": true,
+        "text": "- Bryleth — A Spree operative who appears to work within his organization\n- Mourn Eveningfall — The battle between Mourn and the gods that Valas's Spree triggered destroyed Silverymoon's wards"
+      }
+    ]
   },
   {
     "slug": "xissira",
@@ -151,6 +256,28 @@
     "status": "Alive",
     "relationship": "Hostile — complicated",
     "portrait": "images/npcs/xissira.jpeg",
-    "body": "## What You Know\n\nXissira is Valas Halfinas's right hand, his enforcer, his champion. A dragonborn with the bearing of someone who has spent a lifetime earning the fear she receives — heavy armor, dragon-scale features, and the symbol of Tiamat marked somewhere on her body. Dragons and dragonborn who know her history give her a wide berth. She has earned that.\n\nShe's ruthless, cunning, and strategic. She travels the realms punishing those who fail the Spree's cause, and her savagery is purposeful, not random. There's something more complicated underneath — she carries herself like someone who has never stopped asking whether what she's doing is right.\n\n## What She Wants\n\nTo further Valas's goal of destroying the gods, and to honor Tiamat, who gave her a place of respect when no one else would. She's also driven by a hunger for recognition and for vindication — for herself and for every dragonborn who was ever treated as lesser.\n\n## Known Capabilities\n- A skilled and dangerous melee combatant, trained as a Master at Arms\n- Fights with the backing of Tiamat's favor\n- Operates independently across the realms as Valas's enforcer\n\n## Connections\n- Valas Halfinas — Right hand; loyal operative; true believer in his cause\n- Spree Alliance — Senior member; enforcer and champion\n- Tiamat — Patron deity and consort"
+    "npc_type": "villain",
+    "sections": [
+      {
+        "label": "What You Know",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "What She Wants",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Known Capabilities",
+        "revealed": false,
+        "text": ""
+      },
+      {
+        "label": "Connections",
+        "revealed": false,
+        "text": ""
+      }
+    ]
   }
 ]
