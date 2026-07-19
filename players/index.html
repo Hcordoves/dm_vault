@@ -384,6 +384,22 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 .wiki-link { color: var(--gold); cursor: pointer; border-bottom: 1px dotted var(--gold-dim); }
 .wiki-link:hover { color: var(--gold-lite); }
 
+/* ── Villain intel sections (toggleable reveal) ─────────────── */
+.npc-section { margin-bottom: 18px; }
+.npc-section-title {
+  font-family: var(--font-head); font-size: 14px; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border); padding-bottom: 4px;
+  margin: 22px 0 10px; display: flex; align-items: center; gap: 8px;
+}
+.npc-section-locked .npc-section-title { color: var(--text-dim); }
+.npc-section-locked .lock-icon { font-size: 12px; opacity: 0.8; }
+.npc-unknown {
+  background: var(--bg3); border: 1px dashed var(--border2);
+  border-radius: 4px; padding: 14px 16px;
+  color: var(--text-dim); font-style: italic; font-size: 14px;
+}
+
 /* ── Session detail ──────────────────────────────────────── */
 .session-detail-meta { color: var(--text-dim); font-size: 14px; margin-bottom: 16px; }
 .session-no-recap {
@@ -1051,13 +1067,32 @@ function openDetail(slug) {
     if (item.status)       metaLines.push(item.status);
   }
 
+  const bodyHTML = (currentSection === "npcs" && item.npc_type === "villain" && Array.isArray(item.sections))
+    ? renderVillainSections(item.sections)
+    : '<div class="md-body">' + renderMarkdown(item.body || "") + '</div>';
+
   document.getElementById("detail-body").innerHTML = imgHTML +
     '<div class="detail-content"><div class="detail-name">' + item.name +
     '</div><div class="detail-sub">' + metaLines.join(" &nbsp;&middot;&nbsp; ") +
     '</div>' + relationship +
-    '<div class="md-body">' + renderMarkdown(item.body || "") + '</div></div>';
+    bodyHTML + '</div>';
 
   document.getElementById("detail-panel").classList.add("open");
+}
+
+// Villain NPCs ship four gated sections (What You Know / What They Want /
+// Known Capabilities / Connections). Hidden ones never carry text in the
+// JSON to begin with — this just renders the lock state.
+function renderVillainSections(sections) {
+  return sections.map(function(s) {
+    if (s.revealed) {
+      return '<div class="npc-section"><h3 class="npc-section-title">' + s.label + '</h3>' +
+             '<div class="md-body">' + renderMarkdown(s.text || "") + '</div></div>';
+    }
+    return '<div class="npc-section npc-section-locked"><h3 class="npc-section-title">' +
+           s.label + ' <span class="lock-icon">🔒</span></h3>' +
+           '<div class="npc-unknown">The party hasn’t learned this yet.</div></div>';
+  }).join("");
 }
 
 function closeDetail() {
